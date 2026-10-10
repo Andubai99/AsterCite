@@ -3,7 +3,7 @@
 [![CI](https://github.com/Andubai99/AsterCite/actions/workflows/ci.yml/badge.svg)](https://github.com/Andubai99/AsterCite/actions/workflows/ci.yml)
 [MIT License](LICENSE)
 
-基于 Pi SDK 的科研论文多轮证据问答 CLI。在本地论文库中检索相关内容，生成带引用的回答，并在连续对话中保留论文范围与用户约束。
+面向科研论文多轮问答中的指代缺失、检索证据不足和无依据作答问题，基于 Pi SDK 搭建并优化轻量 Agent Harness，构建集 Query 改写、混合检索、引用生成和会话记忆于一体的分阶段可追溯问答 Agent。
 
 ## 核心能力
 
@@ -80,6 +80,14 @@ flowchart LR
 TypeScript 负责 Pi 会话编排、记忆和 CLI；Python worker 负责本地检索。模型通过 `search_papers` 与 `retrieve_chunks` 获取论文证据。
 
 ## 评测与复现
+
+| 检索配置 | Span Recall@5 |
+|---|---:|
+| Dense | 54.08% |
+| Dense + BM25 + RRF | 68.58% |
+| + Cross-Encoder 重排 | **77.73%** |
+
+RRF 较 Dense 提升 **14.50 个百分点**，重排进一步提升 **9.15 个百分点**。
 
 ```powershell
 npm run reproduce
