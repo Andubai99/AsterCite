@@ -26,7 +26,7 @@ python scripts/restore_corpus.py --download
 python scripts/download_models.py
 ```
 
-语料来自 QASPER。脚本根据来源清单恢复论文文本、下载检索权重，并校验文件哈希。数据、权重与索引存放在本地。
+语料来自 QASPER。脚本会下载论文文本和检索模型，文件保存在本地。
 
 ## 构建索引
 

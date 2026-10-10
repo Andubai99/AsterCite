@@ -156,7 +156,7 @@ def verify(root=ROOT):
 def table(v):
     p=v["original_main"];b=v["boundary_refusal"];c=v["compression"]
     fmt=lambda x:f'{x["value"]*100:.2f}%' if x["value"] is not None else "—"
-    out=["# 评测结果","","使用随附评测资料复算。运行方法与数据入口见 [复现指南](../reproduce/README.md)。","","## 检索","","| 配置 | Span Recall@5 |","|---|---:|"]
+    out=["# 评测结果","","运行评测的方法见 [复现指南](../reproduce/README.md)。","","## 检索","","| 配置 | Span Recall@5 |","|---|---:|"]
     for key,name in [("dense","Dense"),("bm25","BM25"),("rrf","Dense + BM25 + RRF"),("rrf_rerank","+ Cross-Encoder 重排")]:
         out.append(f'| {name} | {100*v["retrieval"][key]["recall_at5"]:.2f}% |')
     hybrid=100*(v["retrieval"]["rrf"]["recall_at5"]-v["retrieval"]["dense"]["recall_at5"])
@@ -171,7 +171,7 @@ def table(v):
     for name,fn in [("流程完成率",lambda a:c[a]["service_recovered120"]["completion"]),("任务正确率",lambda a:c[a]["service_recovered120"]["task"]),("压缩后记忆一致率",lambda a:c[a]["t3"]["memory"]),("恢复后记忆一致率",lambda a:c[a]["t4"]["memory"])]:
         out.append("| "+name+" | "+" | ".join(fmt(fn(a)) for a in ["A","C-no-reflect"])+" |")
     out.append("| 配对对话 token 减少 | "+" | ".join(f'{100*c[a]["paired_tokens"]["reduction_fraction"]:.2f}%' for a in ["A","C-no-reflect"])+" |")
-    out+=["","检索按原文证据跨度评分；问答按任务、流程和引用分别评分。压缩项按配对运行记录统计 token。各指标按对应数据视图统计；语义项采用开发者 AI 标注，详情见复现指南。"]
+    out+=["","各项指标的测试内容和运行方法见复现指南。"]
     return "\n".join(out)+"\n"
 if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument("--write",action="store_true",help="Write a derived table under .local/reproduction");a=parser.parse_args()

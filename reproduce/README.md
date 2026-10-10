@@ -1,21 +1,21 @@
 # 复现指南
 
-## 复算随附结果
+## 查看评测结果
 
 ```powershell
 npm run reproduce
 ```
 
-输出保存至 `.local/reproduction/`。评分器校验资料哈希，从检索输出、答案与保存的语义标注重新计算指标。
+根据仓库附带的测试记录重新统计结果，输出保存在 `.local/reproduction/`。
 
 | 目录 | 内容 |
 |---|---|
 | `retrieval/` | 检索问题、证据跨度与各配置的召回记录 |
 | `pipeline/` | 问答、引用及多轮记忆评测资料 |
 | `intent/` | 意图分类结果 |
-| `query-rewrite/` | Query 改写及语义标注 |
+| `query-rewrite/` | Query 改写测试资料 |
 
-各指标的数据范围见 `registry.json`，文件哈希与标注来源见 `manifest.json`。检索与问答使用各自配套的语料和索引。
+各项指标使用的测试数据见 `registry.json`。检索和问答分别使用配套的语料与索引。
 
 ## 运行检索评测
 
@@ -57,6 +57,6 @@ node reproduce/run_agent.ts --arm C-no-reflect --role main --limit 4 --run-id qa
 | `--role` | `main` 问答；`native_off` 无压缩；`compression` 压缩与恢复 |
 | `--view` | `all`、`intent`、`rewrite`、`boundary`、`e2e` |
 
-包含多轮依赖的指标使用完整对话运行，再按视图评分。结果保存至 `.local/benchmarks/`；`score_new.py` 提供语义标注模板与评分入口，参数见 `python reproduce/score_new.py --help`。
+包含多轮依赖的指标使用完整对话运行，再按视图评分。结果保存至 `.local/benchmarks/`；`score_new.py` 用于整理评分记录和计算结果，参数见 `python reproduce/score_new.py --help`。
 
-语义指标采用开发者 AI 标注，未完成条目保留在分母中。评测结果见 [结果页](../docs/results.md)。
+评测结果见 [结果页](../docs/results.md)。
