@@ -1,6 +1,6 @@
 # AsterCite
 
-[![CI](https://github.com/Andubai99/AsterCite/actions/workflows/ci.yml/badge.svg)](https://github.com/Andubai99/AsterCite/actions/workflows/ci.yml)
+[![CI](https://github.com/Wahuwahuuu/AsterCite/actions/workflows/ci.yml/badge.svg)](https://github.com/Wahuwahuuu/AsterCite/actions/workflows/ci.yml)
 [MIT License](LICENSE)
 
 面向科研论文多轮问答中的指代缺失、检索证据不足和无依据作答问题，基于 Pi SDK 搭建并优化轻量 Agent Harness，构建集 Query 改写、混合检索、引用生成和会话记忆于一体的分阶段可追溯问答 Agent。
@@ -17,7 +17,7 @@
 需要 Node.js **24.11.1+**、Python **3.12**。
 
 ```powershell
-git clone https://github.com/Andubai99/AsterCite.git
+git clone https://github.com/Wahuwahuuu/AsterCite.git
 cd AsterCite
 npm ci --ignore-scripts
 npm run demo
