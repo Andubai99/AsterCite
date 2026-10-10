@@ -1,7 +1,19 @@
-# 贡献与验证
+# 贡献指南
 
-先阅读 AGENTS.md。功能设计保存到 docs/specs/，实施计划保存到 docs/plans/。运行 npm run check、npm test、npm run test:reproduce、npm run audit；新增确定性边界配套测试。
+欢迎提交问题反馈、文档改进与功能 PR。开始开发前阅读 [AGENTS.md](AGENTS.md)。
 
-修改产品源码可以产生新的运行身份，不修改冻结 Gold 或从输出中删失败题。新题集/索引另起版本，结果说明包含分母、失败项、模型参数、usage未知情况和判定者关系。不得上传 model.local.json、.env、.local会话或个人凭据。
+## 本地验证
 
-提交使用英文类型前缀和中文摘要。发布只包含经过审查的源码、来源manifest和脱敏复现资料。发现凭据泄漏请先私下联系仓库维护者，并立即在服务端吊销凭据；不在公开 issue 粘贴密钥。
+```powershell
+npm run check
+npm test
+npm run test:reproduce
+npm run reproduce
+npm run audit
+```
+
+功能变更配套相关测试；评测数据或索引变更使用独立版本，并更新来源清单。
+
+提交建议使用 `docs:`、`feat:`、`fix:`、`test:` 或 `chore:` 前缀。PR 简要说明问题、改动与验证结果。
+
+反馈模型兼容问题时，提供服务类型、错误码及最小复现步骤。密钥与个人会话内容请先脱敏。

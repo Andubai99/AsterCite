@@ -1,5 +1,5 @@
 /** Offline observed-output parsing replay; no API keys, runtime worker or new model request. */
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 import { parseFullCheck } from "../agent/full-stages.ts";
 import { parseFinalAnswer, type AnswerKind } from "../agent/final-answer.ts";
@@ -51,6 +51,7 @@ export async function replayFailures() {
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const report = await replayFailures();
-  await writeFile("docs/evidence/main-controls-v2/replay.json", JSON.stringify(report, null, 2) + "\n");
+  await mkdir(".local/replays", { recursive: true });
+  await writeFile(".local/replays/main-reliability.json", JSON.stringify(report, null, 2) + "\n");
   console.log(JSON.stringify({ recovered_parser_inputs: report.formerly_rejected_now_accepted, parser_regressions: report.formerly_accepted_now_rejected, route_fallbacks: report.route_fallbacks, real_model_requests: 0 }));
 }

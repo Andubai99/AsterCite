@@ -1,11 +1,11 @@
-"""Restore 48 public papers from the pinned QASPER archive; never reads evaluation data."""
+"""Restore the public paper corpus from the pinned QASPER archive."""
 from __future__ import annotations
 import argparse,hashlib,json,pathlib,tarfile,urllib.request
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 URL="https://qasper-dataset.s3.us-west-2.amazonaws.com/qasper-train-dev-v0.3.tgz"
 def sha(data):return hashlib.sha256(data).hexdigest()
 def canonical(value):return json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(",",":")).encode("utf8")
-def restore(root=ROOT,download=False,dataset="original47"):
+def restore(root=ROOT,download=False,dataset="retrieval"):
     root=pathlib.Path(root).resolve();manifest=json.loads((root/"data/full-v1/manifests/corpus.json").read_bytes())
     archive=root/"data/raw/qasper-train-dev-v0.3.tgz"
     if not archive.resolve().is_relative_to(root):raise ValueError("Archive path escapes project")
@@ -35,9 +35,9 @@ def restore(root=ROOT,download=False,dataset="original47"):
         papers.append(matches[0])
     data=b"".join(canonical(p)+b"\n" for p in papers)
     if len(papers)!=manifest["paper_count"] or len({p["paper_id"] for p in papers})!=len(papers) or sha(data)!=manifest["files"]["papers.jsonl"]:raise ValueError("Restored corpus identity differs")
-    if dataset=="agent295":
-        extra=json.loads((root/"data/abc295-v3/manifests/corpus.json").read_bytes())
-        patch_path=root/"data/abc295-v3/manifests/public-additions.jsonl"
+    if dataset=="pipeline":
+        extra=json.loads((root/"data/evaluation-v1/manifests/corpus.json").read_bytes())
+        patch_path=root/"data/evaluation-v1/manifests/public-additions.jsonl"
         inventory=json.loads((root/"data/source-assets.json").read_bytes())
         if sha(patch_path.read_bytes())!=inventory["public_additions_sha256"]:raise ValueError("Public additions differ")
         patches={p["paper_id"]:p for p in map(json.loads,patch_path.read_text(encoding="utf8").splitlines())}
@@ -48,13 +48,13 @@ def restore(root=ROOT,download=False,dataset="original47"):
             paper["full_text"].extend(patch["append_sections"]);paper.update(patch["metadata_updates"])
             if sha(canonical(paper))!=patch["final_paper_sha256"]:raise ValueError("Addition paper hash differs")
         data=b"".join(canonical(p)+b"\n" for p in papers)
-        if sha(data)!=extra["files"]["papers.jsonl"]:raise ValueError("Restored agent295 corpus differs")
-    elif dataset!="original47":raise ValueError("Unsupported dataset")
-    target=root/("data/abc295-v3/corpus/papers.jsonl" if dataset=="agent295" else "data/full-v1/corpus/papers.jsonl")
+        if sha(data)!=extra["files"]["papers.jsonl"]:raise ValueError("Restored pipeline corpus differs")
+    elif dataset!="retrieval":raise ValueError("Unsupported dataset")
+    target=root/("data/evaluation-v1/corpus/papers.jsonl" if dataset=="pipeline" else "data/full-v1/corpus/papers.jsonl")
     if not target.resolve().is_relative_to(root):raise ValueError("Corpus output escapes project")
     if target.exists() and target.read_bytes()!=data:raise ValueError("Existing corpus differs; preserve it before restoring")
     target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
     return {"status":"verified","dataset":dataset,"papers":len(papers),"sha256":sha(data),"gold_loaded":False,"provider_calls":0}
 if __name__=="__main__":
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument("--download",action="store_true");p.add_argument("--dataset",choices=["original47","agent295"],default="original47");a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument("--download",action="store_true");p.add_argument("--dataset",choices=["retrieval","pipeline"],default="retrieval");a=p.parse_args()
     print(json.dumps(restore(download=a.download,dataset=a.dataset)))

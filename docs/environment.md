@@ -1,21 +1,54 @@
-# 固定环境与索引恢复
+# 安装指南
 
-完整检索的已验证平台：Windows x64，Node24.11.1、Python3.12.7、uv0.10.12。Pi npm 三个核心包1.0.4，来源基线7c10bd4337495ee613f2224843ecdf349b80d1df。package-lock.json 和 uv.lock 锁定传递依赖；uv.lock 只限定 Windows AMD64，当前不声称 Linux/GPU 跨平台复刻。
+本地检索环境：Windows x64、Node.js 24.11.1+、Python 3.12、uv 0.10.12。默认使用 CUDA 12.8 版 PyTorch；模型权重约需 4.6 GB 空间。
 
-| 本地检索依赖 | 版本 |
+## 安装依赖
+
+```powershell
+npm ci --ignore-scripts
+uv sync --frozen --extra retrieval
+```
+
+uv 安装方法见 [官方文档](https://docs.astral.sh/uv/getting-started/installation/)。
+
+| 检索依赖 | 版本 |
 |---|---|
-| torch | 2.9.1 / cu128 |
-| transformers | 4.57.3 |
-| numpy | 2.3.5 |
-| faiss-cpu | 1.15.1 |
+| PyTorch | 2.9.1 / cu128 |
+| Transformers | 4.57.3 |
+| NumPy | 2.3.5 |
+| FAISS | 1.15.1 |
 | rank-bm25 | 0.2.2 |
 
-BGE-M3 revision5617a9f61b028005a4858fdac845db406aefb181；reranker revision953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e；逐文件大小及哈希见 data/manifests/p2-models.json。权重约4.6GB，另需环境、语料与索引空间。本项目顺序装载 GPU 模型；缺 CUDA 或 OOM 明确失败，不静默换 CPU。已有硬件不足时，重新构建完整 CPU 索引并改配置；那是新身份。
+## 准备语料与模型
 
-恢复步骤见 README。旧源语料恢复后 SHA-256 为 e360ee218d8cc14751343ec90bc49c32c90a43d352f7472378dd4c23311f1654，共48篇。构建采用原段落内512 token窗口、64 token重叠、同时2000 codepoint可见上限；BGE-M3归一化CLS、FAISS IndexFlatIP、BM25；两路各20候选、RRF k=60，再由固定 cross-encoder 重排取5。recipe、dtype、device、依赖和模型文件进入索引身份。
+```powershell
+python scripts/restore_corpus.py --download
+python scripts/download_models.py
+```
 
-原47题的历史 CUDA 索引身份为 pipaper-full-index-v1-e7699c38391f1315，共2450 chunk。295题历史主实验使用独立的扩展 PDF 语料和3801 chunk索引 pipaper-full-index-v1-64b1aa77167d5715；不要混用配置或将扩展索引的分数写成原47题基线。恢复第二份语料和在线基准步骤见 reproduce/README.md。
+语料来自 QASPER。脚本根据来源清单恢复论文文本、下载检索权重，并校验文件哈希。数据、权重与索引存放在本地。
 
-npm run doctor 只检查状态，不输出密钥，不发生成请求。尚未配置模型或尚未下载资产时返回缺失状态；这不会妨碍 demo、离线复算和纯契约测试。
+## 构建索引
 
-常见问题：MISSING_KEY 表示当前终端未设置变量；INVALID_INDEX 表示源文件、配方或模型/依赖与索引不一致；SESSION_LOCKED 表示会话正使用或保留中断 lock；INVALID_SNAPSHOT 表示绑定或来源校验失败。遇到文件哈希不一致保留原文件核查，工具不会用新文件覆盖它。
+```powershell
+.venv\Scripts\python.exe -m retriever.p2 build --full --corpus-dir data/full-v1/corpus --models-dir .cache/models --artifacts-dir artifacts/full-v1 --device cuda
+```
+
+将构建输出的索引目录填入 `configs/model.local.json` 的 `retrieval.index_dir`。使用 CPU 时，将构建命令的 `--device` 和配置中的 `retrieval.device` 均设为 `cpu`。
+
+检索采用段落内滑动窗口、BGE-M3 向量与 FAISS IndexFlatIP；BM25 提供稀疏召回，RRF 融合两路候选，Cross-Encoder 完成重排。模型版本及分块参数随索引清单保存。
+
+## 检查环境
+
+```powershell
+npm run doctor
+```
+
+| 状态 | 处理方法 |
+|---|---|
+| `MISSING_KEY` | 在当前终端设置 `PIPAPER_API_KEY` |
+| `INVALID_INDEX` | 核对配置中的语料、模型和索引目录 |
+| `SESSION_LOCKED` | 检查同名会话是否仍在运行 |
+| `INVALID_SNAPSHOT` | 使用匹配的配置恢复会话，或创建新会话 |
+
+模型接入见 [配置指南](configuration.md)，评测用语料准备见 [复现指南](../reproduce/README.md)。

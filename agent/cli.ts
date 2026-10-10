@@ -13,7 +13,7 @@ import type { ControlledSnapshot, ControlledTurnRecord } from "./main-controls.t
 
 export const HELP=`AsterCite — 固定论文库的多轮证据问答
 npm run paper -- [--config configs/model.local.json] [--session 会话名] [--ask "问题"]
-默认新建会话；--session 同名会话恢复。配置模板不包含模型地址或密钥。
+使用 --session 继续同名会话。
 /help                帮助
 /corpus [关键词]     列出论文
 /scope [ID,...|all]   显示/设置本轮及后续轮的论文范围
@@ -22,8 +22,7 @@ npm run paper -- [--config configs/model.local.json] [--session 会话名] [--as
 /compact             在下一轮预算内执行原生压缩
 /budget              会话轮数与请求尝试
 /quit                保存后退出
-先 npm run doctor 检查环境；无需密钥可运行 npm run demo 和 npm run reproduce。
-密钥仅通过终端环境变量 PIPAPER_API_KEY 提供。`;
+安装与模型配置见 docs/environment.md 和 docs/configuration.md。`;
 export function parseArgs(args:string[]){
   const out:{config:string;session?:string;ask?:string;help:boolean}={config:"configs/model.local.json",help:false};
   for(let i=0;i<args.length;i++){

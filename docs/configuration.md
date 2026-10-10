@@ -1,15 +1,41 @@
-# 模型与运行配置
+# 配置指南
 
-configs/model.example.json 是无服务地址、无模型名、无密钥的结构模板。复制到被忽略的 configs/model.local.json，填入使用者自己的服务信息。CLI 不接受 api_key、headers、任意附加参数或 URL 中的用户名/密码、查询串及片段。
+将 `configs/model.example.json` 复制为 `configs/model.local.json`，填写自己的模型服务。API key 通过环境变量 `PIPAPER_API_KEY` 提供；本地配置与会话目录已加入 `.gitignore`。
 
-model.base_url 应为 Chat Completions 服务根地址，例如自己的服务文档规定的 /v1 入口；不能填完整 /chat/completions 端点。HTTP 仅允许 localhost，其余服务使用 HTTPS。model_id 必须是使用者账户可调用的模型，并支持工具调用。context_window 填服务真实容量，max_output_tokens 是每次生成/辅助请求的上限；压缩请求保留 Pi 原生分配，但总请求次数仍被拦截。
+## 模型参数
 
-thinking_level 不在宿主偷偷升档：普通生成和辅助阶段使用同一配置。off 时禁用推理；reasoning=false 必须配 off。服务支持推理时可设置 reasoning=true、thinking_level=low、compat.supportsReasoningEffort=true；实际参数由 Pi SDK 兼容实现投影。模型的服务端权重 revision 无法核实，记录 unknown。
+| 字段 | 说明 |
+|---|---|
+| `model.base_url` | OpenAI 兼容服务根地址，通常以 `/v1` 结尾 |
+| `model.model_id` | 支持工具调用的模型名称 |
+| `model.context_window` | 模型上下文容量 |
+| `model.max_output_tokens` | 单次输出上限 |
+| `model.reasoning` | 是否启用推理 |
+| `model.thinking_level` | 推理等级；普通模型使用 `off` |
 
-允许的兼容布尔字段：supportsStore、supportsDeveloperRole、supportsReasoningEffort、supportsUsageInStreaming、supportsFinishReason、requiresToolResultName、requiresAssistantAfterToolResult、zaiToolStream。maxTokensField 仅接受 max_tokens / max_completion_tokens；thinkingFormat 仅接受 Pi 1.0.4 的内置格式，如 openai、zai、qwen。供应商要求特定格式时照其官方文档填，不由项目猜测。
+推理模型可设置 `reasoning: true`、`thinking_level: "low"` 和 `compat.supportsReasoningEffort: true`。具体兼容参数以服务文档为准。
 
-session.max_turns 是每个日常会话的有限轮数上限，默认20，配置范围1..1000；每轮固定12次请求尝试、search2次、retrieve4次。两种时间上限分别限制单请求与整轮。主流程关闭 Reflect，保留 NLU、结构化记忆、证据校验与可选原生压缩；不加载 Pi 的个人模型目录、扩展、技能、MCP 或默认系统工具。
+`compat` 支持 `supportsStore`、`supportsDeveloperRole`、`supportsReasoningEffort`、`supportsUsageInStreaming`、`supportsFinishReason`、`requiresToolResultName`、`requiresAssistantAfterToolResult` 与 `zaiToolStream`。`maxTokensField` 可选 `max_tokens` 或 `max_completion_tokens`；`thinkingFormat` 使用 Pi SDK 支持的格式。
 
-会话目录 .local/sessions/<name>/ 包含追加式预算 ledger、脱敏后的最终答案/动作/usage和快照。快照删除隐藏思考，保留 Pi 原生 compaction entry、对话、用户约束及最终回答。恢复需同时匹配配置、源代码与索引身份。session.lock 防止两个进程使用同一会话；异常退出后先确认进程已终止，再手工移除该会话的旧 lock。中断的已预留轮与请求保留计数，不能自动补跑收费请求。
+## 设置密钥
 
-CLI 保存的文本可能含你自己的问题或论文内容，应按个人数据管理；这些文件默认不会被 Git 跟踪。更换模型、改代码或索引后使用新的会话名。配置文件中不写 key；只通过 PIPAPER_API_KEY 注入内存，worker 子进程不继承该变量。
+在 PowerShell 中交互输入：
+
+```powershell
+$credential = Get-Credential -UserName api -Message "密码栏输入模型 API key"
+$env:PIPAPER_API_KEY = $credential.GetNetworkCredential().Password
+npm run doctor
+npm run paper -- --session research
+```
+
+密钥保存在当前终端环境中。结束后可执行 `Remove-Item Env:PIPAPER_API_KEY` 清除。
+
+## 检索与会话
+
+`retrieval` 指定语料、索引、模型目录与设备。构建索引的方法见 [安装指南](environment.md)。
+
+`session` 配置会话轮次、请求超时和整轮超时。默认会话上限为 20 轮，每轮最多 12 次模型请求、2 次论文搜索与 4 次片段检索；`/budget` 可查看当前用量。
+
+会话保存在 `.local/sessions/<name>/`，再次使用同名 `--session` 即可恢复。更换模型配置、源码或索引后，使用新的会话名。`/compact` 在下一轮执行上下文压缩。
+
+异常退出留下锁文件时，先确认原进程已结束，再移除对应会话的 `session.lock`。

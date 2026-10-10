@@ -14,8 +14,8 @@ for(let i=2;i<process.argv.length;i++){const key=process.argv[i];if(key==="--exe
 async function run(){
   const arm=flags.get("--arm")??"C-no-reflect",role=flags.get("--role")??"main",view=flags.get("--view")??"all";
   if(!["A","C","C-no-reflect"].includes(arm)||!["main","native_off","compression"].includes(role)||!["all","intent","rewrite","boundary","e2e"].includes(view)||role!=="main"&&view!=="all")throw new RuntimeFailure("INVALID_PLAN","Unsupported arm/role/view");
-  const plan=JSON.parse(await readFile(join(PROJECT_ROOT,"reproduce/agent295/run-plan.json"),"utf8")) as {turns:Row[]};
-  const views=JSON.parse(await readFile(join(PROJECT_ROOT,"reproduce/agent295/views.json"),"utf8")) as Record<string,string[]>;
+  const plan=JSON.parse(await readFile(join(PROJECT_ROOT,"reproduce/pipeline/run-plan.json"),"utf8")) as {turns:Row[]};
+  const views=JSON.parse(await readFile(join(PROJECT_ROOT,"reproduce/pipeline/views.json"),"utf8")) as Record<string,string[]>;
   const eligible=plan.turns.filter(r=>r.arm===arm && r.role===role && (view==="all" || views[view].includes(r.case_id)));
   const limit=flags.has("--limit")?Number(flags.get("--limit")):eligible.length;
   if(!Number.isInteger(limit)||limit<1||limit>eligible.length)throw new RuntimeFailure("INVALID_PLAN","Limit exceeds the selected fixed view");
@@ -31,7 +31,7 @@ async function run(){
   const config=await readConfig(PROJECT_ROOT,flags.get("--config")??"configs/model.local.json"),key=process.env.PIPAPER_API_KEY??"";
   if(!key.trim())throw new RuntimeFailure("MISSING_KEY","Set PIPAPER_API_KEY in this terminal");
   const assets=await loadAssets(PROJECT_ROOT,config);
-  if(assets.indexVersion!=="pipaper-full-index-v1-64b1aa77167d5715")throw new RuntimeFailure("INVALID_INDEX","Historical agent295 plans require the separate 3801-chunk index. See reproduce/README.md; original47 uses the old index.");
+  if(assets.indexVersion!=="pipaper-full-index-v1-64b1aa77167d5715")throw new RuntimeFailure("INVALID_INDEX","Use the pipeline evaluation index described in reproduce/README.md.");
   const directory=await containedPath(PROJECT_ROOT,".local/benchmarks/"+id);await mkdir(join(PROJECT_ROOT,".local/benchmarks"),{recursive:true});await mkdir(directory);
   const binding=sha(JSON.stringify({summary,config,selected,assets:assets.implementationId,runner:await fileHash(join(PROJECT_ROOT,"reproduce/run_agent.ts"))}));
   await writeFile(join(directory,"freeze.json"),JSON.stringify({...summary,binding,config,turns:selected},null,2)+"\n",{flag:"wx"});

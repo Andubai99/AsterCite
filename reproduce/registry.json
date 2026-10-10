@@ -1,22 +1,6 @@
 {
   "version": 1,
   "overlapping_views": true,
-  "retrieval47": {
-    "cases": "reproduce/retrieval47/cases.jsonl",
-    "outputs": "reproduce/retrieval47/top5.jsonl",
-    "n": 47,
-    "queries": 188,
-    "index_version": "pipaper-full-index-v1-e7699c38391f1315",
-    "scoring": "complete Unicode evidence span coverage, maximum over Gold alternatives, macro average"
-  },
-  "agent295": {
-    "cases": "reproduce/agent295/cases.jsonl",
-    "outputs": "reproduce/agent295/original.jsonl",
-    "n": 295,
-    "test_n": 177,
-    "index_version": "pipaper-full-index-v1-64b1aa77167d5715",
-    "original_freeze_id": "04915da4623215d1b9bd271e5b3feac41d5ca6273e548468a298af60415635a9"
-  },
   "views": {
     "intent": {
       "case_ids": [
@@ -399,7 +383,23 @@
     "manual_t3_n": 30,
     "restore_t4_n": 30,
     "fixed_retry_positions": 168,
-    "selection": "42 first-credit errors +126 dependency failures; successful originals never replaced",
-    "token_pairs": "jointly completed four-turn dialogues with complete usage; includes auxiliary/repair/compaction"
+    "token_pairs": "jointly completed four-turn dialogues with complete usage; includes auxiliary/repair/compaction",
+    "replacement_policy": "Fixed failed positions; completed original records preserved"
+  },
+  "retrieval": {
+    "cases": "reproduce/retrieval/cases.jsonl",
+    "outputs": "reproduce/retrieval/top5.jsonl",
+    "n": 47,
+    "queries": 188,
+    "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+    "scoring": "complete Unicode evidence span coverage, maximum over Gold alternatives, macro average"
+  },
+  "pipeline": {
+    "cases": "reproduce/pipeline/cases.jsonl",
+    "outputs": "reproduce/pipeline/original.jsonl",
+    "n": 295,
+    "test_n": 177,
+    "index_version": "pipaper-full-index-v1-64b1aa77167d5715",
+    "original_freeze_id": "04915da4623215d1b9bd271e5b3feac41d5ca6273e548468a298af60415635a9"
   }
 }

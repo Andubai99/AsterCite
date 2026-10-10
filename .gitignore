@@ -21,3 +21,8 @@ data/**/corpus/papers.jsonl
 data/corpus/chunks.jsonl
 *.tsbuildinfo
 dist/
+
+# Local design and delivery records
+docs/specs/
+docs/plans/
+docs/internal/

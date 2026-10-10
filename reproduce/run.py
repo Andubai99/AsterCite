@@ -89,23 +89,24 @@ def verify(root=ROOT):
     for path,h in manifest["files"].items():
         target=(root/path).resolve()
         if not target.is_relative_to(root) or sha(target.read_bytes())!=h:raise ValueError("Public evidence hash differs: "+path)
-    gold={c["case_id"]:c for c in rows(root,"reproduce/retrieval47/cases.jsonl")};events=rows(root,"reproduce/retrieval47/top5.jsonl")
-    expected_retrieval=read(root,"reproduce/retrieval47/expected.json");retrieval={}
-    if len(gold)!=47 or len(events)!=188:raise ValueError("Retrieval scope must be exactly original47 x four profiles")
+    gold={c["case_id"]:c for c in rows(root,"reproduce/retrieval/cases.jsonl")};events=rows(root,"reproduce/retrieval/top5.jsonl")
+    expected_retrieval=read(root,"reproduce/retrieval/expected.json");retrieval={}
+    registry=read(root,"reproduce/registry.json");retrieval_n=registry["retrieval"]["n"]
+    if len(gold)!=retrieval_n or len(events)!=registry["retrieval"]["queries"]:raise ValueError("Retrieval scope differs from the dataset registry")
     for profile in ["dense","bm25","rrf","rrf_rerank"]:
         selected=[e for e in events if e["profile"]==profile]
-        if len(selected)!=47 or {e["case_id"] for e in selected}!=set(gold):raise ValueError("Retrieval case coverage differs")
+        if len(selected)!=retrieval_n or {e["case_id"] for e in selected}!=set(gold):raise ValueError("Retrieval case coverage differs")
         scores={e["case_id"]:retrieval_score(gold[e["case_id"]],e["chunks"]) for e in selected}
         for cid,s in scores.items():
-            if abs(float(s)-expected_retrieval[profile]["per_case"][cid])>1e-12:raise ValueError("Original47 per-case score differs")
-        average=float(sum(scores.values())/47)
+            if abs(float(s)-expected_retrieval[profile]["per_case"][cid])>1e-12:raise ValueError("Retrieval per-case score differs")
+        average=float(sum(scores.values())/retrieval_n)
         if abs(average-expected_retrieval[profile]["recall_at5"])>1e-12:raise ValueError("Retrieval mean differs")
-        retrieval[profile]={"n":47,"recall_at5":average}
-    cases={c["case_id"]:c for c in rows(root,"reproduce/agent295/cases.jsonl")};views=read(root,"reproduce/agent295/views.json")
-    original=rows(root,"reproduce/agent295/original.jsonl");retry=rows(root,"reproduce/agent295/credit-recovery.jsonl")
+        retrieval[profile]={"n":retrieval_n,"recall_at5":average}
+    cases={c["case_id"]:c for c in rows(root,"reproduce/pipeline/cases.jsonl")};views=read(root,"reproduce/pipeline/views.json")
+    original=rows(root,"reproduce/pipeline/original.jsonl");retry=rows(root,"reproduce/pipeline/recovered.jsonl")
     if len(cases)!=295 or len(original)!=1605 or len(retry)!=168:raise ValueError("Agent planned denominators differ")
     grade_entries(original+retry,cases)
-    expected=read(root,"reproduce/agent295/expected.json");primary={};boundaries={};compression={}
+    expected=read(root,"reproduce/pipeline/expected.json");primary={};boundaries={};compression={}
     pick=lambda source,arm,role=None,turn=None:[e for e in source if e["row"]["arm"]==arm and (role is None or e["row"]["role"]==role) and (turn is None or e["row"]["turn_index"]==turn)]
     combined=replace_failures({e["row"]["item_id"]:e for e in original if e["row"]["role"]=="compression"},retry)
     selected={e["row"]["original_item_id"] for e in retry}
@@ -133,13 +134,13 @@ def verify(root=ROOT):
             "t3":measure(pick(combined.values(),arm,turn=3),cases),"t4":measure(pick(combined.values(),arm,turn=4),cases),"controls":control_stats(after),"paired_tokens":paired_tokens(off,after)}
     for k,v in [("original_main",primary),("boundary_refusal",boundaries),("compression",compression)]:
         if v!=expected[k]:raise ValueError("Recomputed "+k+" differs from preserved historical table")
-    classes={};expected_classes=read(root,"reproduce/intent100/expected.json")
+    classes={};expected_classes=read(root,"reproduce/intent/expected.json")
     lookup={e["row"]["item_id"]:e for e in original}
     for arm in ["C","C-no-reflect"]:
         selected=[lookup["ac295-v6/main/"+arm+"/"+cid] for cid in views["intent"]]
         classes[arm]={name:classification([(cases[e["row"]["case_id"]]["intent"],e["record"]["preparation_labels"][field]) for e in selected]) for name,field in [("raw_model_labels","raw_intent"),("host_accepted_labels","accepted_intent")]}
         if any(classes[arm][name]!=expected_classes[arm][name] for name in classes[arm]):raise ValueError("Classification differs")
-    rewrite=read(root,"reproduce/query-rewrite100/judgements.json");packets={p["review_id"]:p for p in read(root,"reproduce/query-rewrite100/packets.json")["packets"]}
+    rewrite=read(root,"reproduce/query-rewrite/judgements.json");packets={p["review_id"]:p for p in read(root,"reproduce/query-rewrite/packets.json")["packets"]}
     if len(packets)!=200 or len(rewrite["judgements"])!=200:raise ValueError("Rewrite scope differs")
     for g in rewrite["judgements"]:
         packet=packets[g["review_id"]];e=lookup[g["item_id"]]
@@ -150,21 +151,27 @@ def verify(root=ROOT):
         gs=[g for g in rewrite["judgements"] if g["arm"]==arm];n=len(gs);present=sum(g["rewrite_present"] for g in gs);correct=sum(g["rewrite_faithful"] is True for g in gs)
         rewritten[arm]={"n":n,"present":present,"missing":n-present,"correct":correct,"accuracy_all":correct/n,"accuracy_with_rewrite":correct/present,"coverage":present/n}
     if rewritten!=expected["query_rewrite"]:raise ValueError("Rewrite aggregate differs")
-    return {"status":"verified","provider_calls":0,"retrieval47":retrieval,"original_main":primary,"boundary_refusal":boundaries,"classification":classes,"query_rewrite":rewritten,"compression":compression,
+    return {"status":"verified","provider_calls":0,"retrieval":retrieval,"original_main":primary,"boundary_refusal":boundaries,"classification":classes,"query_rewrite":rewritten,"compression":compression,
         "limits":{"saved_semantic_judgements":True,"independent_human_review":False,"server_weights_revision":"unknown","actual_billing":"unknown"}}
 def table(v):
     p=v["original_main"];b=v["boundary_refusal"];c=v["compression"]
-    fmt=lambda x:f'{x["value"]*100:.2f}% ({x["correct"]}/{x["n"]})' if x["value"] is not None else "unknown"
-    out=["# 可复核的实验结果","","所有结果由保存的逐题记录复算；本次模型 API 调用 0。","","## 检索：原 47 题 + 旧索引","","| 配置 | Span Recall@5 | 题数 |","|---|---:|---:|"]
-    for key,name in [("dense","Dense"),("bm25","BM25"),("rrf","Dense + BM25 + RRF"),("rrf_rerank","+ Cross-Encoder 重排")]:out.append(f'| {name} | {100*v["retrieval47"][key]["recall_at5"]:.2f}% | 47 |')
-    out+=["","RRF 相比 Dense：+14.50 个百分点；重排在 RRF 上：+9.15 个百分点。指标是标注证据跨度的平均召回率，不是答案准确率。","","## 主实验：各自的题集与分母","","A = 直接 Agent；C = NLU + Memory + Reflect；C−Reflect = 产品默认流程。","","| 指标及题集 | A | C | C−Reflect |","|---|---:|---:|---:|"]
-    for name,fn in [("任务正确 / 主集 295",lambda a:p[a]["task"]),("任务正确 / test 177",lambda a:p[a]["test177"]["task"]),("流程完成 / 主集 295",lambda a:p[a]["completion"]),("边界动作正确 / 55",lambda a:b[a]["boundary55_action"]),("拒答正确 / 边界拒答 15",lambda a:b[a]["boundary15_refusal"]),("证据不足拒答 / 7",lambda a:b[a]["evidence_insufficient7_refusal"]),("引用支持 / 逐条引用",lambda a:p[a]["citation_binding_support"]),("引用完全正确 / 需引证答案 242",lambda a:p[a]["citations"]),("端到端流程完成 / 70",lambda a:p[a]["e2e70"]["completion"])]:out.append("| "+name+" | "+" | ".join(fmt(fn(a)) for a in ARMS)+" |")
-    out+=["","| NLU 指标 / 各 100 题 | C | C−Reflect |","|---|---:|---:|"]
-    for name,fn in [("原始五分类准确率",lambda a:100*v["classification"][a]["raw_model_labels"]["accuracy_all"]),("宿主接受的分类准确率",lambda a:100*v["classification"][a]["host_accepted_labels"]["accuracy_all"]),("Query 改写准确率",lambda a:100*v["query_rewrite"][a]["accuracy_all"])]:out.append("| "+name+" | "+" | ".join(f"{fn(a):.2f}%" for a in ["C","C-no-reflect"])+" |")
-    out+=["","## 压缩与恢复：固定欠费补跑后的 30 组 × 4 轮","","| 指标及分母 | A | C | C−Reflect |","|---|---:|---:|---:|"]
-    for name,fn in [("流程完成 / 120",lambda a:c[a]["service_recovered120"]["completion"]),("任务正确 / 120",lambda a:c[a]["service_recovered120"]["task"]),("t3 记忆一致 / 30",lambda a:c[a]["t3"]["memory"]),("t4 恢复后记忆一致 / 30",lambda a:c[a]["t4"]["memory"])]:out.append("| "+name+" | "+" | ".join(fmt(fn(a)) for a in ARMS)+" |")
-    out.append("| 配对完整对话 token 减少 | "+" | ".join(f'{100*c[a]["paired_tokens"]["reduction_fraction"]:.2f}% (n={c[a]["paired_tokens"]["n_paired_dialogues"]})' for a in ARMS)+" |")
-    out+=["","压缩是 t3 手动触发、t4 快照恢复；主实验未被补跑覆盖。配对 token 对照跨运行时间，包含辅助、修正和压缩请求，不代表实际账单或严格因果效应。","","Gold 和答案/改写语义判定由开发者 AI 复核，缺失与失败保留分母。题目和论文有相关性，test177 不是外部盲测。本表不作显著性或独立人工评审声明。"]
+    fmt=lambda x:f'{x["value"]*100:.2f}%' if x["value"] is not None else "—"
+    out=["# 评测结果","","使用随附评测资料复算。运行方法与数据入口见 [复现指南](../reproduce/README.md)。","","## 检索","","| 配置 | Span Recall@5 |","|---|---:|"]
+    for key,name in [("dense","Dense"),("bm25","BM25"),("rrf","Dense + BM25 + RRF"),("rrf_rerank","+ Cross-Encoder 重排")]:
+        out.append(f'| {name} | {100*v["retrieval"][key]["recall_at5"]:.2f}% |')
+    hybrid=100*(v["retrieval"]["rrf"]["recall_at5"]-v["retrieval"]["dense"]["recall_at5"])
+    rerank=100*(v["retrieval"]["rrf_rerank"]["recall_at5"]-v["retrieval"]["rrf"]["recall_at5"])
+    out+=["",f"混合检索提升 {hybrid:.2f} 个百分点，重排进一步提升 {rerank:.2f} 个百分点。","","## 问答","","| 指标 | 基础流程 | AsterCite |","|---|---:|---:|"]
+    for name,fn in [("任务正确率",lambda a:p[a]["task"]),("流程完成率",lambda a:p[a]["completion"]),("引用支持率",lambda a:p[a]["citation_binding_support"]),("引用完全正确率",lambda a:p[a]["citations"]),("边界动作准确率",lambda a:b[a]["boundary55_action"])]:
+        out.append("| "+name+" | "+" | ".join(fmt(fn(a)) for a in ["A","C-no-reflect"])+" |")
+    out+=["", "| 多轮理解 | AsterCite |","|---|---:|",
+        f'| 意图分类准确率 | {100*v["classification"]["C-no-reflect"]["raw_model_labels"]["accuracy_all"]:.2f}% |',
+        f'| Query 改写准确率 | {100*v["query_rewrite"]["C-no-reflect"]["accuracy_all"]:.2f}% |',
+        "","## 压缩与恢复","","| 指标 | 基础流程 | AsterCite |","|---|---:|---:|"]
+    for name,fn in [("流程完成率",lambda a:c[a]["service_recovered120"]["completion"]),("任务正确率",lambda a:c[a]["service_recovered120"]["task"]),("压缩后记忆一致率",lambda a:c[a]["t3"]["memory"]),("恢复后记忆一致率",lambda a:c[a]["t4"]["memory"])]:
+        out.append("| "+name+" | "+" | ".join(fmt(fn(a)) for a in ["A","C-no-reflect"])+" |")
+    out.append("| 配对对话 token 减少 | "+" | ".join(f'{100*c[a]["paired_tokens"]["reduction_fraction"]:.2f}%' for a in ["A","C-no-reflect"])+" |")
+    out+=["","检索按原文证据跨度评分；问答按任务、流程和引用分别评分。压缩项按配对运行记录统计 token。各指标按对应数据视图统计；语义项采用开发者 AI 标注，详情见复现指南。"]
     return "\n".join(out)+"\n"
 if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument("--write",action="store_true",help="Write a derived table under .local/reproduction");a=parser.parse_args()

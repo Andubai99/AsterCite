@@ -5,7 +5,7 @@ class ReproductionContract(unittest.TestCase):
     def test_all_public_records_recompute_original_denominators(self):
         r=verify(ROOT)
         self.assertEqual(r["provider_calls"],0)
-        self.assertAlmostEqual(r["retrieval47"]["rrf_rerank"]["recall_at5"],.7773049645390071)
+        self.assertAlmostEqual(r["retrieval"]["rrf_rerank"]["recall_at5"],.7773049645390071)
         self.assertEqual(r["original_main"]["C-no-reflect"]["task"]["n"],295)
         self.assertEqual(r["original_main"]["C-no-reflect"]["citations"]["n"],242)
         self.assertEqual(r["boundary_refusal"]["C-no-reflect"]["boundary55_action"]["n"],55)

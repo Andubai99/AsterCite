@@ -14,7 +14,7 @@ def main():
     if not directory.is_relative_to(ROOT):raise ValueError("Run path escapes project")
     freeze=read(directory/"freeze.json");completion=read(directory/"completion.json")
     if completion["status"]!="finished":raise ValueError("Run still pending")
-    cases={c["case_id"]:c for c in rows(ROOT/"reproduce/agent295/cases.jsonl")}
+    cases={c["case_id"]:c for c in rows(ROOT/"reproduce/pipeline/cases.jsonl")}
     entries=[];ledger_files=sorted((directory/"ledger").glob("*.json"));state=read(ledger_files[-1])["state"]
     if len(state["turns"])!=freeze["planned_turns"] or any(t["status"]!="finished" for t in state["turns"]):raise ValueError("Run reservation not terminal")
     for t in state["turns"]:

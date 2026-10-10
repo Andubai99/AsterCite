@@ -1,4 +1,4 @@
-"""Run a fresh bounded original47 retrieval comparison in an isolated corpus worker (0 generation calls)."""
+"""Compare retrieval profiles using the accompanying dataset and local index."""
 from __future__ import annotations
 import argparse,datetime,hashlib,json,os,pathlib,queue,subprocess,sys,threading,uuid
 ROOT=pathlib.Path(__file__).resolve().parents[1]
@@ -43,17 +43,18 @@ class Worker:
     def close(self):
         self.process.kill();self.process.wait(timeout=10)
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument("--execute",action="store_true");p.add_argument("--run-id");p.add_argument("--limit",type=int,default=47);p.add_argument("--index-dir",default="artifacts/full-v1/pipaper-full-index-v1-e7699c38391f1315");p.add_argument("--models-dir",default=".cache/models");p.add_argument("--device",choices=["cuda","cpu"],default="cuda");a=p.parse_args()
-    if not 1<=a.limit<=47:raise ValueError("limit must be 1..47")
-    events=rows(ROOT/"reproduce/retrieval47/top5.jsonl");tasks={e["case_id"]:{k:e[k] for k in ["case_id","query","scope"]} for e in events};selected=list(tasks.values())[:a.limit]
+    events=rows(ROOT/"reproduce/retrieval/top5.jsonl");tasks={e["case_id"]:{k:e[k] for k in ["case_id","query","scope"]} for e in events}
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument("--execute",action="store_true");p.add_argument("--run-id");p.add_argument("--limit",type=int,default=len(tasks));p.add_argument("--index-dir",default="artifacts/full-v1/pipaper-full-index-v1-e7699c38391f1315");p.add_argument("--models-dir",default=".cache/models");p.add_argument("--device",choices=["cuda","cpu"],default="cuda");a=p.parse_args()
+    if not 1<=a.limit<=len(tasks):raise ValueError("limit exceeds the dataset range")
+    selected=list(tasks.values())[:a.limit]
     plan={"version":1,"cases":selected,"profiles":["dense","bm25","rrf","rrf_rerank"],"queries":4*a.limit,"provider_calls":0,"device":a.device,"index_dir":a.index_dir,"mode":"fresh_local_retrieval"}
     if not a.execute:print(json.dumps(plan,ensure_ascii=False,indent=2));return
     if not a.run_id or not all(c.isalnum() or c in "_-" for c in a.run_id) or len(a.run_id)>80:raise ValueError("Use an explicit ASCII --run-id")
-    directory=inside(".local/retrieval47/"+a.run_id);directory.parent.mkdir(parents=True,exist_ok=True);directory.mkdir()
+    directory=inside(".local/retrieval/"+a.run_id);directory.parent.mkdir(parents=True,exist_ok=True);directory.mkdir()
     index=inside(a.index_dir);models=inside(a.models_dir);python=ROOT/".venv"/("Scripts/python.exe" if os.name=="nt" else "bin/python")
     plan["index_manifest_sha256"]=hashlib.sha256((index/"index-manifest.json").read_bytes()).hexdigest();plan["planned_queries_reserved"]=4*a.limit
     (directory/"freeze.json").write_text(json.dumps(plan,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
-    gold={c["case_id"]:c for c in rows(ROOT/"reproduce/retrieval47/cases.jsonl")};scores={}
+    gold={c["case_id"]:c for c in rows(ROOT/"reproduce/retrieval/cases.jsonl")};scores={}
     for profile in plan["profiles"]:
         worker=Worker(python,index,models,a.device,profile);values=[]
         try:
@@ -64,6 +65,6 @@ def main():
                 (directory/(profile+"-"+task["case_id"]+".json")).write_text(json.dumps({**task,"profile":profile,"index_version":worker.index_version,"chunks":chunks,"recall_at5":float(score)},ensure_ascii=False)+"\n",encoding="utf8")
             scores[profile]={"n":len(values),"recall_at5":sum(values)/len(values)};print(profile+" finished "+str(len(values)),flush=True)
         finally:worker.close()
-    result={"mode":"fresh_local_retrieval","provider_calls":0,"queries":4*a.limit,"full_original47":a.limit==47,"scores":scores,"index_version":read(index/"index-manifest.json")["index_version"]}
+    result={"mode":"fresh_local_retrieval","provider_calls":0,"queries":4*a.limit,"full_dataset":a.limit==len(tasks),"scores":scores,"index_version":read(index/"index-manifest.json")["index_version"]}
     (directory/"results.json").write_text(json.dumps(result,indent=2)+"\n",encoding="utf8");print(json.dumps(result))
 if __name__=="__main__":main()

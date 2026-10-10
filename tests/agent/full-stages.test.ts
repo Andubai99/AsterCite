@@ -16,7 +16,7 @@ const support = { need_id: "n1", status: "supported", basis: "explicit", finding
   support_spans: [{ chunk_id: source.chunk_id, quote: source.text }] };
 
 test("full-v1 normalizes six real insufficient responses without changing their old failure or inventing support", async () => {
-  const saved = JSON.parse(await readFile("docs/evidence/p2-r2-stage-regressions.json", "utf8"));
+  const saved = JSON.parse(await readFile("tests/fixtures/evidence-check.json", "utf8"));
   let count = 0;
   for (const sample of saved.cases) {
     const historicalFrame = sample.stages.find((stage: { stage: string }) => stage.stage === "question_frame").value;
@@ -90,7 +90,7 @@ test("branch diagnostics name the actual field, value and violated constraint", 
 });
 
 test("unmodified real Dev2 full-list quotes pass full source bounds and no-prior-gap normalization while legacy R2 stays strict", async () => {
-  const saved=JSON.parse(await readFile("docs/evidence/full-project-dev2-stage-regressions-v1.json","utf8"));
+  const saved=JSON.parse(await readFile("tests/fixtures/stage-output.json","utf8"));
   const sample=saved.cases[0], real=sample.stages.find((s:{stage:string})=>s.stage==="evidence_check");
   const evidence=new Map<string,Chunk>(sample.sources.map((c:Chunk)=>[c.chunk_id,c]));
   const scope=new Set<string>(sample.question_frame.candidate_papers);
@@ -116,7 +116,7 @@ test("full support bounds count Unicode codepoints and remain capped at the actu
 });
 
 test("real Dev2 repeated active constraint is a source-verified no-op; altered, stale and unverified history remain illegal",async()=> {
-  const saved=JSON.parse(await readFile("docs/evidence/full-project-dev2-stage-regressions-v1.json","utf8"));
+  const saved=JSON.parse(await readFile("tests/fixtures/stage-output.json","utf8"));
   const sample=saved.cases[1],raw=sample.stages.find((s:{stage:string})=>s.stage==="question_frame_format_repair").response_text;
   const context={active_constraints:sample.prior_domain_state.user_constraints,user_history:sample.actual_prior_user_history};
   const scope=new Set<string>(sample.allowed_papers);

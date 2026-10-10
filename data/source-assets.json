@@ -1,7 +1,7 @@
 {
   "version": 1,
   "public_additions_sha256": "96f15809c5ca378c971936ef44f4eb40edc02f3deb9fcd0bd4485500c17c4c88",
-  "original47_corpus_sha256": "e360ee218d8cc14751343ec90bc49c32c90a43d352f7472378dd4c23311f1654",
-  "agent295_corpus_sha256": "cd7a41cd5998fa852d8f475f3091791cba3a4e40c059939c0adb3dec708ad9b6",
-  "gold_loaded": false
+  "gold_loaded": false,
+  "retrieval_corpus_sha256": "e360ee218d8cc14751343ec90bc49c32c90a43d352f7472378dd4c23311f1654",
+  "pipeline_corpus_sha256": "cd7a41cd5998fa852d8f475f3091791cba3a4e40c059939c0adb3dec708ad9b6"
 }

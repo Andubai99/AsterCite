@@ -17,7 +17,7 @@ test("final branches accept paraphrase but separately require exact source span 
 });
 
 test("real Dev quote failures preserve source validity and give a specific field/value correction", async () => {
-  const saved=JSON.parse(await readFile("docs/evidence/full-project-real-development-failures-v1.json","utf8"));
+  const saved=JSON.parse(await readFile("tests/fixtures/final-answer.json","utf8"));
   let rejected=0, faithful=0;
   for(const sample of saved.cases) {
     const evidence=new Map<string,Chunk>(sample.sources.map((chunk:Chunk)=>[chunk.chunk_id,chunk]));
