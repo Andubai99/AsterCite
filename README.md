@@ -1,7 +1,7 @@
 # AsterCite
 
 [![CI](https://github.com/Wahuwahuuu/AsterCite/actions/workflows/ci.yml/badge.svg)](https://github.com/Wahuwahuuu/AsterCite/actions/workflows/ci.yml)
-[MIT License](LICENSE) · [在线演示](https://astercite.niftyquail4.chatgpt.site) · [正式版本](https://github.com/Wahuwahuuu/AsterCite/releases/tag/v1.0.0) · [在线演示](https://astercite.niftyquail4.chatgpt.site) · [正式版本](https://github.com/Wahuwahuuu/AsterCite/releases/tag/v1.0.0)
+[MIT License](LICENSE) · [在线演示](https://astercite.niftyquail4.chatgpt.site) 
 
 面向科研论文多轮问答中的指代缺失、检索证据不足和无依据作答问题，基于 Pi SDK 搭建并优化轻量 Agent Harness，构建集 Query 改写、混合检索、引用生成和会话记忆于一体的分阶段可追溯问答 Agent。
 
