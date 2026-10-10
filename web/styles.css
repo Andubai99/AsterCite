@@ -16,3 +16,23 @@
 @media(max-height:820px) and (min-width:621px){.welcome{padding:25px 30px 17px}.welcome-symbol{font-size:28px;margin-bottom:12px}.welcome .eyebrow{font-size:8px;margin-bottom:13px}.welcome h1{font-size:31px;line-height:1.35;margin-bottom:11px}.welcome h1 br,.welcome-description br{display:none}.welcome-description{font-size:10px;line-height:1.9}.suggestion-heading{margin-top:18px;margin-bottom:9px}.example-list{grid-template-columns:1fr 1fr}.example-card{padding:10px;gap:9px}.example-card:last-child{grid-column:1/-1}.example-title{font-size:10px}.example-topic{font-size:8px}.welcome-footnote{margin-top:12px;font-size:8px}}
 @media(max-width:620px){.paper-menu{display:block}.sidebar.mobile-open{position:fixed;display:flex;z-index:10;left:0;top:62px;bottom:0;width:min(280px,90vw);background:var(--paper);box-shadow:10px 0 40px #1a322529}.sidebar.mobile-open .close-sidebar{display:block;text-align:right;margin-bottom:10px}.sidebar.mobile-open .paper-list{max-height:35vh}.conversation-actions{gap:9px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.source-content{margin-top:14px;color:#52634c;font-family:Georgia,"Times New Roman",serif;font-size:12px;line-height:1.8;overflow-wrap:anywhere}
+.source-content p{margin:0 0 10px;white-space:normal}
+.source-content p:last-child{margin-bottom:0}
+.source-content h4{margin:16px 0 8px;font-family:inherit;font-size:12px;line-height:1.6;color:#43573d}
+.source-content h4:first-child{margin-top:0}
+.source-content .source-point{margin-bottom:5px}
+.source-table{width:100%;border-collapse:collapse;table-layout:fixed;font-family:inherit;font-size:12px;line-height:1.6}
+.source-table caption{text-align:left;margin-bottom:10px;color:#43573d;line-height:1.7}
+.source-table th,.source-table td{padding:6px 9px;border-bottom:1px solid #e5ebdf;vertical-align:top;text-align:left}
+.source-table th{background:#eff4e9;font-family:Inter,"Noto Sans SC",sans-serif;font-size:10px;font-weight:600;color:#657953}
+.source-table th:last-child,.source-table td:last-child{text-align:right;width:36%;font-variant-numeric:tabular-nums}
+.source-table tbody tr:nth-child(even){background:#f8faf5}
+.source-content .source-more{margin-top:8px;font-family:Inter,"Noto Sans SC",sans-serif;font-size:10px;color:#8a9a7d}
+.source-card .source-details{margin-top:13px}
+.source-card .source-details summary{padding:8px 0;font-size:11px;line-height:1.5;color:#627d4e}
+.source-card .source-details summary:focus-visible{outline:2px solid #a2bb83;outline-offset:3px;border-radius:3px}
+.source-details[open] .source-content{margin-top:8px}
+.source-preview[hidden]{display:none}
+@media(min-width:1600px){.source-content{font-size:13px}.source-table{font-size:13px}}

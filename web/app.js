@@ -1,3 +1,5 @@
+import {parseEvidenceText,evidencePreview} from './evidence-format.js';
+
 const $=id=>document.getElementById(id);
 const make=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
 const state={mode:'demo',papers:[],sample:null,turns:[],scope:[],pending_compaction:false,memory:null,budget:null,busy:false,active:null,accessToken:'',demoIndex:-1,sessions:[],sourceTurn:-1};
@@ -80,6 +82,20 @@ function inlineText(target,text,sources){
   }
   target.append(document.createTextNode(text.slice(position)));
 }
+function sourceContent(blocks){
+  const content=make('div','source-content');
+  for(const block of blocks){
+    if(block.kind==='table'){
+      const table=make('table','source-table');table.append(make('caption',null,block.caption));
+      const head=make('thead'),header=make('tr');
+      for(const label of block.headers){const th=make('th',null,label);th.scope='col';header.append(th);}head.append(header);table.append(head);
+      const body=make('tbody');
+      for(const row of block.rows){const tr=make('tr');for(const value of row)tr.append(make('td',null,value));body.append(tr);}table.append(body);content.append(table);
+      if(block.omittedRows)content.append(make('p','source-more','还有 '+block.omittedRows+' 行，展开查看'));
+    }else content.append(make(block.kind==='heading'?'h4':'p',/^(?:[•●]\s*|\d+[.)]\s+)/u.test(block.text)?'source-point':null,block.text));
+  }
+  return content;
+}
 function showSources(sources,active=-1){
   const box=$('sources');box.replaceChildren();$('source-count').textContent=String(sources.length);
   if(!sources.length){const n=make('div','empty-evidence');n.append(make('div',null,'❞'),make('h2',null,'证据就在这里'),make('p',null,'论文标题、章节和原文片段\n会随回答一起出现。'));box.append(n);return;}
@@ -87,8 +103,11 @@ function showSources(sources,active=-1){
     const card=make('article','source-card'+(active===index?' active':''));card.id='source-'+index;
     const top=make('div','source-top');top.append(make('span','source-number',String(index+1)),make('span',null,source.paper_id));
     card.append(top,make('h3',null,source.title),make('div','source-section','▤  '+source.section));
-    const excerpt=source.text.length>520?source.text.slice(0,520)+'…':source.text;card.append(make('blockquote',null,excerpt));
-    if(source.text.length>520){const details=make('details');details.append(make('summary',null,'展开完整片段'),make('blockquote',null,source.text));card.append(details);}
+    const blocks=parseEvidenceText(source.text),preview=evidencePreview(blocks),excerpt=sourceContent(preview.blocks);excerpt.classList.add('source-preview');card.append(excerpt);
+    if(preview.hasMore){
+      const details=make('details','source-details'),summary=make('summary',null,'展开完整片段');details.append(summary,sourceContent(blocks));
+      details.addEventListener('toggle',()=>{excerpt.hidden=details.open;summary.textContent=details.open?'收起完整片段':'展开完整片段';});card.append(details);
+    }
     if(/^\d{4}\.\d{4,5}$/.test(source.paper_id)){const link=make('a','source-link','阅读论文 ↗');link.href='https://arxiv.org/abs/'+source.paper_id;link.target='_blank';link.rel='noopener noreferrer';card.append(link);}
     box.append(card);
   }

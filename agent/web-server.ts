@@ -16,6 +16,7 @@ const STATIC_FILES:Record<string,{file:string;type:string}>={
   "/":{file:"index.html",type:"text/html; charset=utf-8"},
   "/index.html":{file:"index.html",type:"text/html; charset=utf-8"},
   "/app.js":{file:"app.js",type:"text/javascript; charset=utf-8"},
+  "/evidence-format.js":{file:"evidence-format.js",type:"text/javascript; charset=utf-8"},
   "/styles.css":{file:"styles.css",type:"text/css; charset=utf-8"},
   "/favicon.svg":{file:"favicon.svg",type:"image/svg+xml"},
   "/sample.json":{file:"sample.json",type:"application/json; charset=utf-8"},
