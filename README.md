@@ -1,9 +1,15 @@
 # AsterCite
 
 [![CI](https://github.com/Wahuwahuuu/AsterCite/actions/workflows/ci.yml/badge.svg)](https://github.com/Wahuwahuuu/AsterCite/actions/workflows/ci.yml)
-[MIT License](LICENSE)
+[MIT License](LICENSE) · [在线演示](https://astercite.niftyquail4.chatgpt.site) · [正式版本](https://github.com/Wahuwahuuu/AsterCite/releases/tag/v1.0.0) · [在线演示](https://astercite.niftyquail4.chatgpt.site) · [正式版本](https://github.com/Wahuwahuuu/AsterCite/releases/tag/v1.0.0)
 
 面向科研论文多轮问答中的指代缺失、检索证据不足和无依据作答问题，基于 Pi SDK 搭建并优化轻量 Agent Harness，构建集 Query 改写、混合检索、引用生成和会话记忆于一体的分阶段可追溯问答 Agent。
+
+网页版提供论文选择、连续问答和原文引用面板，也可以通过 CLI 使用。
+
+网页版提供论文选择、连续问答和原文引用面板，也可以通过 CLI 使用。
+
+![AsterCite 网页工作台](docs/images/overview.jpg)
 
 ## 核心能力
 
@@ -20,10 +26,10 @@
 git clone https://github.com/Wahuwahuuu/AsterCite.git
 cd AsterCite
 npm ci --ignore-scripts
-npm run demo
+npm run web
 ```
 
-`demo` 回放示例问答，包含回答及对应的论文证据。
+打开 `http://127.0.0.1:4173` 查看多轮问答示例，点击引用阅读原文。终端回放可使用 `npm run demo`。
 
 使用自己的模型开展问答，先按 [安装指南](docs/environment.md) 构建本地检索环境，再配置模型：
 
@@ -35,12 +41,18 @@ Copy-Item configs/model.example.json configs/model.local.json
 
 ```powershell
 npm run doctor
-npm run paper -- --session research
+npm run web -- --live
 ```
+
+网页会保存会话，支持论文范围、记忆查看和上下文压缩。网页用法与服务器部署见 [网页指南](docs/web.md)。
+
+网页会保存会话，支持论文范围、记忆查看和上下文压缩。网页用法与服务器部署见 [网页指南](docs/web.md)。
 
 模型服务需支持 OpenAI Chat Completions、流式响应与工具调用。配置字段和密钥设置方法见 [配置指南](docs/configuration.md)。
 
-## 使用示例
+## CLI 使用示例
+
+运行 `npm run paper -- --session research`，然后输入：
 
 ```text
 /corpus Sentence-BERT

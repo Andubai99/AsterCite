@@ -1,6 +1,6 @@
 # 开发约定
 
-AsterCite 是基于 Pi SDK 的科研论文问答 CLI。TypeScript 负责会话编排，Python 负责检索；Pi SDK 固定 1.0.4。
+AsterCite 是基于 Pi SDK 的科研论文问答工作台，支持网页和 CLI。TypeScript 负责会话编排，Python 负责检索；Pi SDK 固定 1.0.4。
 
 - 先维护 `docs/specs/` 与 `docs/plans/`，再实现并验证；本地工作记录忽略跟踪。
 - 模型仅使用 `search_papers` 和 `retrieve_chunks`。评测标注与检索运行时分离。
@@ -8,3 +8,7 @@ AsterCite 是基于 Pi SDK 的科研论文问答 CLI。TypeScript 负责会话�
 - 默认流程包含 NLU、混合检索、重排、引用和记忆。保留请求预算与会话恢复契约。
 - 评测数据、标注和历史结果保持稳定；新数据或算法对照使用独立版本。
 - 提交前运行相关测试、类型检查与公开资料检查，只暂存明确修改的路径。
+
+- 网页复用原有 Harness 和检索。公开站点提供示例回放，完整问答由部署者配置模型；网页会话与实验记录分开。
+
+- 网页复用原有 Harness 和检索。公开站点提供示例回放，完整问答由部署者配置模型；网页会话与实验记录分开。

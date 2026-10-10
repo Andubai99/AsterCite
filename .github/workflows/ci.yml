@@ -15,6 +15,12 @@ jobs:
         with:
           python-version: '3.12'
       - run: npm ci --ignore-scripts
+      - run: npm run web:build
+      - run: node --check web/app.js
+      - run: git diff --exit-code -- web/sample.json web/config.json
+      - run: npm run web:build
+      - run: node --check web/app.js
+      - run: git diff --exit-code -- web/sample.json web/config.json
       - run: npm run check
       - run: npm test
       - run: npm run test:reproduce
