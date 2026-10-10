@@ -1,7 +1,7 @@
 {
   "version": 1,
   "identity": "public-release-verification-v1",
-  "status": "offline_checks_passed",
+  "status": "accepted",
   "scope": "isolated install, offline SDK contracts, source restoration, saved-score reproduction, one original47 case across four retrieval profiles",
   "generation_api_request_limit": 0,
   "local_retrieval_query_limit": 4,
@@ -28,6 +28,14 @@
   "local_retrieval_queries_finished": 4,
   "local_retrieval_result_sha256": "87c1a31f80451a28864f0d2a9355928e75e1704ad2e10750e7e3c76861ef330e",
   "legacy_protected_files_verified": 6094,
-  "github_publication": "pending",
-  "runtime_paid_model_calls": 0
+  "github_publication": "public_main_only",
+  "runtime_paid_model_calls": 0,
+  "repository": "https://github.com/Andubai99/AsterCite",
+  "initial_public_root": "8e0a2c9ae9ed2f754eab8c5259adea60418a353f",
+  "github_initial_ci": {
+    "status": "success",
+    "run_id": 38031054446
+  },
+  "remote_source_archive_reproduction": "passed",
+  "remote_source_archive_secret_scan": "passed"
 }

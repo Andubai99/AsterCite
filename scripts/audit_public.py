@@ -3,8 +3,9 @@ from __future__ import annotations
 import argparse,hashlib,json,os,pathlib,re,subprocess
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 def candidates(root):
+    top=subprocess.run(["git","rev-parse","--show-toplevel"],cwd=root,capture_output=True,text=True)
     result=subprocess.run(["git","-c","core.quotepath=false","ls-files","--cached","--others","--exclude-standard","-z"],cwd=root,capture_output=True)
-    if result.returncode==0:
+    if result.returncode==0 and top.returncode==0 and pathlib.Path(top.stdout.strip()).resolve()==root.resolve():
         return sorted({p.decode("utf8") for p in result.stdout.split(b"\0") if p and (root/p.decode("utf8")).is_file()})
     excluded={"node_modules",".venv",".cache",".local",".release-work",".git","__pycache__","artifacts","runs"}
     return sorted(str(p.relative_to(root)).replace("\\","/") for p in root.rglob("*") if p.is_file() and not excluded.intersection(p.relative_to(root).parts) and not p.name.endswith(".local.json") and p.name!=".env")
