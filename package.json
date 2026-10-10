@@ -1,0 +1,36 @@
+{
+  "name": "astercite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multi-turn evidence-grounded research paper agent with auditable reproduction records",
+  "license": "MIT",
+  "type": "module",
+  "bin": { "astercite": "agent/cli.ts" },
+  "scripts": {
+    "paper": "node agent/cli.ts",
+    "demo": "node scripts/demo.ts",
+    "doctor": "node scripts/doctor.ts",
+    "reproduce": "python -X utf8 reproduce/run.py --write",
+    "check": "tsc --noEmit",
+    "test": "node --test tests/agent/*.test.ts",
+    "test:reproduce": "python -X utf8 -m unittest discover -s tests/reproduce -v",
+    "audit": "python -X utf8 scripts/audit_public.py"
+  },
+  "engines": { "node": ">=24.11.1" },
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "1.0.4",
+    "@earendil-works/pi-ai": "1.0.4",
+    "@earendil-works/pi-coding-agent": "1.0.4",
+    "typebox": "1.3.27"
+  },
+  "devDependencies": { "@types/node": "24.10.1", "typescript": "5.9.3" },
+  "overrides": {
+    "@earendil-works/chord": "1.0.4",
+    "@earendil-works/pi-agent-core": "1.0.4",
+    "@earendil-works/pi-ai": "1.0.4",
+    "@earendil-works/pi-codemode": "1.0.4",
+    "@earendil-works/pi-mcp": "1.0.4",
+    "@earendil-works/pi-tui": "1.0.4",
+    "@earendil-works/pi-telemetry": "1.0.4"
+  }
+}

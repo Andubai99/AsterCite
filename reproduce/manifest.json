@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "source_ac_commit": "53b51a1591c79c7a86c767502833f0d0e01dca51",
+  "original_freeze_id": "04915da4623215d1b9bd271e5b3feac41d5ca6273e548468a298af60415635a9",
+  "retry_freeze_id": "f01129cd6c925adfd48d98e050fc96ab361114c596eb2d5fd9b6aa43515227b9",
+  "retrieval47_freeze_id": "41da7e7861b506c177faf55a8706f8babe1510a1746fb0bbcef50a267021edad",
+  "source_grade_file_sha256": "d88ec287ee2d74c4bcfd0bf68b1f58634d931e72008e643c61d948f6d8bdd6f3",
+  "historical_server_weights_revision": "unknown",
+  "reviewer_relationship": "same_developer_ai",
+  "provider_calls_during_export": 0,
+  "files": {
+    "reproduce/registry.json": "5c61bf3a04998b2dc255f3902db8167d970a4f55f66b03b07ff0d73d72c98aa0",
+    "reproduce/scoring.py": "3a5c4f412a2d67751df69ef4af759a2d70147f818f0cd98633b732afddd95d50",
+    "reproduce/agent295/cases.jsonl": "8d6c94df3eb5a2b747d737c47eb75e220930d2e670587e9199a70cf05e199af7",
+    "reproduce/agent295/credit-recovery.jsonl": "10b55d17b5d6d646b4332e22e405d7f9e0981a540ed208475cb71005903663ef",
+    "reproduce/agent295/expected.json": "8eb57f8aba41f9c3707c80931a52444a65bcfb238c5c32690e7e8ff05ad1d01d",
+    "reproduce/agent295/index-manifest.json": "3ea795626d1f2882b26789ab853c5fdc4de92beba61fc5d077d3e2edb65cb4b1",
+    "reproduce/agent295/original.jsonl": "0df4d7976f237505dc291371dcc88e5976f5d973499cccede8b07ff4297308a0",
+    "reproduce/agent295/run-plan.json": "b5956bf0bcc865e070d723447dfaf036e46e9657ab85388dc76be66d21739905",
+    "reproduce/agent295/source-units.jsonl": "36713f17f91ffa741195650747df9f782994553b146dd1e23a1cf8f5d2387533",
+    "reproduce/agent295/views.json": "77305d83d237a8e6839dc98d51d5a8c45543ec63d180cbe63f9deefbc04efc05",
+    "reproduce/agent295/visible-sources.jsonl": "eb03e32670936e191d0eb1eea5a60e84cfab656a41a0e12164a9a0aa36ebe9aa",
+    "reproduce/intent100/expected.json": "6a2d1df2619abbbea78cfa8f95d6ed76e1bd777da020a5627afeb4ac06b8d748",
+    "reproduce/query-rewrite100/judgements.json": "513eba20865c65b7edb6faa6f31304e47a6d0a5bec4433b490dd4025b475352f",
+    "reproduce/query-rewrite100/packets.json": "0607388546a8078cd3b4a8b6b9665181b05bafaf7fdaef94fcc217502b5e37cd",
+    "reproduce/retrieval47/cases.jsonl": "fe04a8d78644fa1405159c215966ed86527a687575f287d01bcb0ca85031dfdf",
+    "reproduce/retrieval47/expected.json": "5babff93a32c0c98d6dc676437fc3f1e9cfd6795a6c780732b8a1cd398a313e3",
+    "reproduce/retrieval47/index-manifest.json": "d3a548c0f4aedcc78e2e6921c6f0294b92d3a418f4eae2851e30705205776806",
+    "reproduce/retrieval47/top5.jsonl": "f572201469de779f381856d8461043fb12d6b88edf5953dcc7c9e3139dd86da2"
+  }
+}

@@ -1,0 +1,1618 @@
+{
+  "version": 2,
+  "purpose": "observed_failure_replay_not_effect_evaluation",
+  "source_index_sha256": "c767212bb78bf57b0f8f1a77e6d506e468264105e507af639629939412c591fe",
+  "fixtures": [
+    {
+      "case_id": "full-v1-t-dialogue05-t1",
+      "item_id": "c-regression-v1/main/full-v1-t-dialogue05-t1",
+      "outcome_sha256": "5056730cc48f1167592406e7c8e8811080a5329cd3e495d0b6f4a09202aed3ff",
+      "user_text": "In the paper \"Combating Adversarial Misspellings with Robust Word Recognition\" (1905.11268), What end tasks do they evaluate on? Answer briefly in English.",
+      "allowed": [
+        "1905.11268"
+      ],
+      "frame": {
+        "frame_id": "c-regression-v1/main/full-v1-t-dialogue05-t1/question_preparation",
+        "question_text": "In the paper \"Combating Adversarial Misspellings with Robust Word Recognition\" (1905.11268), What end tasks do they evaluate on? Answer briefly in English.",
+        "candidate_papers": [
+          "1905.11268"
+        ],
+        "ordered_targets": [
+          "1905.11268"
+        ],
+        "information_needs": [
+          {
+            "need_id": "n1",
+            "text": "Address every object, fact, condition, relationship and requested list in the complete original_question; preserve actual dialogue and latest user corrections."
+          }
+        ],
+        "queries": [
+          {
+            "query": "end tasks evaluated robust word recognition adversarial misspellings",
+            "paper_ids": [
+              "1905.11268"
+            ]
+          }
+        ],
+        "ambiguity": null,
+        "user_constraints": [
+          "answer_length: brief",
+          "answer_language: English"
+        ],
+        "intent": "single_paper_qa",
+        "follow_up": false,
+        "constraints": [
+          {
+            "key": "answer_length",
+            "value": "brief",
+            "source_quote": "Answer briefly in English"
+          },
+          {
+            "key": "answer_language",
+            "value": "English",
+            "source_quote": "Answer briefly in English"
+          }
+        ],
+        "comparison_dimensions": []
+      },
+      "public_catalog": [
+        {
+          "paper_id": "1905.11268",
+          "title": "Combating Adversarial Misspellings with Robust Word Recognition",
+          "abstract": ""
+        }
+      ],
+      "preparation_response": "{\"intent\":\"answer\",\"targets\":[\"1905.11268\"],\"rewrite\":\"In the paper \\\"Combating Adversarial Misspellings with Robust Word Recognition\\\" (1905.11268), what end tasks do the authors evaluate on? Answer briefly in English.\",\"queries\":[\"end tasks evaluated robust word recognition adversarial misspellings\"],\"constraints\":[{\"key\":\"answer_length\",\"value\":\"brief\",\"source_quote\":\"Answer briefly in English\"},{\"key\":\"answer_language\",\"value\":\"English\",\"source_quote\":\"Answer briefly in English\"}]}",
+      "stages": [
+        {
+          "stage": "evidence_check",
+          "response": "```json\n{\n  \"checks\": [\n    {\n      \"need_id\": \"n1\",\n      \"status\": \"supported\",\n      \"basis\": \"explicit\",\n      \"finding\": \"The paper evaluates on sentiment classification of movie reviews (SST) and on word error (spell) correction under adversarial misspellings.\",\n      \"support_spans\": [\n        {\n          \"chunk_id\": \"pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820\",\n          \"quote\": \"We evaluate the spell correctors from § \\\"Robust Word Recognition\\\" on movie reviews from the Stanford Sentiment Treebank (SST) BIBREF24.\"\n        },\n        {\n          \"chunk_id\": \"pipaper-full-index-v1-e7699c38391f1315:1905.11268:s8:p8:c0-542\",\n          \"quote\": \"the direct training signal of word error correction is more effective than the indirect signal of sentiment classification available to DA and Adv for model robustness.\"\n        }\n      ]\n    }\n  ],\n  \"next_action\": \"answer\",\n  \"next_queries\": []\n}\n```",
+          "truncated": false,
+          "status": "schema_error",
+          "request_id": "7f01803e-14c1-4134-9165-5561c2a78f51",
+          "previous": null,
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s2:p1:c0-258",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s2:p1:c0-258]",
+              "end": 258,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s2:p1",
+              "section": "Robust Word Recognition",
+              "start": 0,
+              "text": "Against adversarial mistakes, two important factors govern the robustness of this combined model: $W$ 's accuracy in recognizing misspelled words and $W$ 's sensitivity to adversarial perturbations on the same input. We discuss these aspects in detail below.",
+              "text_sha256": "501021a1f5725ec4abf612eb96ea6118c403dc4225be611094fab8fa1ad4c527",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820]",
+              "end": 820,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s7:p0",
+              "section": "Word Error Correction",
+              "start": 0,
+              "text": "Data: We evaluate the spell correctors from § \"Robust Word Recognition\" on movie reviews from the Stanford Sentiment Treebank (SST) BIBREF24 . The SST dataset consists of 8544 movie reviews, with a vocabulary of over 16K words. As a background corpus, we use the IMDB movie reviews BIBREF25 , which contain 54K movie reviews, and a vocabulary of over 78K words. The two datasets do not share any reviews in common. The spell-correction models are evaluated on their ability to correct misspellings. The test setting consists of reviews where each word (with length $\\ge 4$ , barring stopwords) is attacked by one of the attack types (from swap, add, drop and keyboard attacks). In the all attack setting, we mix all attacks by randomly choosing one for each word. This most closely resembles a real world attack setting.",
+              "text_sha256": "7e1d17668fa51c7048f7276d840cb923de00888db1a6e1586e267e717a760d92",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p6:c0-496",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p6:c0-496]",
+              "end": 496,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s0:p6",
+              "section": "Introduction",
+              "start": 0,
+              "text": "Fourth, we offer a detailed qualitative analysis, demonstrating that a low word error rate alone is insufficient for a word recognizer to confer robustness on the downstream task. Additionally, we find that it is important that the recognition model supply few degrees of freedom to an attacker. We provide a metric to quantify this notion of sensitivity in word recognition models and study its relation to robustness empirically. Models with low sensitivity and word error rate are most robust.",
+              "text_sha256": "50d3795d5c493b51c9cb5ff39337f1db4423256da26b9c4e2859286f6a267659",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s10:p0:c0-606",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s10:p0:c0-606]",
+              "end": 606,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s10:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "As character and word-piece inputs become commonplace in modern NLP pipelines, it is worth highlighting the vulnerability they add. We show that minimally-doctored attacks can bring down accuracy of classifiers to random guessing. We recommend word recognition as a safeguard against this and build upon RNN-based semi-character word recognizers. We discover that when used as a defense mechanism, the most accurate word recognition models are not always the most robust against adversarial attacks. Additionally, we highlight the need to control the sensitivity of these models to achieve high robustness.",
+              "text_sha256": "996790c16c08f85e98c8f94b1a3698e204d560b544c8f628e0d98581a7338c2e",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s8:p8:c0-542",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s8:p8:c0-542]",
+              "end": 542,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s8:p8",
+              "section": "Robustness to adversarial attacks",
+              "start": 0,
+              "text": "The ScRNN model with pass-through backoff offers better protection, bringing back the adversarial accuracy within $5\\%$ range for the swap attack. It is also effective under other attack classes, and can mitigate the adversarial effect in word-piece models by $21\\%$ , character-only models by $19\\%$ , and in word, and word+char models by over $4.5\\%$ . This suggests that the direct training signal of word error correction is more effective than the indirect signal of sentiment classification available to DA and Adv for model robustness.",
+              "text_sha256": "c1fff454dec0d8e6f0f345c1f3aad29ee258dd29f902e4f8131fb1182860b390",
+              "truncated": false
+            }
+          ]
+        },
+        {
+          "stage": "evidence_check_format_repair",
+          "response": "```json\n{\n  \"checks\": [\n    {\n      \"need_id\": \"n1\",\n      \"status\": \"supported\",\n      \"basis\": \"explicit\",\n      \"finding\": \"The paper evaluates on sentiment classification of movie reviews (SST) and on word error (spell) correction under adversarial misspellings.\",\n      \"support_spans\": [\n        {\n          \"chunk_id\": \"pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820\",\n          \"quote\": \"We evaluate the spell correctors from § \\\"Robust Word Recognition\\\" on movie reviews from the Stanford Sentiment Treebank (SST) BIBREF24.\"\n        },\n        {\n          \"chunk_id\": \"pipaper-full-index-v1-e7699c38391f1315:1905.11268:s8:p8:c0-542\",\n          \"quote\": \"the direct training signal of word error correction is more effective than the indirect signal of sentiment classification available to DA and Adv for model robustness.\"\n        }\n      ]\n    }\n  ],\n  \"next_action\": \"answer\",\n  \"next_queries\": []\n}\n```",
+          "truncated": false,
+          "status": "schema_error",
+          "request_id": "e23fc5be-77d7-4b92-a35a-7f990335f03b",
+          "previous": null,
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s2:p1:c0-258",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s2:p1:c0-258]",
+              "end": 258,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s2:p1",
+              "section": "Robust Word Recognition",
+              "start": 0,
+              "text": "Against adversarial mistakes, two important factors govern the robustness of this combined model: $W$ 's accuracy in recognizing misspelled words and $W$ 's sensitivity to adversarial perturbations on the same input. We discuss these aspects in detail below.",
+              "text_sha256": "501021a1f5725ec4abf612eb96ea6118c403dc4225be611094fab8fa1ad4c527",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820]",
+              "end": 820,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s7:p0",
+              "section": "Word Error Correction",
+              "start": 0,
+              "text": "Data: We evaluate the spell correctors from § \"Robust Word Recognition\" on movie reviews from the Stanford Sentiment Treebank (SST) BIBREF24 . The SST dataset consists of 8544 movie reviews, with a vocabulary of over 16K words. As a background corpus, we use the IMDB movie reviews BIBREF25 , which contain 54K movie reviews, and a vocabulary of over 78K words. The two datasets do not share any reviews in common. The spell-correction models are evaluated on their ability to correct misspellings. The test setting consists of reviews where each word (with length $\\ge 4$ , barring stopwords) is attacked by one of the attack types (from swap, add, drop and keyboard attacks). In the all attack setting, we mix all attacks by randomly choosing one for each word. This most closely resembles a real world attack setting.",
+              "text_sha256": "7e1d17668fa51c7048f7276d840cb923de00888db1a6e1586e267e717a760d92",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p6:c0-496",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p6:c0-496]",
+              "end": 496,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s0:p6",
+              "section": "Introduction",
+              "start": 0,
+              "text": "Fourth, we offer a detailed qualitative analysis, demonstrating that a low word error rate alone is insufficient for a word recognizer to confer robustness on the downstream task. Additionally, we find that it is important that the recognition model supply few degrees of freedom to an attacker. We provide a metric to quantify this notion of sensitivity in word recognition models and study its relation to robustness empirically. Models with low sensitivity and word error rate are most robust.",
+              "text_sha256": "50d3795d5c493b51c9cb5ff39337f1db4423256da26b9c4e2859286f6a267659",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s10:p0:c0-606",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s10:p0:c0-606]",
+              "end": 606,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s10:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "As character and word-piece inputs become commonplace in modern NLP pipelines, it is worth highlighting the vulnerability they add. We show that minimally-doctored attacks can bring down accuracy of classifiers to random guessing. We recommend word recognition as a safeguard against this and build upon RNN-based semi-character word recognizers. We discover that when used as a defense mechanism, the most accurate word recognition models are not always the most robust against adversarial attacks. Additionally, we highlight the need to control the sensitivity of these models to achieve high robustness.",
+              "text_sha256": "996790c16c08f85e98c8f94b1a3698e204d560b544c8f628e0d98581a7338c2e",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s8:p8:c0-542",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s8:p8:c0-542]",
+              "end": 542,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s8:p8",
+              "section": "Robustness to adversarial attacks",
+              "start": 0,
+              "text": "The ScRNN model with pass-through backoff offers better protection, bringing back the adversarial accuracy within $5\\%$ range for the swap attack. It is also effective under other attack classes, and can mitigate the adversarial effect in word-piece models by $21\\%$ , character-only models by $19\\%$ , and in word, and word+char models by over $4.5\\%$ . This suggests that the direct training signal of word error correction is more effective than the indirect signal of sentiment classification available to DA and Adv for model robustness.",
+              "text_sha256": "c1fff454dec0d8e6f0f345c1f3aad29ee258dd29f902e4f8131fb1182860b390",
+              "truncated": false
+            }
+          ]
+        }
+      ],
+      "generation": [],
+      "failure_code": "CHECK_ERROR"
+    },
+    {
+      "case_id": "full-v1-t-dialogue11-t1",
+      "item_id": "c-regression-v1/main/full-v1-t-dialogue11-t1",
+      "outcome_sha256": "3fa8f77bb5667bd9d4d263cdaf4f3c568ff7a657aa818af0c4c1599e106d68da",
+      "user_text": "In the paper \"A BERT-Based Transfer Learning Approach for Hate Speech Detection in Online Social Media\" (1910.12574), What evidence do the authors present that the model can capture some biases in data annotation and collection? Answer briefly in English.",
+      "allowed": [
+        "1910.12574"
+      ],
+      "frame": {
+        "frame_id": "c-regression-v1/main/full-v1-t-dialogue11-t1/question_preparation",
+        "question_text": "In the paper \"A BERT-Based Transfer Learning Approach for Hate Speech Detection in Online Social Media\" (1910.12574), What evidence do the authors present that the model can capture some biases in data annotation and collection? Answer briefly in English.",
+        "candidate_papers": [
+          "1910.12574"
+        ],
+        "ordered_targets": [
+          "1910.12574"
+        ],
+        "information_needs": [
+          {
+            "need_id": "n1",
+            "text": "Address every object, fact, condition, relationship and requested list in the complete original_question; preserve actual dialogue and latest user corrections."
+          },
+          {
+            "need_id": "n2",
+            "text": "What evidence in the paper shows the model captures biases in data annotation and collection?"
+          }
+        ],
+        "queries": [
+          {
+            "query": "evidence that the model captures biases in data annotation and collection",
+            "paper_ids": [
+              "1910.12574"
+            ]
+          }
+        ],
+        "ambiguity": null,
+        "user_constraints": [
+          "language: English",
+          "answer_length: brief"
+        ],
+        "intent": "single_paper_qa",
+        "follow_up": false,
+        "constraints": [
+          {
+            "key": "language",
+            "value": "English",
+            "source_quote": "Answer briefly in English"
+          },
+          {
+            "key": "answer_length",
+            "value": "brief",
+            "source_quote": "Answer briefly in English"
+          }
+        ],
+        "comparison_dimensions": []
+      },
+      "public_catalog": [
+        {
+          "paper_id": "1910.12574",
+          "title": "A BERT-Based Transfer Learning Approach for Hate Speech Detection in Online Social Media",
+          "abstract": ""
+        }
+      ],
+      "preparation_response": "```json\n{\"intent\":\"answer\",\"targets\":[\"1910.12574\"],\"rewrite\":\"In the paper \\\"A BERT-Based Transfer Learning Approach for Hate Speech Detection in Online Social Media\\\" (arXiv 1910.12574), what evidence do the authors present that the model can capture some biases in data annotation and collection? Answer briefly in English.\",\"queries\":[\"evidence that the model captures biases in data annotation and collection\"],\"constraints\":[{\"key\":\"language\",\"value\":\"English\",\"source_quote\":\"Answer briefly in English\"},{\"key\":\"answer_length\",\"value\":\"brief\",\"source_quote\":\"Answer briefly in English\"}],\"needs\":[\"What evidence in the paper shows the model captures biases in data annotation and collection?\"]}\n```",
+      "stages": [
+        {
+          "stage": "evidence_check",
+          "response": "```json\n{\n  \"checks\": [\n    {\n      \"need_id\": \"n1\",\n      \"status\": \"supported\",\n      \"basis\": \"explicit\",\n      \"finding\": \"The authors present error-analysis evidence: many misclassifications trace to biases in dataset collection (keyword-based sampling) and annotation (offensive tweets labeled as hate), while the BERT model still discriminates hate vs. offensive vs. neither correctly.\",\n      \"support_spans\": [\n        {\n          \"chunk_id\": \"pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000\",\n          \"quote\": \"Since Waseem et al.BIBREF5 created a small ad-hoc set of keywords and Davidson et al.BIBREF9 used a large crowdsourced dictionary of keywords (Hatebase lexicon) to sample tweets for training, they included some biases in the collected data.\"\n        },\n        {\n          \"chunk_id\": \"pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000\",\n          \"quote\": \"annotators tended to annotate many samples containing disrespectful words as hate or offensive without any presumption about the social context of tweeters such as the speaker’s identity or dialect, whereas they were just offensive or even neither tweets\"\n        }\n      ]\n    },\n    {\n      \"need_id\": \"n2\",\n      \"status\": \"supported\",\n      \"basis\": \"in_scope_inference\",\n      \"finding\": \"Evidence includes: (1) misclassification analysis showing oversampling of AAVE tweets with slurs (e.g., 'nigga', 'faggot') in the Davidson dataset, (2) annotation bias where offensive/neither tweets were labeled hate, and (3) the model correctly discriminating implicit hate and 'neither' tweets despite these biases.\",\n      \"support_spans\": [\n        {\n          \"chunk_id\": \"pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000\",\n          \"quote\": \"some tweets with specific language (written within the African American Vernacular English) and geographic restriction (United States of America) are oversampled such as tweets containing disparage words “nigga\\\", “faggot\\\", “coon\\\", or “queer\\\", result in high rates of misclassification\"\n        },\n        {\n          \"chunk_id\": \"pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000\",\n          \"quote\": \"we can see in tweets IDs 3, 4, and 9 that our BERT-based classifier can discriminate tweets in which neither and implicit hatred content exist\"\n        }\n      ]\n    }\n  ],\n  \"next_action\": \"answer\",\n  \"next_queries\": []\n}\n```",
+          "truncated": false,
+          "status": "completed",
+          "request_id": "d034aff2-340f-4c95-af95-814a3a5f74ec",
+          "previous": null,
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512]",
+              "end": 512,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s0:p6",
+              "section": "Introduction",
+              "start": 0,
+              "text": "Our experiment results show that using the pre-trained BERT model and fine-tuning it on the downstream task by leveraging syntactical and contextual information of all BERT's transformers outperforms previous works in terms of precision, recall, and F1-score. Furthermore, examining the results shows the ability of our model to detect some biases in the process of collecting or annotating datasets. It can be a valuable clue in using pre-trained BERT model for debiasing hate speech datasets in future studies.",
+              "text_sha256": "33ee008df4c24056782f32d351fc6d434692d0067a11577c74d57945f41ee024",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s9:p0:c0-1312",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s9:p0:c0-1312]",
+              "end": 1312,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s9:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "Conflating hatred content with offensive or harmless language causes online automatic hate speech detection tools to flag user-generated content incorrectly. Not addressing this problem may bring about severe negative consequences for both platforms and users such as decreasement of platforms' reputation or users abandonment. Here, we propose a transfer learning approach advantaging the pre-trained language model BERT to enhance the performance of a hate speech detection system and to generalize it to new datasets. To that end, we introduce new fine-tuning strategies to examine the effect of different layers of BERT in hate speech detection task. The evaluation results indicate that our model outperforms previous works by profiting the syntactical and contextual information embedded in different transformer encoder layers of the BERT model using a CNN-based fine-tuning strategy. Furthermore, examining the results shows the ability of our model to detect some biases in the process of collecting or annotating datasets. It can be a valuable clue in using the pre-trained BERT model to alleviate bias in hate speech datasets in future studies, by investigating a mixture of contextual information embedded in the BERT’s layers and a set of features associated to the different type of biases in data.",
+              "text_sha256": "0acdc2565d8c7919b36a84055b27af3fcff0a4c386b3079488eb972c9a84d3a8",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000]",
+              "end": 2000,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s8:p2",
+              "section": "Experiments and Results ::: Error Analysis",
+              "start": 0,
+              "text": "By examining more samples and with respect to recently studies BIBREF2, BIBREF24, BIBREF19, it is clear that many errors are due to biases from data collection BIBREF19 and rules of annotation BIBREF24 and not the classifier itself. Since Waseem et al.BIBREF5 created a small ad-hoc set of keywords and Davidson et al.BIBREF9 used a large crowdsourced dictionary of keywords (Hatebase lexicon) to sample tweets for training, they included some biases in the collected data. Especially for Davidson-dataset, some tweets with specific language (written within the African American Vernacular English) and geographic restriction (United States of America) are oversampled such as tweets containing disparage words “nigga\", “faggot\", “coon\", or “queer\", result in high rates of misclassification. However, these misclassifications do not confirm the low performance of our classifier because annotators tended to annotate many samples containing disrespectful words as hate or offensive without any presumption about the social context of tweeters such as the speaker’s identity or dialect, whereas they were just offensive or even neither tweets. Tweets IDs 6, 8, and 10 are some samples containing offensive words and slurs which arenot hate or offensive in all cases and writers of them used this type of language in their daily communications. Given these pieces of evidence, by considering the content of tweets, we can see in tweets IDs 3, 4, and 9 that our BERT-based classifier can discriminate tweets in which neither and implicit hatred content exist. One explanation of this observation may be the pre-trained general knowledge that exists in our model. Since the pre-trained BERT model is trained on general corpora, it has learned general knowledge from normal textual data without any purposely hateful or offensive language. Therefore, despite the bias in the data, our model can differentiate hate and offensive samples accurately by leveraging knowledge-aware language understanding that",
+              "text_sha256": "b0ff88e55d0c86cf1102ece392189b249a435ad4c7848ba1df86f8f409419a0a",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s1:p2:c0-1977",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s1:p2:c0-1977]",
+              "end": 1977,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s1:p2",
+              "section": "Previous Works",
+              "start": 0,
+              "text": "As one of the first attempts in neural network models, Djuric et al. BIBREF16 proposed a two-step method including a continuous bag of words model to extract paragraph2vec embeddings and a binary classifier trained along with the embeddings to distinguish between hate speech and clean content. Badjatiya et al. BIBREF0 investigated three deep learning architectures, FastText, CNN, and LSTM, in which they initialized the word embeddings with either random or GloVe embeddings. Gambäck et al. BIBREF6 proposed a hate speech classifier based on CNN model trained on different feature embeddings such as word embeddings and character $n$-grams. Zhang et al. BIBREF7 used a CNN+GRU (Gated Recurrent Unit network) neural network model initialized with pre-trained word2vec embeddings to capture both word/character combinations (e. g., $n$-grams, phrases) and word/character dependencies (order information). Waseem et al. BIBREF10 brought a new insight to hate speech and abusive language detection tasks by proposing a multi-task learning framework to deal with datasets across different annotation schemes, labels, or geographic and cultural influences from data sampling. Founta et al. BIBREF17 built a unified classification model that can efficiently handle different types of abusive language such as cyberbullying, hate, sarcasm, etc. using raw text and domain-specific metadata from Twitter. Furthermore, researchers have recently focused on the bias derived from the hate speech training datasets BIBREF18, BIBREF2, BIBREF19. Davidson et al. BIBREF2 showed that there were systematic and substantial racial biases in five benchmark Twitter datasets annotated for offensive language detection. Wiegand et al. BIBREF19 also found that classifiers trained on datasets containing more implicit abuse (tweets with some abusive words) are more affected by biases rather than once trained on datasets with a high proportion of explicit abuse samples (tweets containing sarcasm,",
+              "text_sha256": "6b4397d06147a2b2e0e9e0c8ee772154882bdbde16a0ccb087fd1380bad06f5e",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c1686-2228",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c1686-2228]",
+              "end": 2228,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s8:p2",
+              "section": "Experiments and Results ::: Error Analysis",
+              "start": 1686,
+              "text": "T model is trained on general corpora, it has learned general knowledge from normal textual data without any purposely hateful or offensive language. Therefore, despite the bias in the data, our model can differentiate hate and offensive samples accurately by leveraging knowledge-aware language understanding that it has and it can be the main reason for high misclassifications of hate samples as offensive (in reality they are more similar to offensive rather than hate by considering social context, geolocation, and dialect of tweeters).",
+              "text_sha256": "8e55fce3d345854bb82e7684d15fc1a45d3dffd97ef26db6dc5b03370b0c51e5",
+              "truncated": false
+            }
+          ]
+        }
+      ],
+      "generation": [
+        {
+          "response": "The authors' error analysis shows that many misclassifications stem from dataset biases rather than the classifier itself. Evidence includes: (1) keyword-based sampling introduced collection biases — Waseem et al. used a small ad-hoc keyword set and Davidson et al. used the Hatebase lexicon [cite:pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000]; (2) in the Davidson dataset, tweets in African American Vernacular English (US) containing words like \"nigga\" or \"faggot\" were oversampled, causing high misclassification rates [cite:pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000]; and (3) annotation bias — annotators labeled disrespectful tweets as hate/offensive without considering the speaker's social context, dialect, or identity [cite:pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000]. Despite these biases, the BERT-based classifier could still correctly discriminate implicit hate and \"neither\" tweets (e.g., tweet IDs 3, 4, and 9), attributed to general knowledge from pre-training on normal corpora [cite:pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000]. The authors state this shows the model's \"ability to detect some biases in the process of collecting or annotating datasets\" [cite:pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512].",
+          "code": "ANSWER_SCHEMA_ERROR",
+          "request_id": "5d85e6a6-d080-4ee0-aac9-ba6d0e7ee7ee",
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512]",
+              "end": 512,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s0:p6",
+              "section": "Introduction",
+              "start": 0,
+              "text": "Our experiment results show that using the pre-trained BERT model and fine-tuning it on the downstream task by leveraging syntactical and contextual information of all BERT's transformers outperforms previous works in terms of precision, recall, and F1-score. Furthermore, examining the results shows the ability of our model to detect some biases in the process of collecting or annotating datasets. It can be a valuable clue in using pre-trained BERT model for debiasing hate speech datasets in future studies.",
+              "text_sha256": "33ee008df4c24056782f32d351fc6d434692d0067a11577c74d57945f41ee024",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s9:p0:c0-1312",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s9:p0:c0-1312]",
+              "end": 1312,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s9:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "Conflating hatred content with offensive or harmless language causes online automatic hate speech detection tools to flag user-generated content incorrectly. Not addressing this problem may bring about severe negative consequences for both platforms and users such as decreasement of platforms' reputation or users abandonment. Here, we propose a transfer learning approach advantaging the pre-trained language model BERT to enhance the performance of a hate speech detection system and to generalize it to new datasets. To that end, we introduce new fine-tuning strategies to examine the effect of different layers of BERT in hate speech detection task. The evaluation results indicate that our model outperforms previous works by profiting the syntactical and contextual information embedded in different transformer encoder layers of the BERT model using a CNN-based fine-tuning strategy. Furthermore, examining the results shows the ability of our model to detect some biases in the process of collecting or annotating datasets. It can be a valuable clue in using the pre-trained BERT model to alleviate bias in hate speech datasets in future studies, by investigating a mixture of contextual information embedded in the BERT’s layers and a set of features associated to the different type of biases in data.",
+              "text_sha256": "0acdc2565d8c7919b36a84055b27af3fcff0a4c386b3079488eb972c9a84d3a8",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000]",
+              "end": 2000,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s8:p2",
+              "section": "Experiments and Results ::: Error Analysis",
+              "start": 0,
+              "text": "By examining more samples and with respect to recently studies BIBREF2, BIBREF24, BIBREF19, it is clear that many errors are due to biases from data collection BIBREF19 and rules of annotation BIBREF24 and not the classifier itself. Since Waseem et al.BIBREF5 created a small ad-hoc set of keywords and Davidson et al.BIBREF9 used a large crowdsourced dictionary of keywords (Hatebase lexicon) to sample tweets for training, they included some biases in the collected data. Especially for Davidson-dataset, some tweets with specific language (written within the African American Vernacular English) and geographic restriction (United States of America) are oversampled such as tweets containing disparage words “nigga\", “faggot\", “coon\", or “queer\", result in high rates of misclassification. However, these misclassifications do not confirm the low performance of our classifier because annotators tended to annotate many samples containing disrespectful words as hate or offensive without any presumption about the social context of tweeters such as the speaker’s identity or dialect, whereas they were just offensive or even neither tweets. Tweets IDs 6, 8, and 10 are some samples containing offensive words and slurs which arenot hate or offensive in all cases and writers of them used this type of language in their daily communications. Given these pieces of evidence, by considering the content of tweets, we can see in tweets IDs 3, 4, and 9 that our BERT-based classifier can discriminate tweets in which neither and implicit hatred content exist. One explanation of this observation may be the pre-trained general knowledge that exists in our model. Since the pre-trained BERT model is trained on general corpora, it has learned general knowledge from normal textual data without any purposely hateful or offensive language. Therefore, despite the bias in the data, our model can differentiate hate and offensive samples accurately by leveraging knowledge-aware language understanding that",
+              "text_sha256": "b0ff88e55d0c86cf1102ece392189b249a435ad4c7848ba1df86f8f409419a0a",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s1:p2:c0-1977",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s1:p2:c0-1977]",
+              "end": 1977,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s1:p2",
+              "section": "Previous Works",
+              "start": 0,
+              "text": "As one of the first attempts in neural network models, Djuric et al. BIBREF16 proposed a two-step method including a continuous bag of words model to extract paragraph2vec embeddings and a binary classifier trained along with the embeddings to distinguish between hate speech and clean content. Badjatiya et al. BIBREF0 investigated three deep learning architectures, FastText, CNN, and LSTM, in which they initialized the word embeddings with either random or GloVe embeddings. Gambäck et al. BIBREF6 proposed a hate speech classifier based on CNN model trained on different feature embeddings such as word embeddings and character $n$-grams. Zhang et al. BIBREF7 used a CNN+GRU (Gated Recurrent Unit network) neural network model initialized with pre-trained word2vec embeddings to capture both word/character combinations (e. g., $n$-grams, phrases) and word/character dependencies (order information). Waseem et al. BIBREF10 brought a new insight to hate speech and abusive language detection tasks by proposing a multi-task learning framework to deal with datasets across different annotation schemes, labels, or geographic and cultural influences from data sampling. Founta et al. BIBREF17 built a unified classification model that can efficiently handle different types of abusive language such as cyberbullying, hate, sarcasm, etc. using raw text and domain-specific metadata from Twitter. Furthermore, researchers have recently focused on the bias derived from the hate speech training datasets BIBREF18, BIBREF2, BIBREF19. Davidson et al. BIBREF2 showed that there were systematic and substantial racial biases in five benchmark Twitter datasets annotated for offensive language detection. Wiegand et al. BIBREF19 also found that classifiers trained on datasets containing more implicit abuse (tweets with some abusive words) are more affected by biases rather than once trained on datasets with a high proportion of explicit abuse samples (tweets containing sarcasm,",
+              "text_sha256": "6b4397d06147a2b2e0e9e0c8ee772154882bdbde16a0ccb087fd1380bad06f5e",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c1686-2228",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c1686-2228]",
+              "end": 2228,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s8:p2",
+              "section": "Experiments and Results ::: Error Analysis",
+              "start": 1686,
+              "text": "T model is trained on general corpora, it has learned general knowledge from normal textual data without any purposely hateful or offensive language. Therefore, despite the bias in the data, our model can differentiate hate and offensive samples accurately by leveraging knowledge-aware language understanding that it has and it can be the main reason for high misclassifications of hate samples as offensive (in reality they are more similar to offensive rather than hate by considering social context, geolocation, and dialect of tweeters).",
+              "text_sha256": "8e55fce3d345854bb82e7684d15fc1a45d3dffd97ef26db6dc5b03370b0c51e5",
+              "truncated": false
+            }
+          ]
+        },
+        {
+          "response": "{\"status\":\"answer\",\"answer\":\"The authors' error analysis shows that many misclassifications stem from dataset biases rather than the classifier itself. Evidence includes: (1) keyword-based sampling introduced collection biases — Waseem et al. used a small ad-hoc keyword set and Davidson et al. used the Hatebase lexicon [cite:pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000]; (2) in the Davidson dataset, tweets in African American Vernacular English (US) containing words like \\\"nigga\\\" or \\\"faggot\\\" were oversampled, causing high misclassification rates [cite:pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000]; and (3) annotation bias — annotators labeled disrespectful tweets as hate/offensive without considering the speaker's social context, dialect, or identity [cite:pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000]. Despite these biases, the BERT-based classifier could still correctly discriminate implicit hate and \\\"neither\\\" tweets (e.g., tweet IDs 3, 4, and 9), attributed to general knowledge from pre-training on normal corpora [cite:pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c1686-2228]. The authors state this shows the model's \\\"ability to detect some biases in the process of collecting or annotating datasets\\\" [cite:pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512].\",\"exact_quotes\":[{\"chunk_id\":\"pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512\",\"quote\":\"ability to detect some biases in the process of collecting or annotating datasets\"}]}",
+          "code": "INVALID_CITATION",
+          "request_id": "5e63a268-7245-4380-808d-cd40b1b746bb",
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512]",
+              "end": 512,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s0:p6",
+              "section": "Introduction",
+              "start": 0,
+              "text": "Our experiment results show that using the pre-trained BERT model and fine-tuning it on the downstream task by leveraging syntactical and contextual information of all BERT's transformers outperforms previous works in terms of precision, recall, and F1-score. Furthermore, examining the results shows the ability of our model to detect some biases in the process of collecting or annotating datasets. It can be a valuable clue in using pre-trained BERT model for debiasing hate speech datasets in future studies.",
+              "text_sha256": "33ee008df4c24056782f32d351fc6d434692d0067a11577c74d57945f41ee024",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s9:p0:c0-1312",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s9:p0:c0-1312]",
+              "end": 1312,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s9:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "Conflating hatred content with offensive or harmless language causes online automatic hate speech detection tools to flag user-generated content incorrectly. Not addressing this problem may bring about severe negative consequences for both platforms and users such as decreasement of platforms' reputation or users abandonment. Here, we propose a transfer learning approach advantaging the pre-trained language model BERT to enhance the performance of a hate speech detection system and to generalize it to new datasets. To that end, we introduce new fine-tuning strategies to examine the effect of different layers of BERT in hate speech detection task. The evaluation results indicate that our model outperforms previous works by profiting the syntactical and contextual information embedded in different transformer encoder layers of the BERT model using a CNN-based fine-tuning strategy. Furthermore, examining the results shows the ability of our model to detect some biases in the process of collecting or annotating datasets. It can be a valuable clue in using the pre-trained BERT model to alleviate bias in hate speech datasets in future studies, by investigating a mixture of contextual information embedded in the BERT’s layers and a set of features associated to the different type of biases in data.",
+              "text_sha256": "0acdc2565d8c7919b36a84055b27af3fcff0a4c386b3079488eb972c9a84d3a8",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000]",
+              "end": 2000,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s8:p2",
+              "section": "Experiments and Results ::: Error Analysis",
+              "start": 0,
+              "text": "By examining more samples and with respect to recently studies BIBREF2, BIBREF24, BIBREF19, it is clear that many errors are due to biases from data collection BIBREF19 and rules of annotation BIBREF24 and not the classifier itself. Since Waseem et al.BIBREF5 created a small ad-hoc set of keywords and Davidson et al.BIBREF9 used a large crowdsourced dictionary of keywords (Hatebase lexicon) to sample tweets for training, they included some biases in the collected data. Especially for Davidson-dataset, some tweets with specific language (written within the African American Vernacular English) and geographic restriction (United States of America) are oversampled such as tweets containing disparage words “nigga\", “faggot\", “coon\", or “queer\", result in high rates of misclassification. However, these misclassifications do not confirm the low performance of our classifier because annotators tended to annotate many samples containing disrespectful words as hate or offensive without any presumption about the social context of tweeters such as the speaker’s identity or dialect, whereas they were just offensive or even neither tweets. Tweets IDs 6, 8, and 10 are some samples containing offensive words and slurs which arenot hate or offensive in all cases and writers of them used this type of language in their daily communications. Given these pieces of evidence, by considering the content of tweets, we can see in tweets IDs 3, 4, and 9 that our BERT-based classifier can discriminate tweets in which neither and implicit hatred content exist. One explanation of this observation may be the pre-trained general knowledge that exists in our model. Since the pre-trained BERT model is trained on general corpora, it has learned general knowledge from normal textual data without any purposely hateful or offensive language. Therefore, despite the bias in the data, our model can differentiate hate and offensive samples accurately by leveraging knowledge-aware language understanding that",
+              "text_sha256": "b0ff88e55d0c86cf1102ece392189b249a435ad4c7848ba1df86f8f409419a0a",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s1:p2:c0-1977",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s1:p2:c0-1977]",
+              "end": 1977,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s1:p2",
+              "section": "Previous Works",
+              "start": 0,
+              "text": "As one of the first attempts in neural network models, Djuric et al. BIBREF16 proposed a two-step method including a continuous bag of words model to extract paragraph2vec embeddings and a binary classifier trained along with the embeddings to distinguish between hate speech and clean content. Badjatiya et al. BIBREF0 investigated three deep learning architectures, FastText, CNN, and LSTM, in which they initialized the word embeddings with either random or GloVe embeddings. Gambäck et al. BIBREF6 proposed a hate speech classifier based on CNN model trained on different feature embeddings such as word embeddings and character $n$-grams. Zhang et al. BIBREF7 used a CNN+GRU (Gated Recurrent Unit network) neural network model initialized with pre-trained word2vec embeddings to capture both word/character combinations (e. g., $n$-grams, phrases) and word/character dependencies (order information). Waseem et al. BIBREF10 brought a new insight to hate speech and abusive language detection tasks by proposing a multi-task learning framework to deal with datasets across different annotation schemes, labels, or geographic and cultural influences from data sampling. Founta et al. BIBREF17 built a unified classification model that can efficiently handle different types of abusive language such as cyberbullying, hate, sarcasm, etc. using raw text and domain-specific metadata from Twitter. Furthermore, researchers have recently focused on the bias derived from the hate speech training datasets BIBREF18, BIBREF2, BIBREF19. Davidson et al. BIBREF2 showed that there were systematic and substantial racial biases in five benchmark Twitter datasets annotated for offensive language detection. Wiegand et al. BIBREF19 also found that classifiers trained on datasets containing more implicit abuse (tweets with some abusive words) are more affected by biases rather than once trained on datasets with a high proportion of explicit abuse samples (tweets containing sarcasm,",
+              "text_sha256": "6b4397d06147a2b2e0e9e0c8ee772154882bdbde16a0ccb087fd1380bad06f5e",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c1686-2228",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c1686-2228]",
+              "end": 2228,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s8:p2",
+              "section": "Experiments and Results ::: Error Analysis",
+              "start": 1686,
+              "text": "T model is trained on general corpora, it has learned general knowledge from normal textual data without any purposely hateful or offensive language. Therefore, despite the bias in the data, our model can differentiate hate and offensive samples accurately by leveraging knowledge-aware language understanding that it has and it can be the main reason for high misclassifications of hate samples as offensive (in reality they are more similar to offensive rather than hate by considering social context, geolocation, and dialect of tweeters).",
+              "text_sha256": "8e55fce3d345854bb82e7684d15fc1a45d3dffd97ef26db6dc5b03370b0c51e5",
+              "truncated": false
+            }
+          ]
+        }
+      ],
+      "failure_code": "INVALID_CITATION"
+    },
+    {
+      "case_id": "full-v1-t-r005",
+      "item_id": "c-regression-v1/main/full-v1-t-r005",
+      "outcome_sha256": "ce88ff7ed0c8006797d02d5534c463285d10f755e8146c57ee98662bf8338a37",
+      "user_text": "In the paper \"UG18 at SemEval-2018 Task 1: Generating Additional Training Data for Predicting Emotion Intensity in Spanish\" (1805.10824), What semi-supervised learning is applied?",
+      "allowed": [
+        "1805.10824"
+      ],
+      "frame": {
+        "frame_id": "c-regression-v1/main/full-v1-t-r005/question_preparation",
+        "question_text": "In the paper \"UG18 at SemEval-2018 Task 1: Generating Additional Training Data for Predicting Emotion Intensity in Spanish\" (1805.10824), What semi-supervised learning is applied?",
+        "candidate_papers": [
+          "1805.10824"
+        ],
+        "ordered_targets": [
+          "1805.10824"
+        ],
+        "information_needs": [
+          {
+            "need_id": "n1",
+            "text": "Address every object, fact, condition, relationship and requested list in the complete original_question; preserve actual dialogue and latest user corrections."
+          }
+        ],
+        "queries": [
+          {
+            "query": "semi-supervised learning method applied in UG18 SemEval-2018 Task 1 emotion intensity Spanish",
+            "paper_ids": [
+              "1805.10824"
+            ]
+          }
+        ],
+        "ambiguity": null,
+        "user_constraints": [],
+        "intent": "single_paper_qa",
+        "follow_up": false,
+        "constraints": [],
+        "comparison_dimensions": []
+      },
+      "public_catalog": [
+        {
+          "paper_id": "1805.10824",
+          "title": "UG18 at SemEval-2018 Task 1: Generating Additional Training Data for Predicting Emotion Intensity in Spanish",
+          "abstract": ""
+        }
+      ],
+      "preparation_response": "```json\n{\n  \"intent\": \"answer\",\n  \"targets\": [\"1805.10824\"],\n  \"rewrite\": \"In the paper \\\"UG18 at SemEval-2018 Task 1: Generating Additional Training Data for Predicting Emotion Intensity in Spanish\\\" (1805.10824), what semi-supervised learning is applied?\",\n  \"queries\": [\"semi-supervised learning method applied in UG18 SemEval-2018 Task 1 emotion intensity Spanish\"],\n  \"constraints\": []\n}\n```",
+      "stages": [
+        {
+          "stage": "evidence_check",
+          "response": "{\"checks\":[{\"need_id\":\"n1\",\"status\":\"insufficient\",\"gap\":\"The visible excerpts identify the DISC corpus as the semi-supervised data source and that scraped tweets were automatically assigned to an emotion, but do not state the specific semi-supervised learning method/algorithm applied (e.g., how the silver data was generated or which learning procedure was used).\",\"evidence_ids\":[\"pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502\",\"pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762\"]}],\"next_action\":\"retrieve_more\",\"next_queries\":[{\"query\":\"semi-supervised learning method silver data generation DISC corpus emotion assignment algorithm Section 6\",\"paper_ids\":[\"1805.10824\"]}]}",
+          "truncated": false,
+          "status": "completed",
+          "request_id": "a1697067-902e-4f2f-9d9c-66b281337d7c",
+          "previous": null,
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s10:p0:c0-1139",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s10:p0:c0-1139]",
+              "end": 1139,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s10:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "To conclude, the present study described our submission for the Semeval 2018 Shared Task on Affect in Tweets. We participated in four Spanish subtasks and our submissions ranked second, second, fourth and fifth place. Our study aimed to investigate whether the automatic generation of additional training data through translation and semi-supervised learning, as well as the creation of stepwise ensembles, increase the performance of our Spanish-language models. Strong support was found for the translation and semi-supervised learning approaches; our best models for all subtasks use either one of these approaches. These results suggest that both of these additional data resources are beneficial when determining emotion intensity (for Spanish). However, the creation of a stepwise ensemble from the best models did not result in better performance compared to simply averaging the models. In addition, some signs of overfitting on the dev set were found. In future work, we would like to apply the methods (translation and semi-supervised learning) used on Spanish on other low-resource languages and potentially also on other tasks.",
+              "text_sha256": "6e57b369ecc09a363452f5d8de71f3392d4b27baa7eb64b3a459cb12beacdd42",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502]",
+              "end": 502,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p0",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "One of the aims of this study was to see if using semi-supervised learning is beneficial for emotion intensity tasks. For this purpose, the DISC BIBREF0 corpus was used. This corpus was created by querying certain emotion-related words, which makes it very suitable as a semi-supervised corpus. However, the specific emotion the tweet belonged to was not made public. Therefore, a method was applied to automatically assign the tweets to an emotion by comparing our scraped tweets to this new data set.",
+              "text_sha256": "3b9bf440ef91b3d003e2f4c482ce62855c7b7ef872ca9e431106106dabda8c04",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s0:p1:c0-654",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s0:p1:c0-654]",
+              "end": 654,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s0:p1",
+              "section": "Introduction",
+              "start": 0,
+              "text": " BIBREF0 present four tasks in which systems have to automatically determine the intensity of emotions (EI) or the intensity of the sentiment (Valence) of tweets in the languages English, Arabic, and Spanish. The goal is to either predict a continuous regression (reg) value or to do ordinal classification (oc) based on a number of predefined categories. The EI tasks have separate training sets for four different emotions: anger, fear, joy and sadness. Due to the large number of subtasks and the fact that this language does not have many resources readily available, we only focus on the Spanish subtasks. Our work makes the following contributions:",
+              "text_sha256": "ca5198517d2f300032f5eaa0b2de9f857bc15df5848143df124a9a6612e71634",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s8:p0:c0-874",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s8:p0:c0-874]",
+              "end": 874,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s8:p0",
+              "section": "Results and Discussion",
+              "start": 0,
+              "text": "Table TABREF18 shows the results on the development set of all individuals models, distinguishing the three types of training: regular (r), translated (t) and semi-supervised (s). In Tables TABREF17 and TABREF18 , the letter behind each model (e.g. SVM-r, LSTM-r) corresponds to the type of training used. Comparing the regular and translated columns for the three algorithms, it shows that in 22 out of 30 cases, using translated instances as extra training data resulted in an improvement. For the semi-supervised learning approach, an improvement is found in 15 out of 16 cases. Moreover, our best individual model for each subtask (bolded scores in Table TABREF18 ) is always either a translated or semi-supervised model. Table TABREF18 also shows that, in general, our feed-forward network obtained the best results, having the highest F-score for 8 out of 10 subtasks.",
+              "text_sha256": "37681c02dd4d1661a94ba4fa18e3f9947d1d461cec41c20bf4bb6813ad388c17",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762]",
+              "end": 762,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s7:p0",
+              "section": "Ensembling",
+              "start": 0,
+              "text": "To boost performance, the SVM, LSTM, and feed-forward models were combined into an ensemble. For both the LSTM and feed-forward approach, three different models were trained. The first model was trained on the training data (regular), the second model was trained on both the training and translated training data (translated) and the third one was trained on both the training data and the semi-supervised data (silver). Due to the nature of the SVM algorithm, semi-supervised learning does not help, so only the regular and translated model were trained in this case. This results in 8 different models per subtask. Note that for the valence tasks no silver training data was obtained, meaning that for those tasks the semi-supervised models could not be used.",
+              "text_sha256": "6ea29c56c2e82ef3e042c0ca99c5d842c6ed415f0d52ff472872095f7afbcd8f",
+              "truncated": false
+            }
+          ]
+        },
+        {
+          "stage": "evidence_check_final",
+          "response": "```json\n{\"checks\":[{\"need_id\":\"n1\",\"status\":\"supported\",\"basis\":\"explicit\",\"finding\":\"A self-training procedure is applied: a model trained on the training set predicts labels for DISC-based silver data, which is then added to the training set and the model retrained, with a ten-model agreement threshold used to filter low-quality silver instances.\",\"gap_resolution\":\"The prior gap asked for the specific semi-supervised learning method and how silver data was generated; section s6:p2 now explicitly states the self-training procedure (train, label silver data, add to training set, retrain) plus the quality-control step, resolving the gap.\",\"support_spans\":[{\"chunk_id\":\"pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p2:c0-628\",\"quote\":\"Our semi-supervised approach is quite straightforward: first a model is trained on the training set and then this model is used to predict the labels of the silver data. This silver data is then simply added to our training set, after which the model is retrained.\"},{\"chunk_id\":\"pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p1:c0-497\",\"quote\":\"This allowed us to create silver datasets per emotion, assigning tweets to an emotion if an annotated emotion-word occurred in the tweet.\"}]}],\"next_action\":\"answer\",\"next_queries\":[]}\n```",
+          "truncated": false,
+          "status": "completed",
+          "request_id": "6c26fb6d-747e-4f24-8bce-edade43f2329",
+          "previous": {
+            "checks": [
+              {
+                "need_id": "n1",
+                "status": "insufficient",
+                "basis": null,
+                "evidence_ids": [
+                  "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502",
+                  "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762"
+                ],
+                "finding": null,
+                "gap": "The visible excerpts identify the DISC corpus as the semi-supervised data source and that scraped tweets were automatically assigned to an emotion, but do not state the specific semi-supervised learning method/algorithm applied (e.g., how the silver data was generated or which learning procedure was used).",
+                "support_spans": [],
+                "gap_resolution": null
+              }
+            ],
+            "next_action": "retrieve_more",
+            "next_queries": [
+              {
+                "query": "semi-supervised learning method silver data generation DISC corpus emotion assignment algorithm Section 6",
+                "paper_ids": [
+                  "1805.10824"
+                ]
+              }
+            ]
+          },
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s10:p0:c0-1139",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s10:p0:c0-1139]",
+              "end": 1139,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s10:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "To conclude, the present study described our submission for the Semeval 2018 Shared Task on Affect in Tweets. We participated in four Spanish subtasks and our submissions ranked second, second, fourth and fifth place. Our study aimed to investigate whether the automatic generation of additional training data through translation and semi-supervised learning, as well as the creation of stepwise ensembles, increase the performance of our Spanish-language models. Strong support was found for the translation and semi-supervised learning approaches; our best models for all subtasks use either one of these approaches. These results suggest that both of these additional data resources are beneficial when determining emotion intensity (for Spanish). However, the creation of a stepwise ensemble from the best models did not result in better performance compared to simply averaging the models. In addition, some signs of overfitting on the dev set were found. In future work, we would like to apply the methods (translation and semi-supervised learning) used on Spanish on other low-resource languages and potentially also on other tasks.",
+              "text_sha256": "6e57b369ecc09a363452f5d8de71f3392d4b27baa7eb64b3a459cb12beacdd42",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502]",
+              "end": 502,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p0",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "One of the aims of this study was to see if using semi-supervised learning is beneficial for emotion intensity tasks. For this purpose, the DISC BIBREF0 corpus was used. This corpus was created by querying certain emotion-related words, which makes it very suitable as a semi-supervised corpus. However, the specific emotion the tweet belonged to was not made public. Therefore, a method was applied to automatically assign the tweets to an emotion by comparing our scraped tweets to this new data set.",
+              "text_sha256": "3b9bf440ef91b3d003e2f4c482ce62855c7b7ef872ca9e431106106dabda8c04",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s0:p1:c0-654",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s0:p1:c0-654]",
+              "end": 654,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s0:p1",
+              "section": "Introduction",
+              "start": 0,
+              "text": " BIBREF0 present four tasks in which systems have to automatically determine the intensity of emotions (EI) or the intensity of the sentiment (Valence) of tweets in the languages English, Arabic, and Spanish. The goal is to either predict a continuous regression (reg) value or to do ordinal classification (oc) based on a number of predefined categories. The EI tasks have separate training sets for four different emotions: anger, fear, joy and sadness. Due to the large number of subtasks and the fact that this language does not have many resources readily available, we only focus on the Spanish subtasks. Our work makes the following contributions:",
+              "text_sha256": "ca5198517d2f300032f5eaa0b2de9f857bc15df5848143df124a9a6612e71634",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s8:p0:c0-874",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s8:p0:c0-874]",
+              "end": 874,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s8:p0",
+              "section": "Results and Discussion",
+              "start": 0,
+              "text": "Table TABREF18 shows the results on the development set of all individuals models, distinguishing the three types of training: regular (r), translated (t) and semi-supervised (s). In Tables TABREF17 and TABREF18 , the letter behind each model (e.g. SVM-r, LSTM-r) corresponds to the type of training used. Comparing the regular and translated columns for the three algorithms, it shows that in 22 out of 30 cases, using translated instances as extra training data resulted in an improvement. For the semi-supervised learning approach, an improvement is found in 15 out of 16 cases. Moreover, our best individual model for each subtask (bolded scores in Table TABREF18 ) is always either a translated or semi-supervised model. Table TABREF18 also shows that, in general, our feed-forward network obtained the best results, having the highest F-score for 8 out of 10 subtasks.",
+              "text_sha256": "37681c02dd4d1661a94ba4fa18e3f9947d1d461cec41c20bf4bb6813ad388c17",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762]",
+              "end": 762,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s7:p0",
+              "section": "Ensembling",
+              "start": 0,
+              "text": "To boost performance, the SVM, LSTM, and feed-forward models were combined into an ensemble. For both the LSTM and feed-forward approach, three different models were trained. The first model was trained on the training data (regular), the second model was trained on both the training and translated training data (translated) and the third one was trained on both the training data and the semi-supervised data (silver). Due to the nature of the SVM algorithm, semi-supervised learning does not help, so only the regular and translated model were trained in this case. This results in 8 different models per subtask. Note that for the valence tasks no silver training data was obtained, meaning that for those tasks the semi-supervised models could not be used.",
+              "text_sha256": "6ea29c56c2e82ef3e042c0ca99c5d842c6ed415f0d52ff472872095f7afbcd8f",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p1:c0-497",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p1:c0-497]",
+              "end": 497,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p1",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "First, in an attempt to obtain the query-terms, we selected the 100 words which occurred most frequently in the DISC corpus, in comparison with their frequencies in our own scraped tweets corpus. Words that were clearly not indicators of emotion were removed. The rest was annotated per emotion or removed if it was unclear to which emotion the word belonged. This allowed us to create silver datasets per emotion, assigning tweets to an emotion if an annotated emotion-word occurred in the tweet.",
+              "text_sha256": "ad6a6e438160aa720c7c71cea39c4fcce1b3fd6db252c3d0e17db13405ae1b17",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p2:c0-628",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p2:c0-628]",
+              "end": 628,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p2",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "Our semi-supervised approach is quite straightforward: first a model is trained on the training set and then this model is used to predict the labels of the silver data. This silver data is then simply added to our training set, after which the model is retrained. However, an extra step is applied to ensure that the silver data is of reasonable quality. Instead of training a single model initially, ten different models were trained which predict the labels of the silver instances. If the highest and lowest prediction do not differ more than a certain threshold the silver instance is maintained, otherwise it is discarded.",
+              "text_sha256": "ce9d01a86960510edd89d136b194daac1b5c91e439d752912532ccbc42f065c6",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p3:c0-560",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p3:c0-560]",
+              "end": 560,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p3",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "This results in two parameters that could be optimized: the threshold and the number of silver instances that would be added. This method can be applied to both the LSTM and feed-forward networks that were used. An overview of the characteristics of our data set with the final parameter settings is shown in Table TABREF14 . Usually, only a small subset of data was added to our training set, meaning that most of the silver data is not used in the experiments. Note that since only the emotions were annotated, this method is only applicable to the EI tasks.",
+              "text_sha256": "383d79fd63b9c32618525ef6867f83718c09a6ac2dd19581b9042e12194233ec",
+              "truncated": false
+            }
+          ]
+        }
+      ],
+      "generation": [
+        {
+          "response": "The paper applies a self-training style semi-supervised learning approach to augment the training data for the emotion intensity tasks:\n\n1. **Silver data creation**: The DISC corpus — built by querying emotion-related words — was used as unlabeled data. Since the emotion labels of those tweets were not public, silver datasets were created per emotion by assigning tweets to an emotion whenever an annotated emotion-word occurred in the tweet [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502] [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p1:c0-497].\n\n2. **Self-training procedure**: A model is first trained on the training set and then used to predict labels for the silver data; the silver data is then added to the training set and the model is retrained [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p2:c0-628].\n\n3. **Quality filtering**: Instead of a single initial model, ten different models were trained to predict the labels of the silver instances; a silver instance is kept only if the highest and lowest prediction do not differ by more than a certain threshold, otherwise it is discarded [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p2:c0-628].\n\n4. **Applicability**: The method is applied to the LSTM and feed-forward networks (with threshold and number of added silver instances as optimizable parameters), and only to the EI (emotion intensity) tasks — not the valence tasks, since only emotions were annotated. It also does not help the SVM, so no semi-supervised SVM model was trained [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p3:c0-560] [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762].\n\nThis semi-supervised approach proved beneficial: an improvement was found in 15 out of 16 cases on the development set, and the paper's best individual models were always either translated or semi-supervised models [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s8:p0:c0-874].\n\n{\"status\":\"answer\",\"answer\":\"The paper applies a self-training style semi-supervised learning approach: silver data was created from the DISC corpus by assigning tweets to emotions based on annotated emotion-words occurring in them; a model trained on the training set then predicts labels for this silver data, which is added to the training set before retraining. To ensure silver data quality, ten different models were trained to label the silver instances, and an instance was kept only if its highest and lowest predictions did not differ by more than a threshold. The method was applied to the LSTM and feed-forward networks, only for the EI tasks (not valence), and was not used for the SVM. It improved performance in 15 out of 16 dev-set cases, and the best individual models were always translated or semi-supervised models [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502] [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p1:c0-497] [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p2:c0-628] [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p3:c0-560] [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762] [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s8:p0:c0-874].\",\"exact_quotes\":[]}",
+          "code": "ANSWER_SCHEMA_ERROR",
+          "request_id": "ffdefba5-7780-4d42-a6b0-78f78d223070",
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s10:p0:c0-1139",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s10:p0:c0-1139]",
+              "end": 1139,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s10:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "To conclude, the present study described our submission for the Semeval 2018 Shared Task on Affect in Tweets. We participated in four Spanish subtasks and our submissions ranked second, second, fourth and fifth place. Our study aimed to investigate whether the automatic generation of additional training data through translation and semi-supervised learning, as well as the creation of stepwise ensembles, increase the performance of our Spanish-language models. Strong support was found for the translation and semi-supervised learning approaches; our best models for all subtasks use either one of these approaches. These results suggest that both of these additional data resources are beneficial when determining emotion intensity (for Spanish). However, the creation of a stepwise ensemble from the best models did not result in better performance compared to simply averaging the models. In addition, some signs of overfitting on the dev set were found. In future work, we would like to apply the methods (translation and semi-supervised learning) used on Spanish on other low-resource languages and potentially also on other tasks.",
+              "text_sha256": "6e57b369ecc09a363452f5d8de71f3392d4b27baa7eb64b3a459cb12beacdd42",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502]",
+              "end": 502,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p0",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "One of the aims of this study was to see if using semi-supervised learning is beneficial for emotion intensity tasks. For this purpose, the DISC BIBREF0 corpus was used. This corpus was created by querying certain emotion-related words, which makes it very suitable as a semi-supervised corpus. However, the specific emotion the tweet belonged to was not made public. Therefore, a method was applied to automatically assign the tweets to an emotion by comparing our scraped tweets to this new data set.",
+              "text_sha256": "3b9bf440ef91b3d003e2f4c482ce62855c7b7ef872ca9e431106106dabda8c04",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s0:p1:c0-654",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s0:p1:c0-654]",
+              "end": 654,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s0:p1",
+              "section": "Introduction",
+              "start": 0,
+              "text": " BIBREF0 present four tasks in which systems have to automatically determine the intensity of emotions (EI) or the intensity of the sentiment (Valence) of tweets in the languages English, Arabic, and Spanish. The goal is to either predict a continuous regression (reg) value or to do ordinal classification (oc) based on a number of predefined categories. The EI tasks have separate training sets for four different emotions: anger, fear, joy and sadness. Due to the large number of subtasks and the fact that this language does not have many resources readily available, we only focus on the Spanish subtasks. Our work makes the following contributions:",
+              "text_sha256": "ca5198517d2f300032f5eaa0b2de9f857bc15df5848143df124a9a6612e71634",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s8:p0:c0-874",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s8:p0:c0-874]",
+              "end": 874,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s8:p0",
+              "section": "Results and Discussion",
+              "start": 0,
+              "text": "Table TABREF18 shows the results on the development set of all individuals models, distinguishing the three types of training: regular (r), translated (t) and semi-supervised (s). In Tables TABREF17 and TABREF18 , the letter behind each model (e.g. SVM-r, LSTM-r) corresponds to the type of training used. Comparing the regular and translated columns for the three algorithms, it shows that in 22 out of 30 cases, using translated instances as extra training data resulted in an improvement. For the semi-supervised learning approach, an improvement is found in 15 out of 16 cases. Moreover, our best individual model for each subtask (bolded scores in Table TABREF18 ) is always either a translated or semi-supervised model. Table TABREF18 also shows that, in general, our feed-forward network obtained the best results, having the highest F-score for 8 out of 10 subtasks.",
+              "text_sha256": "37681c02dd4d1661a94ba4fa18e3f9947d1d461cec41c20bf4bb6813ad388c17",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762]",
+              "end": 762,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s7:p0",
+              "section": "Ensembling",
+              "start": 0,
+              "text": "To boost performance, the SVM, LSTM, and feed-forward models were combined into an ensemble. For both the LSTM and feed-forward approach, three different models were trained. The first model was trained on the training data (regular), the second model was trained on both the training and translated training data (translated) and the third one was trained on both the training data and the semi-supervised data (silver). Due to the nature of the SVM algorithm, semi-supervised learning does not help, so only the regular and translated model were trained in this case. This results in 8 different models per subtask. Note that for the valence tasks no silver training data was obtained, meaning that for those tasks the semi-supervised models could not be used.",
+              "text_sha256": "6ea29c56c2e82ef3e042c0ca99c5d842c6ed415f0d52ff472872095f7afbcd8f",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p1:c0-497",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p1:c0-497]",
+              "end": 497,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p1",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "First, in an attempt to obtain the query-terms, we selected the 100 words which occurred most frequently in the DISC corpus, in comparison with their frequencies in our own scraped tweets corpus. Words that were clearly not indicators of emotion were removed. The rest was annotated per emotion or removed if it was unclear to which emotion the word belonged. This allowed us to create silver datasets per emotion, assigning tweets to an emotion if an annotated emotion-word occurred in the tweet.",
+              "text_sha256": "ad6a6e438160aa720c7c71cea39c4fcce1b3fd6db252c3d0e17db13405ae1b17",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p2:c0-628",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p2:c0-628]",
+              "end": 628,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p2",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "Our semi-supervised approach is quite straightforward: first a model is trained on the training set and then this model is used to predict the labels of the silver data. This silver data is then simply added to our training set, after which the model is retrained. However, an extra step is applied to ensure that the silver data is of reasonable quality. Instead of training a single model initially, ten different models were trained which predict the labels of the silver instances. If the highest and lowest prediction do not differ more than a certain threshold the silver instance is maintained, otherwise it is discarded.",
+              "text_sha256": "ce9d01a86960510edd89d136b194daac1b5c91e439d752912532ccbc42f065c6",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p3:c0-560",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p3:c0-560]",
+              "end": 560,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p3",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "This results in two parameters that could be optimized: the threshold and the number of silver instances that would be added. This method can be applied to both the LSTM and feed-forward networks that were used. An overview of the characteristics of our data set with the final parameter settings is shown in Table TABREF14 . Usually, only a small subset of data was added to our training set, meaning that most of the silver data is not used in the experiments. Note that since only the emotions were annotated, this method is only applicable to the EI tasks.",
+              "text_sha256": "383d79fd63b9c32618525ef6867f83718c09a6ac2dd19581b9042e12194233ec",
+              "truncated": false
+            }
+          ]
+        },
+        {
+          "response": "{\"status\":\"answer\",\"answer\":\"The paper applies a self-training style semi-supervised learning approach to augment training data for the emotion intensity (EI) tasks:\n\n1. **Silver data creation**: The DISC corpus, which was built by querying emotion-related words, was used as semi-supervised data. Since the emotion labels of those tweets were not public, the authors automatically assigned tweets to emotions, creating silver datasets per emotion by assigning a tweet to an emotion whenever an annotated emotion-word occurred in it [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502] [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p1:c0-497].\n\n2. **Self-training procedure**: A model is first trained on the training set and then used to predict the labels of the silver data; this silver data is then added to the training set and the model is retrained [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p2:c0-628].\n\n3. **Quality filtering**: To ensure silver data quality, instead of a single initial model, ten different models were trained to predict the labels of the silver instances; a silver instance is kept only if its highest and lowest predictions do not differ by more than a certain threshold, otherwise it is discarded [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p2:c0-628].\n\n4. **Applicability**: The method can be applied to the LSTM and feed-forward networks, with the threshold and the number of added silver instances as two optimizable parameters (usually only a small subset of silver data was added). Since only emotions were annotated, the method applies only to the EI tasks, not the valence tasks [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p3:c0-560]. Due to the nature of the SVM algorithm, semi-supervised learning does not help the SVM, so no semi-supervised SVM model was trained [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762].\n\nThe approach proved beneficial: an improvement was found in 15 out of 16 cases on the development set, and the paper's best individual model for each subtask was always either a translated or semi-supervised model [cite:pipaper-full-index-v1-e7699c38391f1315:1805.10824:s8:p0:c0-874].\",\"exact_quotes\":[]}",
+          "code": "ANSWER_SCHEMA_ERROR",
+          "request_id": "640a1455-2449-4801-a929-940d991c4f7c",
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s10:p0:c0-1139",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s10:p0:c0-1139]",
+              "end": 1139,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s10:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "To conclude, the present study described our submission for the Semeval 2018 Shared Task on Affect in Tweets. We participated in four Spanish subtasks and our submissions ranked second, second, fourth and fifth place. Our study aimed to investigate whether the automatic generation of additional training data through translation and semi-supervised learning, as well as the creation of stepwise ensembles, increase the performance of our Spanish-language models. Strong support was found for the translation and semi-supervised learning approaches; our best models for all subtasks use either one of these approaches. These results suggest that both of these additional data resources are beneficial when determining emotion intensity (for Spanish). However, the creation of a stepwise ensemble from the best models did not result in better performance compared to simply averaging the models. In addition, some signs of overfitting on the dev set were found. In future work, we would like to apply the methods (translation and semi-supervised learning) used on Spanish on other low-resource languages and potentially also on other tasks.",
+              "text_sha256": "6e57b369ecc09a363452f5d8de71f3392d4b27baa7eb64b3a459cb12beacdd42",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p0:c0-502]",
+              "end": 502,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p0",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "One of the aims of this study was to see if using semi-supervised learning is beneficial for emotion intensity tasks. For this purpose, the DISC BIBREF0 corpus was used. This corpus was created by querying certain emotion-related words, which makes it very suitable as a semi-supervised corpus. However, the specific emotion the tweet belonged to was not made public. Therefore, a method was applied to automatically assign the tweets to an emotion by comparing our scraped tweets to this new data set.",
+              "text_sha256": "3b9bf440ef91b3d003e2f4c482ce62855c7b7ef872ca9e431106106dabda8c04",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s0:p1:c0-654",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s0:p1:c0-654]",
+              "end": 654,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s0:p1",
+              "section": "Introduction",
+              "start": 0,
+              "text": " BIBREF0 present four tasks in which systems have to automatically determine the intensity of emotions (EI) or the intensity of the sentiment (Valence) of tweets in the languages English, Arabic, and Spanish. The goal is to either predict a continuous regression (reg) value or to do ordinal classification (oc) based on a number of predefined categories. The EI tasks have separate training sets for four different emotions: anger, fear, joy and sadness. Due to the large number of subtasks and the fact that this language does not have many resources readily available, we only focus on the Spanish subtasks. Our work makes the following contributions:",
+              "text_sha256": "ca5198517d2f300032f5eaa0b2de9f857bc15df5848143df124a9a6612e71634",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s8:p0:c0-874",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s8:p0:c0-874]",
+              "end": 874,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s8:p0",
+              "section": "Results and Discussion",
+              "start": 0,
+              "text": "Table TABREF18 shows the results on the development set of all individuals models, distinguishing the three types of training: regular (r), translated (t) and semi-supervised (s). In Tables TABREF17 and TABREF18 , the letter behind each model (e.g. SVM-r, LSTM-r) corresponds to the type of training used. Comparing the regular and translated columns for the three algorithms, it shows that in 22 out of 30 cases, using translated instances as extra training data resulted in an improvement. For the semi-supervised learning approach, an improvement is found in 15 out of 16 cases. Moreover, our best individual model for each subtask (bolded scores in Table TABREF18 ) is always either a translated or semi-supervised model. Table TABREF18 also shows that, in general, our feed-forward network obtained the best results, having the highest F-score for 8 out of 10 subtasks.",
+              "text_sha256": "37681c02dd4d1661a94ba4fa18e3f9947d1d461cec41c20bf4bb6813ad388c17",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s7:p0:c0-762]",
+              "end": 762,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s7:p0",
+              "section": "Ensembling",
+              "start": 0,
+              "text": "To boost performance, the SVM, LSTM, and feed-forward models were combined into an ensemble. For both the LSTM and feed-forward approach, three different models were trained. The first model was trained on the training data (regular), the second model was trained on both the training and translated training data (translated) and the third one was trained on both the training data and the semi-supervised data (silver). Due to the nature of the SVM algorithm, semi-supervised learning does not help, so only the regular and translated model were trained in this case. This results in 8 different models per subtask. Note that for the valence tasks no silver training data was obtained, meaning that for those tasks the semi-supervised models could not be used.",
+              "text_sha256": "6ea29c56c2e82ef3e042c0ca99c5d842c6ed415f0d52ff472872095f7afbcd8f",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p1:c0-497",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p1:c0-497]",
+              "end": 497,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p1",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "First, in an attempt to obtain the query-terms, we selected the 100 words which occurred most frequently in the DISC corpus, in comparison with their frequencies in our own scraped tweets corpus. Words that were clearly not indicators of emotion were removed. The rest was annotated per emotion or removed if it was unclear to which emotion the word belonged. This allowed us to create silver datasets per emotion, assigning tweets to an emotion if an annotated emotion-word occurred in the tweet.",
+              "text_sha256": "ad6a6e438160aa720c7c71cea39c4fcce1b3fd6db252c3d0e17db13405ae1b17",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p2:c0-628",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p2:c0-628]",
+              "end": 628,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p2",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "Our semi-supervised approach is quite straightforward: first a model is trained on the training set and then this model is used to predict the labels of the silver data. This silver data is then simply added to our training set, after which the model is retrained. However, an extra step is applied to ensure that the silver data is of reasonable quality. Instead of training a single model initially, ten different models were trained which predict the labels of the silver instances. If the highest and lowest prediction do not differ more than a certain threshold the silver instance is maintained, otherwise it is discarded.",
+              "text_sha256": "ce9d01a86960510edd89d136b194daac1b5c91e439d752912532ccbc42f065c6",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p3:c0-560",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1805.10824:s6:p3:c0-560]",
+              "end": 560,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1805.10824",
+              "paragraph_id": "1805.10824:s6:p3",
+              "section": "Semi-supervised Learning",
+              "start": 0,
+              "text": "This results in two parameters that could be optimized: the threshold and the number of silver instances that would be added. This method can be applied to both the LSTM and feed-forward networks that were used. An overview of the characteristics of our data set with the final parameter settings is shown in Table TABREF14 . Usually, only a small subset of data was added to our training set, meaning that most of the silver data is not used in the experiments. Note that since only the emotions were annotated, this method is only applicable to the EI tasks.",
+              "text_sha256": "383d79fd63b9c32618525ef6867f83718c09a6ac2dd19581b9042e12194233ec",
+              "truncated": false
+            }
+          ]
+        }
+      ],
+      "failure_code": "ANSWER_SCHEMA_ERROR"
+    },
+    {
+      "case_id": "full-v1-t-r022",
+      "item_id": "c-regression-v1/main/full-v1-t-r022",
+      "outcome_sha256": "34009e92bc16c4e2d90965939f1ae5a63734de280ba1d9338afe4bfd6a7b4aff",
+      "user_text": "In the paper \"A BERT-Based Transfer Learning Approach for Hate Speech Detection in Online Social Media\" (1910.12574), What biases does their model capture?",
+      "allowed": [
+        "1910.12574"
+      ],
+      "frame": {
+        "frame_id": "c-regression-v1/main/full-v1-t-r022/question_preparation",
+        "question_text": "In the paper \"A BERT-Based Transfer Learning Approach for Hate Speech Detection in Online Social Media\" (1910.12574), What biases does their model capture?",
+        "candidate_papers": [
+          "1910.12574"
+        ],
+        "ordered_targets": [
+          "1910.12574"
+        ],
+        "information_needs": [
+          {
+            "need_id": "n1",
+            "text": "Address every object, fact, condition, relationship and requested list in the complete original_question; preserve actual dialogue and latest user corrections."
+          }
+        ],
+        "queries": [
+          {
+            "query": "biases captured by the BERT-based hate speech detection model",
+            "paper_ids": [
+              "1910.12574"
+            ]
+          },
+          {
+            "query": "model bias analysis hate speech detection BERT transfer learning",
+            "paper_ids": [
+              "1910.12574"
+            ]
+          }
+        ],
+        "ambiguity": null,
+        "user_constraints": [],
+        "intent": "single_paper_qa",
+        "follow_up": false,
+        "constraints": [],
+        "comparison_dimensions": []
+      },
+      "public_catalog": [
+        {
+          "paper_id": "1910.12574",
+          "title": "A BERT-Based Transfer Learning Approach for Hate Speech Detection in Online Social Media",
+          "abstract": ""
+        }
+      ],
+      "preparation_response": "{\"intent\":\"answer\",\"targets\":[\"1910.12574\"],\"rewrite\":\"In the paper \\\"A BERT-Based Transfer Learning Approach for Hate Speech Detection in Online Social Media\\\" (1910.12574), what biases does their model capture?\",\"queries\":[\"biases captured by the BERT-based hate speech detection model\",\"model bias analysis hate speech detection BERT transfer learning\"],\"constraints\":[]}",
+      "stages": [
+        {
+          "stage": "evidence_check",
+          "response": "{\"checks\":[{\"need_id\":\"n1\",\"status\":\"supported\",\"basis\":\"explicit\",\"finding\":\"The model's error analysis shows it detects dataset biases rather than classifier failures: data-collection biases from keyword-based tweet sampling (Waseem's ad-hoc keywords; Davidson's Hatebase lexicon), oversampling of African American Vernacular English and US-geographically restricted tweets in the Davidson dataset, and annotation biases where annotators labeled disrespectful words as hate/offensive without considering social context.\",\"support_spans\":[{\"chunk_id\":\"pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000\",\"quote\":\"Since Waseem et al.BIBREF5 created a small ad-hoc set of keywords and Davidson et al.BIBREF9 used a large crowdsourced dictionary of keywords (Hatebase lexicon) to sample tweets for training, they included some biases in the collected data. Especially for Davidson-dataset, some tweets with specific language (written within the African American Vernacular English) and geographic restriction (United States of America) are oversampled such as tweets containing disparage words “nigga\\\", “faggot\\\", “coon\\\", or “queer\\\", result in high rates of misclassification.\"},{\"chunk_id\":\"pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000\",\"quote\":\"annotators tended to annotate many samples containing disrespectful words as hate or offensive without any presumption about the social context of tweeters such as the speaker’s identity or dialect, whereas they were just offensive or even neither tweets.\"},{\"chunk_id\":\"pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512\",\"quote\":\"examining the results shows the ability of our model to detect some biases in the process of collecting or annotating datasets.\"}],\"gap_resolution\":\"Resolves the need for the complete answer to what biases the model captures: (1) data-collection biases from keyword-based sampling (Waseem's small ad-hoc keyword set; Davidson's crowdsourced Hatebase lexicon), (2) oversampling of AAVE-language and US-geographically restricted tweets in the Davidson dataset, and (3) annotation biases where annotators labeled disrespectful words as hate/offensive without considering tweeters' social context; the model detects these, distinguishing them from true classifier errors.\"}],\"next_action\":\"answer\",\"next_queries\":[]}",
+          "truncated": false,
+          "status": "schema_error",
+          "request_id": "3d2ed2bb-c0b7-400d-ae90-2f13bbc7820b",
+          "previous": null,
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s9:p0:c0-1312",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s9:p0:c0-1312]",
+              "end": 1312,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s9:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "Conflating hatred content with offensive or harmless language causes online automatic hate speech detection tools to flag user-generated content incorrectly. Not addressing this problem may bring about severe negative consequences for both platforms and users such as decreasement of platforms' reputation or users abandonment. Here, we propose a transfer learning approach advantaging the pre-trained language model BERT to enhance the performance of a hate speech detection system and to generalize it to new datasets. To that end, we introduce new fine-tuning strategies to examine the effect of different layers of BERT in hate speech detection task. The evaluation results indicate that our model outperforms previous works by profiting the syntactical and contextual information embedded in different transformer encoder layers of the BERT model using a CNN-based fine-tuning strategy. Furthermore, examining the results shows the ability of our model to detect some biases in the process of collecting or annotating datasets. It can be a valuable clue in using the pre-trained BERT model to alleviate bias in hate speech datasets in future studies, by investigating a mixture of contextual information embedded in the BERT’s layers and a set of features associated to the different type of biases in data.",
+              "text_sha256": "0acdc2565d8c7919b36a84055b27af3fcff0a4c386b3079488eb972c9a84d3a8",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512]",
+              "end": 512,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s0:p6",
+              "section": "Introduction",
+              "start": 0,
+              "text": "Our experiment results show that using the pre-trained BERT model and fine-tuning it on the downstream task by leveraging syntactical and contextual information of all BERT's transformers outperforms previous works in terms of precision, recall, and F1-score. Furthermore, examining the results shows the ability of our model to detect some biases in the process of collecting or annotating datasets. It can be a valuable clue in using pre-trained BERT model for debiasing hate speech datasets in future studies.",
+              "text_sha256": "33ee008df4c24056782f32d351fc6d434692d0067a11577c74d57945f41ee024",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000]",
+              "end": 2000,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s8:p2",
+              "section": "Experiments and Results ::: Error Analysis",
+              "start": 0,
+              "text": "By examining more samples and with respect to recently studies BIBREF2, BIBREF24, BIBREF19, it is clear that many errors are due to biases from data collection BIBREF19 and rules of annotation BIBREF24 and not the classifier itself. Since Waseem et al.BIBREF5 created a small ad-hoc set of keywords and Davidson et al.BIBREF9 used a large crowdsourced dictionary of keywords (Hatebase lexicon) to sample tweets for training, they included some biases in the collected data. Especially for Davidson-dataset, some tweets with specific language (written within the African American Vernacular English) and geographic restriction (United States of America) are oversampled such as tweets containing disparage words “nigga\", “faggot\", “coon\", or “queer\", result in high rates of misclassification. However, these misclassifications do not confirm the low performance of our classifier because annotators tended to annotate many samples containing disrespectful words as hate or offensive without any presumption about the social context of tweeters such as the speaker’s identity or dialect, whereas they were just offensive or even neither tweets. Tweets IDs 6, 8, and 10 are some samples containing offensive words and slurs which arenot hate or offensive in all cases and writers of them used this type of language in their daily communications. Given these pieces of evidence, by considering the content of tweets, we can see in tweets IDs 3, 4, and 9 that our BERT-based classifier can discriminate tweets in which neither and implicit hatred content exist. One explanation of this observation may be the pre-trained general knowledge that exists in our model. Since the pre-trained BERT model is trained on general corpora, it has learned general knowledge from normal textual data without any purposely hateful or offensive language. Therefore, despite the bias in the data, our model can differentiate hate and offensive samples accurately by leveraging knowledge-aware language understanding that",
+              "text_sha256": "b0ff88e55d0c86cf1102ece392189b249a435ad4c7848ba1df86f8f409419a0a",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s2:p0:c0-1924",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s2:p0:c0-1924]",
+              "end": 1924,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s2:p0",
+              "section": "Methodology",
+              "start": 0,
+              "text": "Here, we analyze the BERT transformer model on the hate speech detection task. BERT is a multi-layer bidirectional transformer encoder trained on the English Wikipedia and the Book Corpus containing 2,500M and 800M tokens, respectively, and has two models named BERTbase and BERTlarge. BERTbase contains an encoder with 12 layers (transformer blocks), 12 self-attention heads, and 110 million parameters whereas BERTlarge has 24 layers, 16 attention heads, and 340 million parameters. Extracted embeddings from BERTbase have 768 hidden dimensions BIBREF11. As the BERT model is pre-trained on general corpora, and for our hate speech detection task we are dealing with social media content, therefore as a crucial step, we have to analyze the contextual information extracted from BERT' s pre-trained layers and then fine-tune it using annotated datasets. By fine-tuning we update weights using a labelled dataset that is new to an already trained model. As an input and output, BERT takes a sequence of tokens in maximum length 512 and produces a representation of the sequence in a 768-dimensional vector. BERT inserts at most two segments to each input sequence, [CLS] and [SEP]. [CLS] embedding is the first token of the input sequence and contains the special classification embedding which we take the first token [CLS] in the final hidden layer as the representation of the whole sequence in hate speech classification task. The [SEP] separates segments and we will not use it in our classification task. To perform the hate speech detection task, we use BERTbase model to classify each tweet as Racism, Sexism, Neither or Hate, Offensive, Neither in our datasets. In order to do that, we focus on fine-tuning the pre-trained BERTbase parameters. By fine-tuning, we mean training a classifier with different layers of 768 dimensions on top of the pre-trained BERTbase transformer to minimize task-specific parameters.",
+              "text_sha256": "81182b223500026f4ca30aabbbc8ec6a8627441296f5f0bf5d7f501086b85aec",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p0:c0-1283",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p0:c0-1283]",
+              "end": 1283,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s8:p0",
+              "section": "Experiments and Results ::: Error Analysis",
+              "start": 0,
+              "text": "Although we have very interesting results in term of recall, the precision of the model shows the portion of false detection we have. To understand better this phenomenon, in this section we perform a deep analysis on the error of the model. We investigate the test datasets and their confusion matrices resulted from the BERTbase + CNN model as the best fine-tuning approach; depicted in Figures FIGREF19 and FIGREF19. According to Figure FIGREF19 for Waseem-dataset, it is obvious that the model can separate sexism from racism content properly. Only two samples belonging to racism class are misclassified as sexism and none of the sexism samples are misclassified as racism. A large majority of the errors come from misclassifying hateful categories (racism and sexism) as hatless (neither) and vice versa. 0.9% and 18.5% of all racism samples are misclassified as sexism and neither respectively whereas it is 0% and 12.7% for sexism samples. Almost 12% of neither samples are misclassified as racism or sexism. As Figure FIGREF19 makes clear for Davidson-dataset, the majority of errors are related to hate class where the model misclassified hate content as offensive in 63% of the cases. However, 2.6% and 7.9% of offensive and neither samples are misclassified respectively.",
+              "text_sha256": "0d1b52ca11da80d6fc6936bd18ed6be786c83ef2b6ef6c4fe4fca074cd1579c3",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p5:c0-363",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p5:c0-363]",
+              "end": 363,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s0:p5",
+              "section": "Introduction",
+              "start": 0,
+              "text": "We propose a transfer learning approach using the pre-trained language model BERT learned on English Wikipedia and BookCorpus to enhance hate speech detection on publicly available benchmark datasets. Toward that end, for the first time, we introduce new fine-tuning strategies to examine the effect of different embedding layers of BERT in hate speech detection.",
+              "text_sha256": "10df06dcba88f3c65295e7fc8f53de7f9993349a75ea6cfdd74a6b059b611079",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p4:c0-451",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p4:c0-451]",
+              "end": 451,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s0:p4",
+              "section": "Introduction",
+              "start": 0,
+              "text": "Here, we propose a transfer learning approach for hate speech understanding using a combination of the unsupervised pre-trained model BERT BIBREF11 and some new supervised fine-tuning strategies. As far as we know, it is the first time that such exhaustive fine-tuning strategies are proposed along with a generative pre-trained language model to transfer learning to low-resource hate speech languages and improve performance of the task. In summary:",
+              "text_sha256": "680f94cce887417561cf4432b70e16e7a1fdaab6384d9acac28dd0e09b5802b0",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s1:p3:c0-1973",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s1:p3:c0-1973]",
+              "end": 1973,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s1:p3",
+              "section": "Previous Works",
+              "start": 0,
+              "text": "Transfer Learning: Pre-trained vector representations of words, embeddings, extracted from vast amounts of text data have been encountered in almost every language-based tasks with promising results. Two of the most frequently used context-independent neural embeddings are word2vec and Glove extracted from shallow neural networks. The year 2018 has been an inflection point for different NLP tasks thanks to remarkable breakthroughs: Universal Language Model Fine-Tuning (ULMFiT) BIBREF20, Embedding from Language Models (ELMO) BIBREF21, OpenAI’ s Generative Pre-trained Transformer (GPT) BIBREF22, and Google’s BERT model BIBREF11. Howard et al. BIBREF20 proposed ULMFiT which can be applied to any NLP task by pre-training a universal language model on a general-domain corpus and then fine-tuning the model on target task data using discriminative fine-tuning. Peters et al. BIBREF21 used a bi-directional LSTM trained on a specific task to present context-sensitive representations of words in word embeddings by looking at the entire sentence. Radford et al. BIBREF22 and Devlin et al. BIBREF11 generated two transformer-based language models, OpenAI GPT and BERT respectively. OpenAI GPT BIBREF22 is an unidirectional language model while BERT BIBREF11 is the first deeply bidirectional, unsupervised language representation, pre-trained using only a plain text corpus. BERT has two novel prediction tasks: Masked LM and Next Sentence Prediction. The pre-trained BERT model significantly outperformed ELMo and OpenAI GPT in a series of downstream tasks in NLP BIBREF11. Identifying hate speech and offensive language is a complicated task due to the lack of undisputed labelled data BIBREF15 and the inability of surface features to capture the subtle semantics in text. To address this issue, we use the pre-trained language model BERT for hate speech classification and try to fine-tune specific task by leveraging information from different transformer encoders.",
+              "text_sha256": "eb6950e8c4cb38035c971a372162b9f5dc22973b052622b4e32149fa863e03fa",
+              "truncated": false
+            }
+          ]
+        },
+        {
+          "stage": "evidence_check_format_repair",
+          "response": "```json\n{\"checks\":[{\"need_id\":\"n1\",\"status\":\"supported\",\"basis\":\"explicit\",\"finding\":\"The model's error analysis shows it detects dataset biases rather than classifier failures: data-collection biases from keyword-based tweet sampling (Waseem's ad-hoc keywords; Davidson's Hatebase lexicon), oversampling of African American Vernacular English and US-geographically restricted tweets in the Davidson dataset, and annotation biases where annotators labeled disrespectful words as hate/offensive without considering social context.\",\"support_spans\":[{\"chunk_id\":\"pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000\",\"quote\":\"Since Waseem et al.BIBREF5 created a small ad-hoc set of keywords and Davidson et al.BIBREF9 used a large crowdsourced dictionary of keywords (Hatebase lexicon) to sample tweets for training, they included some biases in the collected data. Especially for Davidson-dataset, some tweets with specific language (written within the African American Vernacular English) and geographic restriction (United States of America) are oversampled\"},{\"chunk_id\":\"pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000\",\"quote\":\"annotators tended to annotate many samples containing disrespectful words as hate or offensive without any presumption about the social context of tweeters such as the speaker’s identity or dialect, whereas they were just offensive or even neither tweets.\"}],\"gap_resolution\":\"Resolves the need for the complete answer to what biases the model captures: (1) data-collection biases from keyword-based sampling (Waseem's small ad-hoc keyword set; Davidson's crowdsourced Hatebase lexicon), (2) oversampling of AAVE-language and US-geographically restricted tweets in the Davidson dataset, and (3) annotation biases where annotators labeled disrespectful words as hate/offensive without considering tweeters' social context; the model detects these, distinguishing them from true classifier errors.\"}],\"next_action\":\"answer\",\"next_queries\":[]}\n```",
+          "truncated": false,
+          "status": "schema_error",
+          "request_id": "2af2f8c2-2d35-4927-9bc7-f9a9a323dbad",
+          "previous": null,
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s9:p0:c0-1312",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s9:p0:c0-1312]",
+              "end": 1312,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s9:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "Conflating hatred content with offensive or harmless language causes online automatic hate speech detection tools to flag user-generated content incorrectly. Not addressing this problem may bring about severe negative consequences for both platforms and users such as decreasement of platforms' reputation or users abandonment. Here, we propose a transfer learning approach advantaging the pre-trained language model BERT to enhance the performance of a hate speech detection system and to generalize it to new datasets. To that end, we introduce new fine-tuning strategies to examine the effect of different layers of BERT in hate speech detection task. The evaluation results indicate that our model outperforms previous works by profiting the syntactical and contextual information embedded in different transformer encoder layers of the BERT model using a CNN-based fine-tuning strategy. Furthermore, examining the results shows the ability of our model to detect some biases in the process of collecting or annotating datasets. It can be a valuable clue in using the pre-trained BERT model to alleviate bias in hate speech datasets in future studies, by investigating a mixture of contextual information embedded in the BERT’s layers and a set of features associated to the different type of biases in data.",
+              "text_sha256": "0acdc2565d8c7919b36a84055b27af3fcff0a4c386b3079488eb972c9a84d3a8",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p6:c0-512]",
+              "end": 512,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s0:p6",
+              "section": "Introduction",
+              "start": 0,
+              "text": "Our experiment results show that using the pre-trained BERT model and fine-tuning it on the downstream task by leveraging syntactical and contextual information of all BERT's transformers outperforms previous works in terms of precision, recall, and F1-score. Furthermore, examining the results shows the ability of our model to detect some biases in the process of collecting or annotating datasets. It can be a valuable clue in using pre-trained BERT model for debiasing hate speech datasets in future studies.",
+              "text_sha256": "33ee008df4c24056782f32d351fc6d434692d0067a11577c74d57945f41ee024",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p2:c0-2000]",
+              "end": 2000,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s8:p2",
+              "section": "Experiments and Results ::: Error Analysis",
+              "start": 0,
+              "text": "By examining more samples and with respect to recently studies BIBREF2, BIBREF24, BIBREF19, it is clear that many errors are due to biases from data collection BIBREF19 and rules of annotation BIBREF24 and not the classifier itself. Since Waseem et al.BIBREF5 created a small ad-hoc set of keywords and Davidson et al.BIBREF9 used a large crowdsourced dictionary of keywords (Hatebase lexicon) to sample tweets for training, they included some biases in the collected data. Especially for Davidson-dataset, some tweets with specific language (written within the African American Vernacular English) and geographic restriction (United States of America) are oversampled such as tweets containing disparage words “nigga\", “faggot\", “coon\", or “queer\", result in high rates of misclassification. However, these misclassifications do not confirm the low performance of our classifier because annotators tended to annotate many samples containing disrespectful words as hate or offensive without any presumption about the social context of tweeters such as the speaker’s identity or dialect, whereas they were just offensive or even neither tweets. Tweets IDs 6, 8, and 10 are some samples containing offensive words and slurs which arenot hate or offensive in all cases and writers of them used this type of language in their daily communications. Given these pieces of evidence, by considering the content of tweets, we can see in tweets IDs 3, 4, and 9 that our BERT-based classifier can discriminate tweets in which neither and implicit hatred content exist. One explanation of this observation may be the pre-trained general knowledge that exists in our model. Since the pre-trained BERT model is trained on general corpora, it has learned general knowledge from normal textual data without any purposely hateful or offensive language. Therefore, despite the bias in the data, our model can differentiate hate and offensive samples accurately by leveraging knowledge-aware language understanding that",
+              "text_sha256": "b0ff88e55d0c86cf1102ece392189b249a435ad4c7848ba1df86f8f409419a0a",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s2:p0:c0-1924",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s2:p0:c0-1924]",
+              "end": 1924,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s2:p0",
+              "section": "Methodology",
+              "start": 0,
+              "text": "Here, we analyze the BERT transformer model on the hate speech detection task. BERT is a multi-layer bidirectional transformer encoder trained on the English Wikipedia and the Book Corpus containing 2,500M and 800M tokens, respectively, and has two models named BERTbase and BERTlarge. BERTbase contains an encoder with 12 layers (transformer blocks), 12 self-attention heads, and 110 million parameters whereas BERTlarge has 24 layers, 16 attention heads, and 340 million parameters. Extracted embeddings from BERTbase have 768 hidden dimensions BIBREF11. As the BERT model is pre-trained on general corpora, and for our hate speech detection task we are dealing with social media content, therefore as a crucial step, we have to analyze the contextual information extracted from BERT' s pre-trained layers and then fine-tune it using annotated datasets. By fine-tuning we update weights using a labelled dataset that is new to an already trained model. As an input and output, BERT takes a sequence of tokens in maximum length 512 and produces a representation of the sequence in a 768-dimensional vector. BERT inserts at most two segments to each input sequence, [CLS] and [SEP]. [CLS] embedding is the first token of the input sequence and contains the special classification embedding which we take the first token [CLS] in the final hidden layer as the representation of the whole sequence in hate speech classification task. The [SEP] separates segments and we will not use it in our classification task. To perform the hate speech detection task, we use BERTbase model to classify each tweet as Racism, Sexism, Neither or Hate, Offensive, Neither in our datasets. In order to do that, we focus on fine-tuning the pre-trained BERTbase parameters. By fine-tuning, we mean training a classifier with different layers of 768 dimensions on top of the pre-trained BERTbase transformer to minimize task-specific parameters.",
+              "text_sha256": "81182b223500026f4ca30aabbbc8ec6a8627441296f5f0bf5d7f501086b85aec",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p0:c0-1283",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s8:p0:c0-1283]",
+              "end": 1283,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s8:p0",
+              "section": "Experiments and Results ::: Error Analysis",
+              "start": 0,
+              "text": "Although we have very interesting results in term of recall, the precision of the model shows the portion of false detection we have. To understand better this phenomenon, in this section we perform a deep analysis on the error of the model. We investigate the test datasets and their confusion matrices resulted from the BERTbase + CNN model as the best fine-tuning approach; depicted in Figures FIGREF19 and FIGREF19. According to Figure FIGREF19 for Waseem-dataset, it is obvious that the model can separate sexism from racism content properly. Only two samples belonging to racism class are misclassified as sexism and none of the sexism samples are misclassified as racism. A large majority of the errors come from misclassifying hateful categories (racism and sexism) as hatless (neither) and vice versa. 0.9% and 18.5% of all racism samples are misclassified as sexism and neither respectively whereas it is 0% and 12.7% for sexism samples. Almost 12% of neither samples are misclassified as racism or sexism. As Figure FIGREF19 makes clear for Davidson-dataset, the majority of errors are related to hate class where the model misclassified hate content as offensive in 63% of the cases. However, 2.6% and 7.9% of offensive and neither samples are misclassified respectively.",
+              "text_sha256": "0d1b52ca11da80d6fc6936bd18ed6be786c83ef2b6ef6c4fe4fca074cd1579c3",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p5:c0-363",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p5:c0-363]",
+              "end": 363,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s0:p5",
+              "section": "Introduction",
+              "start": 0,
+              "text": "We propose a transfer learning approach using the pre-trained language model BERT learned on English Wikipedia and BookCorpus to enhance hate speech detection on publicly available benchmark datasets. Toward that end, for the first time, we introduce new fine-tuning strategies to examine the effect of different embedding layers of BERT in hate speech detection.",
+              "text_sha256": "10df06dcba88f3c65295e7fc8f53de7f9993349a75ea6cfdd74a6b059b611079",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p4:c0-451",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s0:p4:c0-451]",
+              "end": 451,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s0:p4",
+              "section": "Introduction",
+              "start": 0,
+              "text": "Here, we propose a transfer learning approach for hate speech understanding using a combination of the unsupervised pre-trained model BERT BIBREF11 and some new supervised fine-tuning strategies. As far as we know, it is the first time that such exhaustive fine-tuning strategies are proposed along with a generative pre-trained language model to transfer learning to low-resource hate speech languages and improve performance of the task. In summary:",
+              "text_sha256": "680f94cce887417561cf4432b70e16e7a1fdaab6384d9acac28dd0e09b5802b0",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1910.12574:s1:p3:c0-1973",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1910.12574:s1:p3:c0-1973]",
+              "end": 1973,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1910.12574",
+              "paragraph_id": "1910.12574:s1:p3",
+              "section": "Previous Works",
+              "start": 0,
+              "text": "Transfer Learning: Pre-trained vector representations of words, embeddings, extracted from vast amounts of text data have been encountered in almost every language-based tasks with promising results. Two of the most frequently used context-independent neural embeddings are word2vec and Glove extracted from shallow neural networks. The year 2018 has been an inflection point for different NLP tasks thanks to remarkable breakthroughs: Universal Language Model Fine-Tuning (ULMFiT) BIBREF20, Embedding from Language Models (ELMO) BIBREF21, OpenAI’ s Generative Pre-trained Transformer (GPT) BIBREF22, and Google’s BERT model BIBREF11. Howard et al. BIBREF20 proposed ULMFiT which can be applied to any NLP task by pre-training a universal language model on a general-domain corpus and then fine-tuning the model on target task data using discriminative fine-tuning. Peters et al. BIBREF21 used a bi-directional LSTM trained on a specific task to present context-sensitive representations of words in word embeddings by looking at the entire sentence. Radford et al. BIBREF22 and Devlin et al. BIBREF11 generated two transformer-based language models, OpenAI GPT and BERT respectively. OpenAI GPT BIBREF22 is an unidirectional language model while BERT BIBREF11 is the first deeply bidirectional, unsupervised language representation, pre-trained using only a plain text corpus. BERT has two novel prediction tasks: Masked LM and Next Sentence Prediction. The pre-trained BERT model significantly outperformed ELMo and OpenAI GPT in a series of downstream tasks in NLP BIBREF11. Identifying hate speech and offensive language is a complicated task due to the lack of undisputed labelled data BIBREF15 and the inability of surface features to capture the subtle semantics in text. To address this issue, we use the pre-trained language model BERT for hate speech classification and try to fine-tune specific task by leveraging information from different transformer encoders.",
+              "text_sha256": "eb6950e8c4cb38035c971a372162b9f5dc22973b052622b4e32149fa863e03fa",
+              "truncated": false
+            }
+          ]
+        }
+      ],
+      "generation": [],
+      "failure_code": "CHECK_ERROR"
+    },
+    {
+      "case_id": "full-v1-t-r023",
+      "item_id": "c-regression-v1/main/full-v1-t-r023",
+      "outcome_sha256": "52275cbbbf8ff3bfa6035964955a89a28d712708f4165243fcb4ad10b27ec394",
+      "user_text": "In the paper \"Gender Representation in French Broadcast Corpora and Its Impact on ASR Performance\" (1908.08717), Which corpora does this paper analyse?",
+      "allowed": [
+        "1908.08717"
+      ],
+      "frame": {
+        "frame_id": "c-regression-v1/main/full-v1-t-r023/question_preparation",
+        "question_text": "In the paper \"Gender Representation in French Broadcast Corpora and Its Impact on ASR Performance\" (1908.08717), Which corpora does this paper analyse?",
+        "candidate_papers": [
+          "1908.08717"
+        ],
+        "ordered_targets": [
+          "1908.08717"
+        ],
+        "information_needs": [
+          {
+            "need_id": "n1",
+            "text": "Address every object, fact, condition, relationship and requested list in the complete original_question; preserve actual dialogue and latest user corrections."
+          }
+        ],
+        "queries": [],
+        "ambiguity": null,
+        "user_constraints": [],
+        "intent": "paper_discovery",
+        "follow_up": false,
+        "constraints": [],
+        "comparison_dimensions": []
+      },
+      "public_catalog": [
+        {
+          "paper_id": "1908.08717",
+          "title": "Gender Representation in French Broadcast Corpora and Its Impact on ASR Performance",
+          "abstract": ""
+        }
+      ],
+      "preparation_response": "{\"intent\":\"find_papers\",\"targets\":[\"1908.08717\"],\"rewrite\":\"In the paper \\\"Gender Representation in French Broadcast Corpora and Its Impact on ASR Performance\\\" (1908.08717), which corpora does this paper analyse?\",\"queries\":[\"corpora analysed in Gender Representation in French Broadcast Corpora and Its Impact on ASR Performance\",\"French broadcast speech corpora gender representation ASR\"],\"constraints\":[]}",
+      "stages": [],
+      "generation": [
+        {
+          "response": "{\"status\":\"refusal\",\"answer\":\"I cannot answer this question from the currently visible material. No source excerpts from the paper \\\"Gender Representation in French Broadcast Corpora and Its Impact on ASR Performance\\\" (1908.08717) are available in this turn, so I cannot verify which corpora the paper analyses or cite any supporting text. Please make the relevant paper excerpts visible (e.g., via retrieval) and I can then provide a cited answer; based on memory alone the paper may concern French broadcast corpora, but I cannot confirm specifics without visible source text.\",\"exact_quotes\":[]}",
+          "code": "ANSWER_SCHEMA_ERROR",
+          "request_id": "d6b9c8c3-d7e7-4e00-b989-9e89bd96f813",
+          "visible": []
+        },
+        {
+          "response": "{\"status\":\"answer\",\"answer\":\"Based on catalog metadata (not visible source excerpts, so this is provided as a catalog answer rather than a cited paper-fact): the paper 1908.08717 analyses French broadcast corpora — in particular the ESTER and ETAPE corpora of French broadcast news and related broadcast material. Because no source chunks are currently visible in this turn, I cannot provide verbatim citations; if you need the exact wording from the paper, please make the relevant excerpts available and I can supply a cited answer.\",\"exact_quotes\":[]}",
+          "code": "ANSWER_SCHEMA_ERROR",
+          "request_id": "3a658bd6-f6fa-4973-8cd4-c8ac7f9e7971",
+          "visible": []
+        }
+      ],
+      "failure_code": "ANSWER_SCHEMA_ERROR"
+    },
+    {
+      "case_id": "full-v1-t-scoped_summary-05",
+      "item_id": "c-regression-v1/main/full-v1-t-scoped_summary-05",
+      "outcome_sha256": "24fdace9f78e4f61a16fca6642435796a74c0fc1cc42d2e3ac3efab8949196cc",
+      "user_text": "Summarize source evidence from the paper \"Combating Adversarial Misspellings with Robust Word Recognition\" (1905.11268) relevant to: What end tasks do they evaluate on?",
+      "allowed": [
+        "1905.11268"
+      ],
+      "frame": {
+        "frame_id": "c-regression-v1/main/full-v1-t-scoped_summary-05/question_preparation",
+        "question_text": "Summarize source evidence from the paper \"Combating Adversarial Misspellings with Robust Word Recognition\" (1905.11268) relevant to: What end tasks do they evaluate on?",
+        "candidate_papers": [
+          "1905.11268"
+        ],
+        "ordered_targets": [
+          "1905.11268"
+        ],
+        "information_needs": [
+          {
+            "need_id": "n1",
+            "text": "Address every object, fact, condition, relationship and requested list in the complete original_question; preserve actual dialogue and latest user corrections."
+          }
+        ],
+        "queries": [
+          {
+            "query": "end tasks evaluated adversarial misspellings robust word recognition evaluation tasks",
+            "paper_ids": [
+              "1905.11268"
+            ]
+          }
+        ],
+        "ambiguity": null,
+        "user_constraints": [],
+        "intent": "scoped_summary",
+        "follow_up": false,
+        "constraints": [],
+        "comparison_dimensions": []
+      },
+      "public_catalog": [
+        {
+          "paper_id": "1905.11268",
+          "title": "Combating Adversarial Misspellings with Robust Word Recognition",
+          "abstract": ""
+        }
+      ],
+      "preparation_response": "```json\n{\"intent\":\"summarize\",\"targets\":[\"1905.11268\"],\"rewrite\":\"What end tasks does the paper \\\"Combating Adversarial Misspellings with Robust Word Recognition\\\" (1905.11268) evaluate on? Summarize the source evidence relevant to this question.\",\"queries\":[\"end tasks evaluated adversarial misspellings robust word recognition evaluation tasks\"],\"constraints\":[]}\n```",
+      "stages": [
+        {
+          "stage": "evidence_check",
+          "response": "```json\n{\n  \"checks\": [\n    {\n      \"need_id\": \"n1\",\n      \"status\": \"supported\",\n      \"basis\": \"explicit\",\n      \"finding\": \"The paper evaluates its approach on text classification, specifically sentiment analysis of movie reviews from the Stanford Sentiment Treebank (SST), under adversarial misspellings.\",\n      \"support_spans\": [\n        {\n          \"chunk_id\": \"pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820\",\n          \"quote\": \"We evaluate the spell correctors from § \\\"Robust Word Recognition\\\" on movie reviews from the Stanford Sentiment Treebank (SST)\"\n        },\n        {\n          \"chunk_id\": \"pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p2:c0-456\",\n          \"quote\": \"we focus on adversarially-chosen spelling mistakes in the context of text classification\"\n        }\n      ],\n      \"gap_resolution\": \"The visible excerpts explicitly name the end task: text classification on movie reviews (SST sentiment analysis), with the spell-correction defense evaluated under swap, add, drop, keyboard, and all-attack misspelling settings.\"\n    }\n  ],\n  \"next_action\": \"answer\",\n  \"next_queries\": []\n}\n```",
+          "truncated": false,
+          "status": "completed",
+          "request_id": "b2688d43-8bc5-4b10-841b-3efe7138014b",
+          "previous": null,
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s2:p1:c0-258",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s2:p1:c0-258]",
+              "end": 258,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s2:p1",
+              "section": "Robust Word Recognition",
+              "start": 0,
+              "text": "Against adversarial mistakes, two important factors govern the robustness of this combined model: $W$ 's accuracy in recognizing misspelled words and $W$ 's sensitivity to adversarial perturbations on the same input. We discuss these aspects in detail below.",
+              "text_sha256": "501021a1f5725ec4abf612eb96ea6118c403dc4225be611094fab8fa1ad4c527",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820]",
+              "end": 820,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s7:p0",
+              "section": "Word Error Correction",
+              "start": 0,
+              "text": "Data: We evaluate the spell correctors from § \"Robust Word Recognition\" on movie reviews from the Stanford Sentiment Treebank (SST) BIBREF24 . The SST dataset consists of 8544 movie reviews, with a vocabulary of over 16K words. As a background corpus, we use the IMDB movie reviews BIBREF25 , which contain 54K movie reviews, and a vocabulary of over 78K words. The two datasets do not share any reviews in common. The spell-correction models are evaluated on their ability to correct misspellings. The test setting consists of reviews where each word (with length $\\ge 4$ , barring stopwords) is attacked by one of the attack types (from swap, add, drop and keyboard attacks). In the all attack setting, we mix all attacks by randomly choosing one for each word. This most closely resembles a real world attack setting.",
+              "text_sha256": "7e1d17668fa51c7048f7276d840cb923de00888db1a6e1586e267e717a760d92",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p6:c0-496",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p6:c0-496]",
+              "end": 496,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s0:p6",
+              "section": "Introduction",
+              "start": 0,
+              "text": "Fourth, we offer a detailed qualitative analysis, demonstrating that a low word error rate alone is insufficient for a word recognizer to confer robustness on the downstream task. Additionally, we find that it is important that the recognition model supply few degrees of freedom to an attacker. We provide a metric to quantify this notion of sensitivity in word recognition models and study its relation to robustness empirically. Models with low sensitivity and word error rate are most robust.",
+              "text_sha256": "50d3795d5c493b51c9cb5ff39337f1db4423256da26b9c4e2859286f6a267659",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p2:c0-456",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p2:c0-456]",
+              "end": 456,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s0:p2",
+              "section": "Introduction",
+              "start": 0,
+              "text": "In this paper, we focus on adversarially-chosen spelling mistakes in the context of text classification, addressing the following attack types: dropping, adding, and swapping internal characters within words. These perturbations are inspired by psycholinguistic studies BIBREF4 , BIBREF5 which demonstrated that humans can comprehend text altered by jumbling internal characters, provided that the first and last characters of each word remain unperturbed.",
+              "text_sha256": "a9cfb4b7007ce8bd9ba4d5df03512fd2ad33bb75150d41bc17ad22aa07143c33",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s10:p0:c0-606",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s10:p0:c0-606]",
+              "end": 606,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s10:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "As character and word-piece inputs become commonplace in modern NLP pipelines, it is worth highlighting the vulnerability they add. We show that minimally-doctored attacks can bring down accuracy of classifiers to random guessing. We recommend word recognition as a safeguard against this and build upon RNN-based semi-character word recognizers. We discover that when used as a defense mechanism, the most accurate word recognition models are not always the most robust against adversarial attacks. Additionally, we highlight the need to control the sensitivity of these models to achieve high robustness.",
+              "text_sha256": "996790c16c08f85e98c8f94b1a3698e204d560b544c8f628e0d98581a7338c2e",
+              "truncated": false
+            }
+          ]
+        }
+      ],
+      "generation": [
+        {
+          "response": "Based on the visible excerpts, the paper evaluates its robust word recognition approach on text classification as the end task. Specifically, the Introduction states the focus is on \"adversarially-chosen spelling mistakes in the context of text classification\" [cite:pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p2:c0-456], and the evaluation section shows the concrete task is sentiment analysis of movie reviews: \"We evaluate the spell correctors from § 'Robust Word Recognition' on movie reviews from the Stanford Sentiment Treebank (SST)\" [cite:pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820]. The SST dataset used has 8544 movie reviews with a vocabulary of over 16K words, and the IMDB movie reviews serve as the background corpus. The test setting attacks each word (length ≥ 4, barring stopwords) with one of the attack types — swap, add, drop, and keyboard attacks — and also includes an \"all attack\" mixed setting resembling real-world attacks.\n\nNote: the visible excerpts only cover the word error correction evaluation on SST. If the paper contains additional end-task evaluations (e.g., other classification datasets), they are not within the currently visible evidence, so I cannot confirm the list is exhaustive beyond SST-based sentiment classification.",
+          "code": "ANSWER_SCHEMA_ERROR",
+          "request_id": "98fbe70e-8628-4609-bb38-33cb13031835",
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s2:p1:c0-258",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s2:p1:c0-258]",
+              "end": 258,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s2:p1",
+              "section": "Robust Word Recognition",
+              "start": 0,
+              "text": "Against adversarial mistakes, two important factors govern the robustness of this combined model: $W$ 's accuracy in recognizing misspelled words and $W$ 's sensitivity to adversarial perturbations on the same input. We discuss these aspects in detail below.",
+              "text_sha256": "501021a1f5725ec4abf612eb96ea6118c403dc4225be611094fab8fa1ad4c527",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820]",
+              "end": 820,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s7:p0",
+              "section": "Word Error Correction",
+              "start": 0,
+              "text": "Data: We evaluate the spell correctors from § \"Robust Word Recognition\" on movie reviews from the Stanford Sentiment Treebank (SST) BIBREF24 . The SST dataset consists of 8544 movie reviews, with a vocabulary of over 16K words. As a background corpus, we use the IMDB movie reviews BIBREF25 , which contain 54K movie reviews, and a vocabulary of over 78K words. The two datasets do not share any reviews in common. The spell-correction models are evaluated on their ability to correct misspellings. The test setting consists of reviews where each word (with length $\\ge 4$ , barring stopwords) is attacked by one of the attack types (from swap, add, drop and keyboard attacks). In the all attack setting, we mix all attacks by randomly choosing one for each word. This most closely resembles a real world attack setting.",
+              "text_sha256": "7e1d17668fa51c7048f7276d840cb923de00888db1a6e1586e267e717a760d92",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p6:c0-496",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p6:c0-496]",
+              "end": 496,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s0:p6",
+              "section": "Introduction",
+              "start": 0,
+              "text": "Fourth, we offer a detailed qualitative analysis, demonstrating that a low word error rate alone is insufficient for a word recognizer to confer robustness on the downstream task. Additionally, we find that it is important that the recognition model supply few degrees of freedom to an attacker. We provide a metric to quantify this notion of sensitivity in word recognition models and study its relation to robustness empirically. Models with low sensitivity and word error rate are most robust.",
+              "text_sha256": "50d3795d5c493b51c9cb5ff39337f1db4423256da26b9c4e2859286f6a267659",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p2:c0-456",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p2:c0-456]",
+              "end": 456,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s0:p2",
+              "section": "Introduction",
+              "start": 0,
+              "text": "In this paper, we focus on adversarially-chosen spelling mistakes in the context of text classification, addressing the following attack types: dropping, adding, and swapping internal characters within words. These perturbations are inspired by psycholinguistic studies BIBREF4 , BIBREF5 which demonstrated that humans can comprehend text altered by jumbling internal characters, provided that the first and last characters of each word remain unperturbed.",
+              "text_sha256": "a9cfb4b7007ce8bd9ba4d5df03512fd2ad33bb75150d41bc17ad22aa07143c33",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s10:p0:c0-606",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s10:p0:c0-606]",
+              "end": 606,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s10:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "As character and word-piece inputs become commonplace in modern NLP pipelines, it is worth highlighting the vulnerability they add. We show that minimally-doctored attacks can bring down accuracy of classifiers to random guessing. We recommend word recognition as a safeguard against this and build upon RNN-based semi-character word recognizers. We discover that when used as a defense mechanism, the most accurate word recognition models are not always the most robust against adversarial attacks. Additionally, we highlight the need to control the sensitivity of these models to achieve high robustness.",
+              "text_sha256": "996790c16c08f85e98c8f94b1a3698e204d560b544c8f628e0d98581a7338c2e",
+              "truncated": false
+            }
+          ]
+        },
+        {
+          "response": "{\"status\":\"answer\",\"answer\":\"The paper evaluates its robust word recognition approach on text classification as the end task. The Introduction states the focus is on adversarially-chosen spelling mistakes in the context of text classification [cite:pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p2:c0-456]. The concrete evaluation task is sentiment analysis of movie reviews: the spell correctors from the Robust Word Recognition section are evaluated on movie reviews from the Stanford Sentiment Treebank (SST), which has 8544 movie reviews and a vocabulary of over 16K words, with IMDB movie reviews (54K reviews, over 78K vocabulary) used as the background corpus; the two datasets share no reviews [cite:pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820]. The test setting attacks each word of length ≥ 4 (barring stopwords) with one of the attack types — swap, add, drop, and keyboard attacks — and an \\\"all attack\\\" setting mixes all attacks by randomly choosing one per word, most closely resembling a real-world attack [cite:pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820]. More broadly, the paper's goal is for word recognition to confer robustness on the downstream task, emphasizing low word error rate and low sensitivity in the recognition model [cite:pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p6:c0-496]. Note: the visible excerpts cover the word error correction evaluation on SST; if the paper contains additional end-task evaluations beyond SST-based sentiment classification, they are not within the currently visible evidence, so exhaustiveness cannot be confirmed.\",\"exact_quotes\":[{\"chunk_id\":\"pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p2:c0-456\",\"quote\":\"adversarially-chosen spelling mistakes in the context of text classification\"},{\"chunk_id\":\"pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820\",\"quote\":\"We evaluate the spell correctors from § \\\"Robust Word Recognition\\\" on movie reviews from the Stanford Sentiment Treebank (SST)\"}]}",
+          "code": "INVALID_CITATION",
+          "request_id": "dc4cfb25-1229-4c28-a2fe-8a93899dea76",
+          "visible": [
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s2:p1:c0-258",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s2:p1:c0-258]",
+              "end": 258,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s2:p1",
+              "section": "Robust Word Recognition",
+              "start": 0,
+              "text": "Against adversarial mistakes, two important factors govern the robustness of this combined model: $W$ 's accuracy in recognizing misspelled words and $W$ 's sensitivity to adversarial perturbations on the same input. We discuss these aspects in detail below.",
+              "text_sha256": "501021a1f5725ec4abf612eb96ea6118c403dc4225be611094fab8fa1ad4c527",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s7:p0:c0-820]",
+              "end": 820,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s7:p0",
+              "section": "Word Error Correction",
+              "start": 0,
+              "text": "Data: We evaluate the spell correctors from § \"Robust Word Recognition\" on movie reviews from the Stanford Sentiment Treebank (SST) BIBREF24 . The SST dataset consists of 8544 movie reviews, with a vocabulary of over 16K words. As a background corpus, we use the IMDB movie reviews BIBREF25 , which contain 54K movie reviews, and a vocabulary of over 78K words. The two datasets do not share any reviews in common. The spell-correction models are evaluated on their ability to correct misspellings. The test setting consists of reviews where each word (with length $\\ge 4$ , barring stopwords) is attacked by one of the attack types (from swap, add, drop and keyboard attacks). In the all attack setting, we mix all attacks by randomly choosing one for each word. This most closely resembles a real world attack setting.",
+              "text_sha256": "7e1d17668fa51c7048f7276d840cb923de00888db1a6e1586e267e717a760d92",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p6:c0-496",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p6:c0-496]",
+              "end": 496,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s0:p6",
+              "section": "Introduction",
+              "start": 0,
+              "text": "Fourth, we offer a detailed qualitative analysis, demonstrating that a low word error rate alone is insufficient for a word recognizer to confer robustness on the downstream task. Additionally, we find that it is important that the recognition model supply few degrees of freedom to an attacker. We provide a metric to quantify this notion of sensitivity in word recognition models and study its relation to robustness empirically. Models with low sensitivity and word error rate are most robust.",
+              "text_sha256": "50d3795d5c493b51c9cb5ff39337f1db4423256da26b9c4e2859286f6a267659",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p2:c0-456",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s0:p2:c0-456]",
+              "end": 456,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s0:p2",
+              "section": "Introduction",
+              "start": 0,
+              "text": "In this paper, we focus on adversarially-chosen spelling mistakes in the context of text classification, addressing the following attack types: dropping, adding, and swapping internal characters within words. These perturbations are inspired by psycholinguistic studies BIBREF4 , BIBREF5 which demonstrated that humans can comprehend text altered by jumbling internal characters, provided that the first and last characters of each word remain unperturbed.",
+              "text_sha256": "a9cfb4b7007ce8bd9ba4d5df03512fd2ad33bb75150d41bc17ad22aa07143c33",
+              "truncated": false
+            },
+            {
+              "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1905.11268:s10:p0:c0-606",
+              "citation": "[pipaper-full-index-v1-e7699c38391f1315:1905.11268:s10:p0:c0-606]",
+              "end": 606,
+              "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+              "paper_id": "1905.11268",
+              "paragraph_id": "1905.11268:s10:p0",
+              "section": "Conclusion",
+              "start": 0,
+              "text": "As character and word-piece inputs become commonplace in modern NLP pipelines, it is worth highlighting the vulnerability they add. We show that minimally-doctored attacks can bring down accuracy of classifiers to random guessing. We recommend word recognition as a safeguard against this and build upon RNN-based semi-character word recognizers. We discover that when used as a defense mechanism, the most accurate word recognition models are not always the most robust against adversarial attacks. Additionally, we highlight the need to control the sensitivity of these models to achieve high robustness.",
+              "text_sha256": "996790c16c08f85e98c8f94b1a3698e204d560b544c8f628e0d98581a7338c2e",
+              "truncated": false
+            }
+          ]
+        }
+      ],
+      "failure_code": "INVALID_CITATION"
+    }
+  ],
+  "dependent_cases": [
+    "full-v1-t-dialogue05-t2",
+    "full-v1-t-dialogue05-t3",
+    "full-v1-t-dialogue11-t3"
+  ],
+  "real_model_requests": 0,
+  "gold_loaded": false
+}

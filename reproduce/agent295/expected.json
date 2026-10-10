@@ -1,0 +1,1337 @@
+{
+  "original_main": {
+    "A": {
+      "task": {
+        "correct": 167,
+        "n": 295,
+        "pending": 0,
+        "value": 0.5661016949152542
+      },
+      "completion": {
+        "correct": 256,
+        "n": 295,
+        "pending": 0,
+        "value": 0.8677966101694915
+      },
+      "citations": {
+        "correct": 179,
+        "n": 242,
+        "pending": 0,
+        "value": 0.7396694214876033
+      },
+      "memory": {
+        "correct": 84,
+        "n": 90,
+        "pending": 0,
+        "value": 0.9333333333333333
+      },
+      "failures": {
+        "INVALID_AUTHORIZATION": 1,
+        "INVALID_CITATION": 30,
+        "DEPENDENCY_FAILED": 5,
+        "ANSWER_SCHEMA_ERROR": 3
+      },
+      "citation_binding_support": {
+        "correct": 553,
+        "n": 624,
+        "pending": 0,
+        "value": 0.8862179487179487
+      },
+      "e2e70": {
+        "task": {
+          "correct": 35,
+          "n": 70,
+          "pending": 0,
+          "value": 0.5
+        },
+        "completion": {
+          "correct": 67,
+          "n": 70,
+          "pending": 0,
+          "value": 0.9571428571428572
+        },
+        "citations": {
+          "correct": 34,
+          "n": 49,
+          "pending": 0,
+          "value": 0.6938775510204082
+        },
+        "memory": {
+          "correct": 30,
+          "n": 30,
+          "pending": 0,
+          "value": 1.0
+        },
+        "failures": {
+          "INVALID_CITATION": 3
+        }
+      },
+      "test177": {
+        "task": {
+          "correct": 118,
+          "n": 177,
+          "pending": 0,
+          "value": 0.6666666666666666
+        },
+        "completion": {
+          "correct": 156,
+          "n": 177,
+          "pending": 0,
+          "value": 0.8813559322033898
+        },
+        "citations": {
+          "correct": 113,
+          "n": 144,
+          "pending": 0,
+          "value": 0.7847222222222222
+        },
+        "memory": {
+          "correct": 51,
+          "n": 54,
+          "pending": 0,
+          "value": 0.9444444444444444
+        },
+        "failures": {
+          "INVALID_CITATION": 17,
+          "DEPENDENCY_FAILED": 3,
+          "ANSWER_SCHEMA_ERROR": 1
+        }
+      }
+    },
+    "C": {
+      "task": {
+        "correct": 160,
+        "n": 295,
+        "pending": 0,
+        "value": 0.5423728813559322
+      },
+      "completion": {
+        "correct": 239,
+        "n": 295,
+        "pending": 0,
+        "value": 0.8101694915254237
+      },
+      "citations": {
+        "correct": 179,
+        "n": 242,
+        "pending": 0,
+        "value": 0.7396694214876033
+      },
+      "memory": {
+        "correct": 66,
+        "n": 90,
+        "pending": 0,
+        "value": 0.7333333333333333
+      },
+      "failures": {
+        "ANSWER_SCHEMA_ERROR": 15,
+        "CHECK_ERROR": 21,
+        "DEPENDENCY_FAILED": 17,
+        "INVALID_CITATION": 3
+      },
+      "citation_binding_support": {
+        "correct": 533,
+        "n": 559,
+        "pending": 0,
+        "value": 0.9534883720930233
+      },
+      "e2e70": {
+        "task": {
+          "correct": 28,
+          "n": 70,
+          "pending": 0,
+          "value": 0.4
+        },
+        "completion": {
+          "correct": 50,
+          "n": 70,
+          "pending": 0,
+          "value": 0.7142857142857143
+        },
+        "citations": {
+          "correct": 31,
+          "n": 49,
+          "pending": 0,
+          "value": 0.6326530612244898
+        },
+        "memory": {
+          "correct": 21,
+          "n": 30,
+          "pending": 0,
+          "value": 0.7
+        },
+        "failures": {
+          "ANSWER_SCHEMA_ERROR": 8,
+          "CHECK_ERROR": 6,
+          "DEPENDENCY_FAILED": 6
+        }
+      },
+      "test177": {
+        "task": {
+          "correct": 106,
+          "n": 177,
+          "pending": 0,
+          "value": 0.5988700564971752
+        },
+        "completion": {
+          "correct": 137,
+          "n": 177,
+          "pending": 0,
+          "value": 0.7740112994350282
+        },
+        "citations": {
+          "correct": 107,
+          "n": 144,
+          "pending": 0,
+          "value": 0.7430555555555556
+        },
+        "memory": {
+          "correct": 36,
+          "n": 54,
+          "pending": 0,
+          "value": 0.6666666666666666
+        },
+        "failures": {
+          "ANSWER_SCHEMA_ERROR": 11,
+          "CHECK_ERROR": 15,
+          "DEPENDENCY_FAILED": 13,
+          "INVALID_CITATION": 1
+        }
+      }
+    },
+    "C-no-reflect": {
+      "task": {
+        "correct": 167,
+        "n": 295,
+        "pending": 0,
+        "value": 0.5661016949152542
+      },
+      "completion": {
+        "correct": 276,
+        "n": 295,
+        "pending": 0,
+        "value": 0.9355932203389831
+      },
+      "citations": {
+        "correct": 215,
+        "n": 242,
+        "pending": 0,
+        "value": 0.8884297520661157
+      },
+      "memory": {
+        "correct": 86,
+        "n": 90,
+        "pending": 0,
+        "value": 0.9555555555555556
+      },
+      "failures": {
+        "INVALID_CITATION": 12,
+        "ANSWER_SCHEMA_ERROR": 5,
+        "DEPENDENCY_FAILED": 2
+      },
+      "citation_binding_support": {
+        "correct": 639,
+        "n": 670,
+        "pending": 0,
+        "value": 0.9537313432835821
+      },
+      "e2e70": {
+        "task": {
+          "correct": 36,
+          "n": 70,
+          "pending": 0,
+          "value": 0.5142857142857142
+        },
+        "completion": {
+          "correct": 66,
+          "n": 70,
+          "pending": 0,
+          "value": 0.9428571428571428
+        },
+        "citations": {
+          "correct": 39,
+          "n": 49,
+          "pending": 0,
+          "value": 0.7959183673469388
+        },
+        "memory": {
+          "correct": 28,
+          "n": 30,
+          "pending": 0,
+          "value": 0.9333333333333333
+        },
+        "failures": {
+          "INVALID_CITATION": 1,
+          "ANSWER_SCHEMA_ERROR": 2,
+          "DEPENDENCY_FAILED": 1
+        }
+      },
+      "test177": {
+        "task": {
+          "correct": 116,
+          "n": 177,
+          "pending": 0,
+          "value": 0.655367231638418
+        },
+        "completion": {
+          "correct": 167,
+          "n": 177,
+          "pending": 0,
+          "value": 0.943502824858757
+        },
+        "citations": {
+          "correct": 137,
+          "n": 144,
+          "pending": 0,
+          "value": 0.9513888888888888
+        },
+        "memory": {
+          "correct": 54,
+          "n": 54,
+          "pending": 0,
+          "value": 1.0
+        },
+        "failures": {
+          "INVALID_CITATION": 7,
+          "ANSWER_SCHEMA_ERROR": 3
+        }
+      }
+    }
+  },
+  "boundary_refusal": {
+    "A": {
+      "boundary55_action": {
+        "correct": 46,
+        "n": 55,
+        "pending": 0,
+        "value": 0.8363636363636363
+      },
+      "boundary15_refusal": {
+        "correct": 14,
+        "n": 15,
+        "pending": 0,
+        "value": 0.9333333333333333
+      },
+      "all17_refusal": {
+        "correct": 16,
+        "n": 17,
+        "pending": 0,
+        "value": 0.9411764705882353
+      },
+      "evidence_insufficient7_refusal": {
+        "correct": 6,
+        "n": 7,
+        "pending": 0,
+        "value": 0.8571428571428571
+      }
+    },
+    "C": {
+      "boundary55_action": {
+        "correct": 37,
+        "n": 55,
+        "pending": 0,
+        "value": 0.6727272727272727
+      },
+      "boundary15_refusal": {
+        "correct": 9,
+        "n": 15,
+        "pending": 0,
+        "value": 0.6
+      },
+      "all17_refusal": {
+        "correct": 11,
+        "n": 17,
+        "pending": 0,
+        "value": 0.6470588235294118
+      },
+      "evidence_insufficient7_refusal": {
+        "correct": 7,
+        "n": 7,
+        "pending": 0,
+        "value": 1.0
+      }
+    },
+    "C-no-reflect": {
+      "boundary55_action": {
+        "correct": 45,
+        "n": 55,
+        "pending": 0,
+        "value": 0.8181818181818182
+      },
+      "boundary15_refusal": {
+        "correct": 13,
+        "n": 15,
+        "pending": 0,
+        "value": 0.8666666666666667
+      },
+      "all17_refusal": {
+        "correct": 15,
+        "n": 17,
+        "pending": 0,
+        "value": 0.8823529411764706
+      },
+      "evidence_insufficient7_refusal": {
+        "correct": 7,
+        "n": 7,
+        "pending": 0,
+        "value": 1.0
+      }
+    }
+  },
+  "compression": {
+    "A": {
+      "retry56": {
+        "task": {
+          "correct": 34,
+          "n": 56,
+          "pending": 0,
+          "value": 0.6071428571428571
+        },
+        "completion": {
+          "correct": 53,
+          "n": 56,
+          "pending": 0,
+          "value": 0.9464285714285714
+        },
+        "citations": {
+          "correct": 45,
+          "n": 56,
+          "pending": 0,
+          "value": 0.8035714285714286
+        },
+        "memory": {
+          "correct": 36,
+          "n": 42,
+          "pending": 0,
+          "value": 0.8571428571428571
+        },
+        "failures": {
+          "INVALID_CITATION": 2,
+          "DEPENDENCY_FAILED": 1
+        }
+      },
+      "original120": {
+        "task": {
+          "correct": 33,
+          "n": 120,
+          "pending": 0,
+          "value": 0.275
+        },
+        "completion": {
+          "correct": 62,
+          "n": 120,
+          "pending": 0,
+          "value": 0.5166666666666667
+        },
+        "citations": {
+          "correct": 44,
+          "n": 119,
+          "pending": 0,
+          "value": 0.3697478991596639
+        },
+        "memory": {
+          "correct": 42,
+          "n": 90,
+          "pending": 0,
+          "value": 0.4666666666666667
+        },
+        "failures": {
+          "ANSWER_SCHEMA_ERROR": 1,
+          "INVALID_CITATION": 1,
+          "MODEL_ERROR": 14,
+          "DEPENDENCY_FAILED": 42
+        }
+      },
+      "service_recovered120": {
+        "task": {
+          "correct": 67,
+          "n": 120,
+          "pending": 0,
+          "value": 0.5583333333333333
+        },
+        "completion": {
+          "correct": 115,
+          "n": 120,
+          "pending": 0,
+          "value": 0.9583333333333334
+        },
+        "citations": {
+          "correct": 89,
+          "n": 119,
+          "pending": 0,
+          "value": 0.7478991596638656
+        },
+        "memory": {
+          "correct": 78,
+          "n": 90,
+          "pending": 0,
+          "value": 0.8666666666666667
+        },
+        "failures": {
+          "ANSWER_SCHEMA_ERROR": 1,
+          "INVALID_CITATION": 3,
+          "DEPENDENCY_FAILED": 1
+        }
+      },
+      "without_compression120": {
+        "task": {
+          "correct": 69,
+          "n": 120,
+          "pending": 0,
+          "value": 0.575
+        },
+        "completion": {
+          "correct": 116,
+          "n": 120,
+          "pending": 0,
+          "value": 0.9666666666666667
+        },
+        "citations": {
+          "correct": 87,
+          "n": 119,
+          "pending": 0,
+          "value": 0.7310924369747899
+        },
+        "memory": {
+          "correct": 86,
+          "n": 90,
+          "pending": 0,
+          "value": 0.9555555555555556
+        },
+        "failures": {
+          "INVALID_CITATION": 2,
+          "DEPENDENCY_FAILED": 2
+        }
+      },
+      "t3": {
+        "task": {
+          "correct": 22,
+          "n": 30,
+          "pending": 0,
+          "value": 0.7333333333333333
+        },
+        "completion": {
+          "correct": 29,
+          "n": 30,
+          "pending": 0,
+          "value": 0.9666666666666667
+        },
+        "citations": {
+          "correct": 24,
+          "n": 29,
+          "pending": 0,
+          "value": 0.8275862068965517
+        },
+        "memory": {
+          "correct": 29,
+          "n": 30,
+          "pending": 0,
+          "value": 0.9666666666666667
+        },
+        "failures": {
+          "INVALID_CITATION": 1
+        }
+      },
+      "t4": {
+        "task": {
+          "correct": 6,
+          "n": 30,
+          "pending": 0,
+          "value": 0.2
+        },
+        "completion": {
+          "correct": 26,
+          "n": 30,
+          "pending": 0,
+          "value": 0.8666666666666667
+        },
+        "citations": {
+          "correct": 15,
+          "n": 30,
+          "pending": 0,
+          "value": 0.5
+        },
+        "memory": {
+          "correct": 19,
+          "n": 30,
+          "pending": 0,
+          "value": 0.6333333333333333
+        },
+        "failures": {
+          "ANSWER_SCHEMA_ERROR": 1,
+          "INVALID_CITATION": 2,
+          "DEPENDENCY_FAILED": 1
+        }
+      },
+      "controls": {
+        "planned_t3": 30,
+        "manual_compaction_succeeded": 30,
+        "planned_t4": 30,
+        "snapshot_revalidated": 29,
+        "recovery_answer_completed": 26,
+        "automatic_compaction_ends": 0
+      },
+      "paired_tokens": {
+        "n_paired_dialogues": 25,
+        "mean_without_compression_tokens": 51973.64,
+        "mean_compression_recovery_tokens": 43867.76,
+        "reduction_fraction": 0.1559613681089106,
+        "pairs": [
+          {
+            "session_key": "full-v1-d-dialogue01",
+            "without_compression_tokens": 59697,
+            "compression_recovery_tokens": 36565
+          },
+          {
+            "session_key": "full-v1-d-dialogue02",
+            "without_compression_tokens": 48657,
+            "compression_recovery_tokens": 49723
+          },
+          {
+            "session_key": "full-v1-d-dialogue03",
+            "without_compression_tokens": 47416,
+            "compression_recovery_tokens": 43677
+          },
+          {
+            "session_key": "full-v1-d-dialogue04",
+            "without_compression_tokens": 33204,
+            "compression_recovery_tokens": 45106
+          },
+          {
+            "session_key": "full-v1-d-dialogue05",
+            "without_compression_tokens": 59019,
+            "compression_recovery_tokens": 55211
+          },
+          {
+            "session_key": "full-v1-d-dialogue06",
+            "without_compression_tokens": 33904,
+            "compression_recovery_tokens": 32012
+          },
+          {
+            "session_key": "full-v1-d-dialogue07",
+            "without_compression_tokens": 37731,
+            "compression_recovery_tokens": 40820
+          },
+          {
+            "session_key": "full-v1-d-dialogue08",
+            "without_compression_tokens": 36713,
+            "compression_recovery_tokens": 27017
+          },
+          {
+            "session_key": "full-v1-d-dialogue09",
+            "without_compression_tokens": 75831,
+            "compression_recovery_tokens": 44960
+          },
+          {
+            "session_key": "full-v1-d-dialogue10",
+            "without_compression_tokens": 86038,
+            "compression_recovery_tokens": 55347
+          },
+          {
+            "session_key": "full-v1-d-dialogue11",
+            "without_compression_tokens": 102611,
+            "compression_recovery_tokens": 39988
+          },
+          {
+            "session_key": "full-v1-t-dialogue00",
+            "without_compression_tokens": 47017,
+            "compression_recovery_tokens": 35866
+          },
+          {
+            "session_key": "full-v1-t-dialogue01",
+            "without_compression_tokens": 75959,
+            "compression_recovery_tokens": 76609
+          },
+          {
+            "session_key": "full-v1-t-dialogue02",
+            "without_compression_tokens": 40100,
+            "compression_recovery_tokens": 37523
+          },
+          {
+            "session_key": "full-v1-t-dialogue04",
+            "without_compression_tokens": 71309,
+            "compression_recovery_tokens": 35863
+          },
+          {
+            "session_key": "full-v1-t-dialogue05",
+            "without_compression_tokens": 41682,
+            "compression_recovery_tokens": 53539
+          },
+          {
+            "session_key": "full-v1-t-dialogue07",
+            "without_compression_tokens": 58348,
+            "compression_recovery_tokens": 43881
+          },
+          {
+            "session_key": "full-v1-t-dialogue08",
+            "without_compression_tokens": 37919,
+            "compression_recovery_tokens": 53745
+          },
+          {
+            "session_key": "full-v1-t-dialogue10",
+            "without_compression_tokens": 37881,
+            "compression_recovery_tokens": 41428
+          },
+          {
+            "session_key": "full-v1-t-dialogue11",
+            "without_compression_tokens": 49463,
+            "compression_recovery_tokens": 33767
+          },
+          {
+            "session_key": "full-v1-t-dialogue12",
+            "without_compression_tokens": 40984,
+            "compression_recovery_tokens": 35367
+          },
+          {
+            "session_key": "full-v1-t-dialogue13",
+            "without_compression_tokens": 53964,
+            "compression_recovery_tokens": 36487
+          },
+          {
+            "session_key": "full-v1-t-dialogue15",
+            "without_compression_tokens": 41623,
+            "compression_recovery_tokens": 35687
+          },
+          {
+            "session_key": "full-v1-t-dialogue16",
+            "without_compression_tokens": 40928,
+            "compression_recovery_tokens": 44003
+          },
+          {
+            "session_key": "full-v1-t-dialogue17",
+            "without_compression_tokens": 41343,
+            "compression_recovery_tokens": 62503
+          }
+        ],
+        "scope": "same four-turn dialogue; jointly completed; complete totalTokens; includes auxiliary/repair/compaction; descriptive across time periods"
+      }
+    },
+    "C": {
+      "retry56": {
+        "task": {
+          "correct": 28,
+          "n": 56,
+          "pending": 0,
+          "value": 0.5
+        },
+        "completion": {
+          "correct": 51,
+          "n": 56,
+          "pending": 0,
+          "value": 0.9107142857142857
+        },
+        "citations": {
+          "correct": 42,
+          "n": 56,
+          "pending": 0,
+          "value": 0.75
+        },
+        "memory": {
+          "correct": 34,
+          "n": 42,
+          "pending": 0,
+          "value": 0.8095238095238095
+        },
+        "failures": {
+          "CHECK_ERROR": 3,
+          "ANSWER_SCHEMA_ERROR": 1,
+          "DEPENDENCY_FAILED": 1
+        }
+      },
+      "original120": {
+        "task": {
+          "correct": 36,
+          "n": 120,
+          "pending": 0,
+          "value": 0.3
+        },
+        "completion": {
+          "correct": 53,
+          "n": 120,
+          "pending": 0,
+          "value": 0.44166666666666665
+        },
+        "citations": {
+          "correct": 47,
+          "n": 119,
+          "pending": 0,
+          "value": 0.3949579831932773
+        },
+        "memory": {
+          "correct": 37,
+          "n": 90,
+          "pending": 0,
+          "value": 0.4111111111111111
+        },
+        "failures": {
+          "CHECK_ERROR": 5,
+          "DEPENDENCY_FAILED": 47,
+          "ANSWER_SCHEMA_ERROR": 1,
+          "MODEL_ERROR": 14
+        }
+      },
+      "service_recovered120": {
+        "task": {
+          "correct": 64,
+          "n": 120,
+          "pending": 0,
+          "value": 0.5333333333333333
+        },
+        "completion": {
+          "correct": 104,
+          "n": 120,
+          "pending": 0,
+          "value": 0.8666666666666667
+        },
+        "citations": {
+          "correct": 89,
+          "n": 119,
+          "pending": 0,
+          "value": 0.7478991596638656
+        },
+        "memory": {
+          "correct": 71,
+          "n": 90,
+          "pending": 0,
+          "value": 0.7888888888888889
+        },
+        "failures": {
+          "CHECK_ERROR": 8,
+          "DEPENDENCY_FAILED": 6,
+          "ANSWER_SCHEMA_ERROR": 2
+        }
+      },
+      "without_compression120": {
+        "task": {
+          "correct": 59,
+          "n": 120,
+          "pending": 0,
+          "value": 0.49166666666666664
+        },
+        "completion": {
+          "correct": 91,
+          "n": 120,
+          "pending": 0,
+          "value": 0.7583333333333333
+        },
+        "citations": {
+          "correct": 75,
+          "n": 119,
+          "pending": 0,
+          "value": 0.6302521008403361
+        },
+        "memory": {
+          "correct": 64,
+          "n": 90,
+          "pending": 0,
+          "value": 0.7111111111111111
+        },
+        "failures": {
+          "CHECK_ERROR": 8,
+          "DEPENDENCY_FAILED": 16,
+          "ANSWER_SCHEMA_ERROR": 4,
+          "INVALID_CITATION": 1
+        }
+      },
+      "t3": {
+        "task": {
+          "correct": 19,
+          "n": 30,
+          "pending": 0,
+          "value": 0.6333333333333333
+        },
+        "completion": {
+          "correct": 25,
+          "n": 30,
+          "pending": 0,
+          "value": 0.8333333333333334
+        },
+        "citations": {
+          "correct": 21,
+          "n": 29,
+          "pending": 0,
+          "value": 0.7241379310344828
+        },
+        "memory": {
+          "correct": 25,
+          "n": 30,
+          "pending": 0,
+          "value": 0.8333333333333334
+        },
+        "failures": {
+          "CHECK_ERROR": 3,
+          "DEPENDENCY_FAILED": 1,
+          "ANSWER_SCHEMA_ERROR": 1
+        }
+      },
+      "t4": {
+        "task": {
+          "correct": 7,
+          "n": 30,
+          "pending": 0,
+          "value": 0.23333333333333334
+        },
+        "completion": {
+          "correct": 20,
+          "n": 30,
+          "pending": 0,
+          "value": 0.6666666666666666
+        },
+        "citations": {
+          "correct": 14,
+          "n": 30,
+          "pending": 0,
+          "value": 0.4666666666666667
+        },
+        "memory": {
+          "correct": 17,
+          "n": 30,
+          "pending": 0,
+          "value": 0.5666666666666667
+        },
+        "failures": {
+          "DEPENDENCY_FAILED": 5,
+          "CHECK_ERROR": 4,
+          "ANSWER_SCHEMA_ERROR": 1
+        }
+      },
+      "controls": {
+        "planned_t3": 30,
+        "manual_compaction_succeeded": 29,
+        "planned_t4": 30,
+        "snapshot_revalidated": 25,
+        "recovery_answer_completed": 20,
+        "automatic_compaction_ends": 0
+      },
+      "paired_tokens": {
+        "n_paired_dialogues": 13,
+        "mean_without_compression_tokens": 105792.23076923077,
+        "mean_compression_recovery_tokens": 91978.07692307692,
+        "reduction_fraction": 0.13057815064215128,
+        "pairs": [
+          {
+            "session_key": "full-v1-d-dialogue00",
+            "without_compression_tokens": 92157,
+            "compression_recovery_tokens": 90887
+          },
+          {
+            "session_key": "full-v1-d-dialogue05",
+            "without_compression_tokens": 128500,
+            "compression_recovery_tokens": 89679
+          },
+          {
+            "session_key": "full-v1-d-dialogue07",
+            "without_compression_tokens": 91516,
+            "compression_recovery_tokens": 109775
+          },
+          {
+            "session_key": "full-v1-d-dialogue09",
+            "without_compression_tokens": 128454,
+            "compression_recovery_tokens": 84698
+          },
+          {
+            "session_key": "full-v1-t-dialogue00",
+            "without_compression_tokens": 116837,
+            "compression_recovery_tokens": 92982
+          },
+          {
+            "session_key": "full-v1-t-dialogue02",
+            "without_compression_tokens": 89100,
+            "compression_recovery_tokens": 75032
+          },
+          {
+            "session_key": "full-v1-t-dialogue03",
+            "without_compression_tokens": 72868,
+            "compression_recovery_tokens": 117715
+          },
+          {
+            "session_key": "full-v1-t-dialogue05",
+            "without_compression_tokens": 90698,
+            "compression_recovery_tokens": 76456
+          },
+          {
+            "session_key": "full-v1-t-dialogue06",
+            "without_compression_tokens": 91359,
+            "compression_recovery_tokens": 75353
+          },
+          {
+            "session_key": "full-v1-t-dialogue09",
+            "without_compression_tokens": 106922,
+            "compression_recovery_tokens": 93502
+          },
+          {
+            "session_key": "full-v1-t-dialogue11",
+            "without_compression_tokens": 106161,
+            "compression_recovery_tokens": 70670
+          },
+          {
+            "session_key": "full-v1-t-dialogue14",
+            "without_compression_tokens": 152230,
+            "compression_recovery_tokens": 133310
+          },
+          {
+            "session_key": "full-v1-t-dialogue16",
+            "without_compression_tokens": 108497,
+            "compression_recovery_tokens": 85656
+          }
+        ],
+        "scope": "same four-turn dialogue; jointly completed; complete totalTokens; includes auxiliary/repair/compaction; descriptive across time periods"
+      }
+    },
+    "C-no-reflect": {
+      "retry56": {
+        "task": {
+          "correct": 27,
+          "n": 56,
+          "pending": 0,
+          "value": 0.48214285714285715
+        },
+        "completion": {
+          "correct": 54,
+          "n": 56,
+          "pending": 0,
+          "value": 0.9642857142857143
+        },
+        "citations": {
+          "correct": 52,
+          "n": 56,
+          "pending": 0,
+          "value": 0.9285714285714286
+        },
+        "memory": {
+          "correct": 34,
+          "n": 42,
+          "pending": 0,
+          "value": 0.8095238095238095
+        },
+        "failures": {
+          "INVALID_CITATION": 1,
+          "DEPENDENCY_FAILED": 1
+        }
+      },
+      "original120": {
+        "task": {
+          "correct": 30,
+          "n": 120,
+          "pending": 0,
+          "value": 0.25
+        },
+        "completion": {
+          "correct": 55,
+          "n": 120,
+          "pending": 0,
+          "value": 0.4583333333333333
+        },
+        "citations": {
+          "correct": 40,
+          "n": 119,
+          "pending": 0,
+          "value": 0.33613445378151263
+        },
+        "memory": {
+          "correct": 39,
+          "n": 90,
+          "pending": 0,
+          "value": 0.43333333333333335
+        },
+        "failures": {
+          "INVALID_CITATION": 2,
+          "DEPENDENCY_FAILED": 46,
+          "ANSWER_SCHEMA_ERROR": 3,
+          "MODEL_ERROR": 14
+        }
+      },
+      "service_recovered120": {
+        "task": {
+          "correct": 57,
+          "n": 120,
+          "pending": 0,
+          "value": 0.475
+        },
+        "completion": {
+          "correct": 109,
+          "n": 120,
+          "pending": 0,
+          "value": 0.9083333333333333
+        },
+        "citations": {
+          "correct": 92,
+          "n": 119,
+          "pending": 0,
+          "value": 0.773109243697479
+        },
+        "memory": {
+          "correct": 73,
+          "n": 90,
+          "pending": 0,
+          "value": 0.8111111111111111
+        },
+        "failures": {
+          "INVALID_CITATION": 3,
+          "DEPENDENCY_FAILED": 5,
+          "ANSWER_SCHEMA_ERROR": 3
+        }
+      },
+      "without_compression120": {
+        "task": {
+          "correct": 59,
+          "n": 120,
+          "pending": 0,
+          "value": 0.49166666666666664
+        },
+        "completion": {
+          "correct": 118,
+          "n": 120,
+          "pending": 0,
+          "value": 0.9833333333333333
+        },
+        "citations": {
+          "correct": 95,
+          "n": 119,
+          "pending": 0,
+          "value": 0.7983193277310925
+        },
+        "memory": {
+          "correct": 88,
+          "n": 90,
+          "pending": 0,
+          "value": 0.9777777777777777
+        },
+        "failures": {
+          "ANSWER_SCHEMA_ERROR": 1,
+          "DEPENDENCY_FAILED": 1
+        }
+      },
+      "t3": {
+        "task": {
+          "correct": 15,
+          "n": 30,
+          "pending": 0,
+          "value": 0.5
+        },
+        "completion": {
+          "correct": 26,
+          "n": 30,
+          "pending": 0,
+          "value": 0.8666666666666667
+        },
+        "citations": {
+          "correct": 22,
+          "n": 29,
+          "pending": 0,
+          "value": 0.7586206896551724
+        },
+        "memory": {
+          "correct": 26,
+          "n": 30,
+          "pending": 0,
+          "value": 0.8666666666666667
+        },
+        "failures": {
+          "DEPENDENCY_FAILED": 1,
+          "ANSWER_SCHEMA_ERROR": 2,
+          "INVALID_CITATION": 1
+        }
+      },
+      "t4": {
+        "task": {
+          "correct": 7,
+          "n": 30,
+          "pending": 0,
+          "value": 0.23333333333333334
+        },
+        "completion": {
+          "correct": 24,
+          "n": 30,
+          "pending": 0,
+          "value": 0.8
+        },
+        "citations": {
+          "correct": 18,
+          "n": 30,
+          "pending": 0,
+          "value": 0.6
+        },
+        "memory": {
+          "correct": 18,
+          "n": 30,
+          "pending": 0,
+          "value": 0.6
+        },
+        "failures": {
+          "DEPENDENCY_FAILED": 4,
+          "INVALID_CITATION": 1,
+          "ANSWER_SCHEMA_ERROR": 1
+        }
+      },
+      "controls": {
+        "planned_t3": 30,
+        "manual_compaction_succeeded": 29,
+        "planned_t4": 30,
+        "snapshot_revalidated": 26,
+        "recovery_answer_completed": 24,
+        "automatic_compaction_ends": 0
+      },
+      "paired_tokens": {
+        "n_paired_dialogues": 23,
+        "mean_without_compression_tokens": 54472.13043478261,
+        "mean_compression_recovery_tokens": 47031.913043478264,
+        "reduction_fraction": 0.1365875968484881,
+        "pairs": [
+          {
+            "session_key": "full-v1-d-dialogue00",
+            "without_compression_tokens": 45980,
+            "compression_recovery_tokens": 58183
+          },
+          {
+            "session_key": "full-v1-d-dialogue01",
+            "without_compression_tokens": 75069,
+            "compression_recovery_tokens": 41246
+          },
+          {
+            "session_key": "full-v1-d-dialogue02",
+            "without_compression_tokens": 46347,
+            "compression_recovery_tokens": 46680
+          },
+          {
+            "session_key": "full-v1-d-dialogue03",
+            "without_compression_tokens": 47500,
+            "compression_recovery_tokens": 33972
+          },
+          {
+            "session_key": "full-v1-d-dialogue04",
+            "without_compression_tokens": 59321,
+            "compression_recovery_tokens": 54602
+          },
+          {
+            "session_key": "full-v1-d-dialogue05",
+            "without_compression_tokens": 53190,
+            "compression_recovery_tokens": 40940
+          },
+          {
+            "session_key": "full-v1-d-dialogue06",
+            "without_compression_tokens": 41227,
+            "compression_recovery_tokens": 40975
+          },
+          {
+            "session_key": "full-v1-d-dialogue07",
+            "without_compression_tokens": 44524,
+            "compression_recovery_tokens": 47204
+          },
+          {
+            "session_key": "full-v1-d-dialogue08",
+            "without_compression_tokens": 105910,
+            "compression_recovery_tokens": 49949
+          },
+          {
+            "session_key": "full-v1-d-dialogue09",
+            "without_compression_tokens": 56031,
+            "compression_recovery_tokens": 59624
+          },
+          {
+            "session_key": "full-v1-d-dialogue10",
+            "without_compression_tokens": 45934,
+            "compression_recovery_tokens": 38475
+          },
+          {
+            "session_key": "full-v1-t-dialogue00",
+            "without_compression_tokens": 61477,
+            "compression_recovery_tokens": 54528
+          },
+          {
+            "session_key": "full-v1-t-dialogue02",
+            "without_compression_tokens": 44466,
+            "compression_recovery_tokens": 48770
+          },
+          {
+            "session_key": "full-v1-t-dialogue04",
+            "without_compression_tokens": 43947,
+            "compression_recovery_tokens": 51848
+          },
+          {
+            "session_key": "full-v1-t-dialogue07",
+            "without_compression_tokens": 86129,
+            "compression_recovery_tokens": 34169
+          },
+          {
+            "session_key": "full-v1-t-dialogue08",
+            "without_compression_tokens": 43981,
+            "compression_recovery_tokens": 42456
+          },
+          {
+            "session_key": "full-v1-t-dialogue09",
+            "without_compression_tokens": 52732,
+            "compression_recovery_tokens": 38323
+          },
+          {
+            "session_key": "full-v1-t-dialogue10",
+            "without_compression_tokens": 50263,
+            "compression_recovery_tokens": 41194
+          },
+          {
+            "session_key": "full-v1-t-dialogue13",
+            "without_compression_tokens": 49978,
+            "compression_recovery_tokens": 56595
+          },
+          {
+            "session_key": "full-v1-t-dialogue14",
+            "without_compression_tokens": 50811,
+            "compression_recovery_tokens": 52422
+          },
+          {
+            "session_key": "full-v1-t-dialogue15",
+            "without_compression_tokens": 39645,
+            "compression_recovery_tokens": 49301
+          },
+          {
+            "session_key": "full-v1-t-dialogue16",
+            "without_compression_tokens": 40713,
+            "compression_recovery_tokens": 47600
+          },
+          {
+            "session_key": "full-v1-t-dialogue17",
+            "without_compression_tokens": 67684,
+            "compression_recovery_tokens": 52678
+          }
+        ],
+        "scope": "same four-turn dialogue; jointly completed; complete totalTokens; includes auxiliary/repair/compaction; descriptive across time periods"
+      }
+    }
+  },
+  "query_rewrite": {
+    "C": {
+      "n": 100,
+      "present": 97,
+      "missing": 3,
+      "correct": 81,
+      "accuracy_all": 0.81,
+      "accuracy_with_rewrite": 0.8350515463917526,
+      "coverage": 0.97
+    },
+    "C-no-reflect": {
+      "n": 100,
+      "present": 98,
+      "missing": 2,
+      "correct": 86,
+      "accuracy_all": 0.86,
+      "accuracy_with_rewrite": 0.8775510204081632,
+      "coverage": 0.98
+    }
+  },
+  "retry": {
+    "planned": 168,
+    "finished": 168,
+    "completed": 158,
+    "failures": {
+      "INVALID_CITATION": 3,
+      "DEPENDENCY_FAILED": 3,
+      "CHECK_ERROR": 3,
+      "ANSWER_SCHEMA_ERROR": 1
+    },
+    "credit_error_cases": 0,
+    "selected_first_credit_errors": 42,
+    "selected_dependency_failures": 126,
+    "other_original_failures_not_rerun": 171
+  },
+  "reflect_evidence_insufficient_difference_pp": 0.0
+}

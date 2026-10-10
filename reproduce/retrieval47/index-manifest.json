@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+  "identity": {
+    "parent": {
+      "papers_sha256": "e360ee218d8cc14751343ec90bc49c32c90a43d352f7472378dd4c23311f1654",
+      "corpus_manifest_sha256": "bf266ed2624ae155d99bfc5963c49f678f67032d7c1e855bcad63a15998f4352",
+      "p1_index_version": "pipaper-full-source-v1-e360ee218d8cc147",
+      "paper_count": 48
+    },
+    "recipe": {
+      "recipe_version": "pipaper-full-chunks-v1",
+      "window_tokens_including_special": 512,
+      "overlap_content_tokens": 64,
+      "paragraph_policy": "one paragraph; preserve raw source slices",
+      "no_title_or_section_prefix": true,
+      "dense_pooling": "normalized_cls",
+      "device": "cuda",
+      "dtype": "float16",
+      "batch_size": 1,
+      "faiss": "IndexFlatIP",
+      "bm25": {
+        "token_pattern": "[a-z0-9]+(?:'[a-z0-9]+)?",
+        "normalization": "casefold",
+        "stopwords": false,
+        "stemming": false,
+        "k1": 1.5,
+        "b": 0.75,
+        "epsilon": 0.25
+      },
+      "branch_candidates": 20,
+      "rrf_k": 60,
+      "rrf_rank_origin": 1,
+      "rrf_weights": [
+        1,
+        1
+      ],
+      "output_top_k": 5,
+      "output_max_codepoints": 2000,
+      "reranker_truncation": false,
+      "reranker_pair_max_tokens": 8192,
+      "query_max_codepoints": 1000,
+      "query_normalization": "public_metadata_prefix_v1",
+      "tie_break": "chunk_id ascending",
+      "window_max_codepoints": 2000,
+      "window_policy": "joint token and raw codepoint bounds; shrink at original token offsets; continuous coverage"
+    },
+    "models": {
+      "dense": {
+        "repo": "BAAI/bge-m3",
+        "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+        "files": {
+          "config.json": "26159e7ad065073448460117eb24b7a4572f6f4e78eadff65dc0a11c052449fa",
+          "tokenizer.json": "21106b6d7dab2952c1d496fb21d5dc9db75c28ed361a05f5020bbba27810dd08",
+          "tokenizer_config.json": "a62b2b6784f990259fddef5f16388693a8043be4f69179e6a5257eeb3f9abac4",
+          "special_tokens_map.json": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835",
+          "sentencepiece.bpe.model": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865",
+          "pytorch_model.bin": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38"
+        }
+      },
+      "reranker": {
+        "repo": "BAAI/bge-reranker-v2-m3",
+        "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+        "files": {
+          "config.json": "13dcd6c31d9fec9d1d8e158702072f62d7fa7d312a64b9fe057bec9a08cfe41a",
+          "tokenizer.json": "69564b696052886ed0ac63fa393e928384e0f8caada38c1f4864a9bfbf379c15",
+          "tokenizer_config.json": "7e4c1cc848840aeccdd763458c18dd525eb0f795c992e00ebe9c28554e7db2d4",
+          "special_tokens_map.json": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835",
+          "sentencepiece.bpe.model": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865",
+          "model.safetensors": "d9e3e081faff1eefb84019509b2f5558fd74c1a05a2c7db22f74174fcedb5286"
+        }
+      }
+    },
+    "dependencies": {
+      "torch": "2.9.1+cu128",
+      "transformers": "4.57.3",
+      "tokenizers": "0.22.2",
+      "numpy": "2.3.5",
+      "faiss-cpu": "1.15.1",
+      "rank-bm25": "0.2.2",
+      "huggingface-hub": "0.36.2"
+    }
+  },
+  "chunk_count": 2450,
+  "paper_count": 48,
+  "dense_dimensions": 1024,
+  "files": {
+    "chunks.jsonl": "c767212bb78bf57b0f8f1a77e6d506e468264105e507af639629939412c591fe",
+    "source-map.jsonl": "a5b414dfb295a4e42618f0c4e128925c6f6f91e0462f7ea37f5da19f15b609dc",
+    "bm25.json": "f605b4580c9842b0216ae7be557195c2be3f52f20ea356c9eedd7e11af2a329b",
+    "dense-vectors.npy": "dc4d52f287734cdf5a36ad1464f8b62326cbf1ab247e61c12e437c29a11d5afb",
+    "dense.index": "0b09c2caef04e0beaaf35700e08d444ee2997b8cec5a9b4b8a9dd52765955a8b"
+  },
+  "supported_profiles": [
+    "dense",
+    "bm25",
+    "rrf",
+    "rrf_rerank"
+  ],
+  "gold_loaded": false,
+  "model_api_calls": 0
+}

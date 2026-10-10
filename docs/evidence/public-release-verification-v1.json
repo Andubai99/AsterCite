@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "identity": "public-release-verification-v1",
+  "status": "offline_checks_passed",
+  "scope": "isolated install, offline SDK contracts, source restoration, saved-score reproduction, one original47 case across four retrieval profiles",
+  "generation_api_request_limit": 0,
+  "local_retrieval_query_limit": 4,
+  "local_retrieval_run_id": "public-readiness-001",
+  "local_retrieval_full_original47": false,
+  "changes_historical_results": false,
+  "paid_model_validation": "not_run",
+  "windows_environment": "Node24.11.1 / Python3.12.7 / uv0.10.12",
+  "independent_human_review": false,
+  "node_contract_tests": {
+    "passed": 56,
+    "failed": 0
+  },
+  "python_reproduction_tests": {
+    "passed": 4,
+    "failed": 0
+  },
+  "typecheck": "passed",
+  "isolated_npm_ci": "passed",
+  "source_corpus_restoration": {
+    "original47": "e360ee218d8cc14751343ec90bc49c32c90a43d352f7472378dd4c23311f1654",
+    "agent295": "cd7a41cd5998fa852d8f475f3091791cba3a4e40c059939c0adb3dec708ad9b6"
+  },
+  "local_retrieval_queries_finished": 4,
+  "local_retrieval_result_sha256": "87c1a31f80451a28864f0d2a9355928e75e1704ad2e10750e7e3c76861ef330e",
+  "legacy_protected_files_verified": 6094,
+  "github_publication": "pending",
+  "runtime_paid_model_calls": 0
+}

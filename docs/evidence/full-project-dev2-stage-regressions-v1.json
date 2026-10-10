@@ -1,0 +1,274 @@
+{
+  "version": 1,
+  "validation_mode": "saved ordinary visible real stage responses and current source replay; no hidden thinking or Gold",
+  "plan_path": "eval/full-v1/plans/full-v1-dev-batch-2.json",
+  "plan_sha256": "74c6d659740ca5d02621fedde8c157f28c06d36b65114ba1f16fa2728d32d59a",
+  "runtime_identity": "4bcee256beb1c510fa836fd65db3895d43f94b6bee76efd156e1392940264b19",
+  "cases": [
+    {
+      "root": "supported_source_span_bound_and_gap_branch",
+      "item_id": "full-v1-dev-batch-2/B/full-v1-d-dialogue02-t1",
+      "turn_sha256": "4dd2fa184e685384bacf1a6cd846308d8ae2b0896a345bd3ce4115209e4c5904",
+      "question_frame": {
+        "frame_id": "full-v1-dev-batch-2/B/full-v1-d-dialogue02-t1/question_frame",
+        "question_text": "In the paper \"Microsoft Research Asia's Systems for WMT19\" (1911.06191), Which language directions are machine translation systems of WMT evaluated on? Answer briefly in English.",
+        "candidate_papers": [
+          "1911.06191"
+        ],
+        "ordered_targets": [
+          "1911.06191"
+        ],
+        "information_needs": [
+          {
+            "need_id": "n1",
+            "text": "Which language directions are the machine translation systems for WMT19 evaluated on in the paper?"
+          }
+        ],
+        "queries": [
+          {
+            "query": "Microsoft Research Asia WMT19 systems evaluated language directions",
+            "paper_ids": [
+              "1911.06191"
+            ]
+          }
+        ],
+        "ambiguity": null,
+        "user_constraints": [
+          "answer_language: English"
+        ],
+        "intent": "single_paper_qa",
+        "follow_up": false,
+        "constraints": [
+          {
+            "key": "answer_language",
+            "value": "English",
+            "source_quote": "Answer briefly in English"
+          }
+        ],
+        "comparison_dimensions": []
+      },
+      "stages": [
+        {
+          "stage": "question_frame",
+          "status": "completed",
+          "value": {
+            "frame_id": "full-v1-dev-batch-2/B/full-v1-d-dialogue02-t1/question_frame",
+            "question_text": "In the paper \"Microsoft Research Asia's Systems for WMT19\" (1911.06191), Which language directions are machine translation systems of WMT evaluated on? Answer briefly in English.",
+            "candidate_papers": [
+              "1911.06191"
+            ],
+            "ordered_targets": [
+              "1911.06191"
+            ],
+            "information_needs": [
+              {
+                "need_id": "n1",
+                "text": "Which language directions are the machine translation systems for WMT19 evaluated on in the paper?"
+              }
+            ],
+            "queries": [
+              {
+                "query": "Microsoft Research Asia WMT19 systems evaluated language directions",
+                "paper_ids": [
+                  "1911.06191"
+                ]
+              }
+            ],
+            "ambiguity": null,
+            "user_constraints": [
+              "answer_language: English"
+            ],
+            "intent": "single_paper_qa",
+            "follow_up": false,
+            "constraints": [
+              {
+                "key": "answer_language",
+                "value": "English",
+                "source_quote": "Answer briefly in English"
+              }
+            ],
+            "comparison_dimensions": []
+          },
+          "request_id": "f8ace220-c6ee-43db-ac23-c82cd3020d81",
+          "frame_id": "full-v1-dev-batch-2/B/full-v1-d-dialogue02-t1/question_frame",
+          "response_text": "```json\n{\n  \"intent\": \"single_paper_qa\",\n  \"follow_up\": false,\n  \"candidate_papers\": [\"1911.06191\"],\n  \"ordered_targets\": [\"1911.06191\"],\n  \"information_needs\": [\"Which language directions are the machine translation systems for WMT19 evaluated on in the paper?\"],\n  \"queries\": [\n    {\n      \"query\": \"Microsoft Research Asia WMT19 systems evaluated language directions\",\n      \"paper_ids\": [\"1911.06191\"]\n    }\n  ],\n  \"ambiguity\": null,\n  \"constraints\": [\n    {\n      \"key\": \"answer_language\",\n      \"value\": \"English\",\n      \"source_quote\": \"Answer briefly in English\"\n    }\n  ],\n  \"comparison_dimensions\": []\n}\n```",
+          "response_truncated": false,
+          "normalizer": "single_fence"
+        },
+        {
+          "stage": "evidence_check",
+          "status": "schema_error",
+          "error": "checks[0].support_spans[0].quote: value=\"We participated in the WMT19 shared news translation task in 11 translation directions. We achieved first place for 8 directions: German$\\\\leftrightarrow $English, German$\\\\leftri; required nonempty string <=200 Unicode codepoints",
+          "request_id": "9dab73a9-cdcf-4f9f-84f9-81291f398d57",
+          "frame_id": "full-v1-dev-batch-2/B/full-v1-d-dialogue02-t1/question_frame",
+          "response_text": "```json\n{\n  \"checks\": [\n    {\n      \"need_id\": \"n1\",\n      \"status\": \"supported\",\n      \"basis\": \"explicit\",\n      \"finding\": \"The WMT19 systems were evaluated on 11 directions: German↔English, German↔French, Chinese↔English, English→Lithuanian, English→Finnish, Russian→English (first place), and Lithuanian→English, Finnish→English, English→Kazakh (second place).\",\n      \"support_spans\": [\n        {\n          \"chunk_id\": \"pipaper-full-index-v1-e7699c38391f1315:1911.06191:s0:p0:c0-501\",\n          \"quote\": \"We participated in the WMT19 shared news translation task in 11 translation directions. We achieved first place for 8 directions: German$\\\\leftrightarrow $English, German$\\\\leftrightarrow $French, Chinese$\\\\leftrightarrow $English, English$\\\\rightarrow $Lithuanian, English$\\\\rightarrow $Finnish, and Russian$\\\\rightarrow $English\"\n        },\n        {\n          \"chunk_id\": \"pipaper-full-index-v1-e7699c38391f1315:1911.06191:s0:p0:c0-501\",\n          \"quote\": \"and three other directions were placed second (ranked by teams), which included Lithuanian$\\\\rightarrow $English, Finnish$\\\\rightarrow $English, and English$\\\\rightarrow $Kazakh.\"\n        }\n      ],\n      \"gap_resolution\": \"The introduction explicitly enumerates all 11 evaluation directions (6 first-place and 3 second-place pairs), fully covering the need for the complete list of language directions.\"\n    }\n  ],\n  \"next_action\": \"answer\",\n  \"next_queries\": []\n}\n```",
+          "response_truncated": false,
+          "normalizer": "single_fence"
+        },
+        {
+          "stage": "evidence_check_format_repair",
+          "status": "truncated",
+          "request_id": "225b019b-6498-4fe9-8be0-590743ba0678",
+          "frame_id": "full-v1-dev-batch-2/B/full-v1-d-dialogue02-t1/question_frame",
+          "response_text": "",
+          "response_truncated": true,
+          "normalizer": "bare_json",
+          "error": "Auxiliary stage hit its declared output limit"
+        }
+      ],
+      "sources": [
+        {
+          "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1911.06191:s0:p0:c0-501",
+          "citation": "[pipaper-full-index-v1-e7699c38391f1315:1911.06191:s0:p0:c0-501]",
+          "end": 501,
+          "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+          "paper_id": "1911.06191",
+          "paragraph_id": "1911.06191:s0:p0",
+          "section": "Introduction",
+          "start": 0,
+          "text": "We participated in the WMT19 shared news translation task in 11 translation directions. We achieved first place for 8 directions: German$\\leftrightarrow $English, German$\\leftrightarrow $French, Chinese$\\leftrightarrow $English, English$\\rightarrow $Lithuanian, English$\\rightarrow $Finnish, and Russian$\\rightarrow $English, and three other directions were placed second (ranked by teams), which included Lithuanian$\\rightarrow $English, Finnish$\\rightarrow $English, and English$\\rightarrow $Kazakh.",
+          "text_sha256": "c75a6870e4d0d59f80aee9db9794f722b3fce46e0666b48af3205bff3a22e474",
+          "truncated": false
+        },
+        {
+          "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1911.06191:s13:p3:c0-198",
+          "citation": "[pipaper-full-index-v1-e7699c38391f1315:1911.06191:s13:p3:c0-198]",
+          "end": 198,
+          "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+          "paper_id": "1911.06191",
+          "paragraph_id": "1911.06191:s13:p3",
+          "section": "Submitted Systems ::: English@!START@$\\leftrightarrow $@!END@German ::: Results",
+          "start": 0,
+          "text": "We eventually obtain $44.9$ BLEU score for English$\\rightarrow $German and $42.8$ for German$\\rightarrow $English on WMT19 test sets and are ranked in the first place in these two translation tasks.",
+          "text_sha256": "e379d11aaf793e3cfa662a428edbc57134f82396b84edd70731aa4bed92f5882",
+          "truncated": false
+        },
+        {
+          "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1911.06191:s14:p3:c0-351",
+          "citation": "[pipaper-full-index-v1-e7699c38391f1315:1911.06191:s14:p3:c0-351]",
+          "end": 351,
+          "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+          "paper_id": "1911.06191",
+          "paragraph_id": "1911.06191:s14:p3",
+          "section": "Submitted Systems ::: German@!START@$\\leftrightarrow $@!END@French",
+          "start": 0,
+          "text": "Our submitted German$\\rightarrow $French is a single system trained by MADL, achieving $37.3$ BLEU on WMT19. The French$\\rightarrow $German is an ensemble of three independently trained models, achieving $35.0$ BLEU score. Our systems are ranked in the first place for both German$\\rightarrow $French and French$\\rightarrow $German in the leaderboard.",
+          "text_sha256": "63129eb30ef4eaa52c7302a4fc5a0cb7a2dbcfd345111fc3375aeddfde321c29",
+          "truncated": false
+        },
+        {
+          "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1911.06191:s20:p2:c0-278",
+          "citation": "[pipaper-full-index-v1-e7699c38391f1315:1911.06191:s20:p2:c0-278]",
+          "end": 278,
+          "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+          "paper_id": "1911.06191",
+          "paragraph_id": "1911.06191:s20:p2",
+          "section": "Submitted Systems ::: English@!START@$\\leftrightarrow $@!END@Lithuanian",
+          "start": 0,
+          "text": "The BLEU scores on newsdev19 are shown in Table TABREF41. Our final submissions for WMT19 achieves 20.1 BLEU points for English$\\rightarrow $Lithuanian translation (ranked in the first place) and 35.6 for Lithuanian$\\rightarrow $English translation (ranked in the second place).",
+          "text_sha256": "f5d8ad29c6df23a56e14e74f0e001c8633cfe0bf89cc69a9ee5950e08ebb8f8e",
+          "truncated": false
+        },
+        {
+          "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:1911.06191:s31:p0:c0-844",
+          "citation": "[pipaper-full-index-v1-e7699c38391f1315:1911.06191:s31:p0:c0-844]",
+          "end": 844,
+          "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+          "paper_id": "1911.06191",
+          "paragraph_id": "1911.06191:s31:p0",
+          "section": "Conclusions",
+          "start": 0,
+          "text": "This paper describes Microsoft Research Asia's neural machine translation systems for the WMT19 shared news translation tasks. Our systems are built on Transformer, back translation and knowledge distillation, enhanced with our recently proposed techniques: multi-agent dual learning (MADL), masked sequence-to-sequence pre-training (MASS), neural architecture optimization (NAO), and soft contextual data augmentation (SCA). Due to time and GPU limitations, we only apply each technique to a subset of translation tasks. We believe combining them together will further improve the translation accuracy and will conduct experiments in the future. Furthermore, some other techniques such as deliberation learning BIBREF20, adversarial learning BIBREF21, and reinforcement learning BIBREF22, BIBREF23 could also hep and are worthy of exploration.",
+          "text_sha256": "a00784eb91ac8fe05de5b23cc659ffdfe216a8bb7818afff6e04db908f9b168b",
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "root": "duplicate_active_user_constraint",
+      "item_id": "full-v1-dev-batch-2/B/full-v1-d-dialogue03-t2",
+      "turn_sha256": "95dc12b9f108f23ac63f52df76b7e363e510c225149cc5c916af24560a1c416b",
+      "user_text": "In that same paper, Are the word embeddings evaluated?",
+      "allowed_papers": [
+        "2001.09332"
+      ],
+      "stages": [
+        {
+          "stage": "question_frame",
+          "status": "schema_error",
+          "error": "frame.status: value=\"answer\"; required a declared field only",
+          "request_id": "0ecd5bfc-b778-4063-8dd3-93b1b87d835f",
+          "frame_id": "full-v1-dev-batch-2/B/full-v1-d-dialogue03-t2/question_frame",
+          "response_text": "{\"status\":\"answer\",\"answer\":\"Yes — the embeddings are evaluated on a word analogy task, counting any inexecutable analogy as an error [cite:pipaper-full-index-v1-e7699c38391f1315:2001.09332:s7:p0:c0-398].\",\"exact_quotes\":[]}",
+          "response_truncated": false,
+          "normalizer": "bare_json"
+        },
+        {
+          "stage": "question_frame_format_repair",
+          "status": "schema_error",
+          "error": "constraints[0].source_quote: value=\"Answer briefly in English\"; required exact substring of THIS user input",
+          "request_id": "84d5836f-111e-42b7-9de5-54d6b428ac85",
+          "frame_id": "full-v1-dev-batch-2/B/full-v1-d-dialogue03-t2/question_frame",
+          "response_text": "{\"intent\":\"single_paper_qa\",\"follow_up\":true,\"candidate_papers\":[\"2001.09332\"],\"ordered_targets\":[\"2001.09332\"],\"information_needs\":[\"Whether the word embeddings in 2001.09332 are evaluated (and briefly how)\"],\"queries\":[{\"query\":\"word embeddings evaluation word analogy task Italian Word2Vec\",\"paper_ids\":[\"2001.09332\"]}],\"ambiguity\":null,\"constraints\":[{\"key\":\"answer_language\",\"value\":\"English, brief\",\"source_quote\":\"Answer briefly in English\"}],\"comparison_dimensions\":[]}",
+          "response_truncated": false,
+          "normalizer": "bare_json"
+        }
+      ],
+      "prior_domain_state": {
+        "version": 1,
+        "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+        "current_paper": {
+          "paper_id": "2001.09332",
+          "source_turn": "full-v1-dev-batch-2/B/full-v1-d-dialogue03-t1"
+        },
+        "comparison_order": [],
+        "comparison_dimensions": [],
+        "object_source_turn": "full-v1-dev-batch-2/B/full-v1-d-dialogue03-t1",
+        "user_constraints": [
+          {
+            "key": "answer_language",
+            "value": "English, brief",
+            "source_quote": "Answer briefly in English",
+            "source_turn": "full-v1-dev-batch-2/B/full-v1-d-dialogue03-t1",
+            "superseded_by": null
+          }
+        ],
+        "conclusions": [
+          {
+            "id": "full-v1-dev-batch-2/B/full-v1-d-dialogue03-t1/question_frame/n1",
+            "need_id": "n1",
+            "text": "Yes — the embeddings are evaluated on a word analogy task, with analogies counted as errors when inexecutable.",
+            "source_turn": "full-v1-dev-batch-2/B/full-v1-d-dialogue03-t1",
+            "basis": "explicit",
+            "sources": [
+              {
+                "paper_id": "2001.09332",
+                "paragraph_id": "2001.09332:s7:p0",
+                "chunk_id": "pipaper-full-index-v1-e7699c38391f1315:2001.09332:s7:p0:c0-398",
+                "start": 0,
+                "end": 398,
+                "text_sha256": "36ef35b92206498337d094591f8e67a583d846189dc029070ea0cf1f03c737d2",
+                "index_version": "pipaper-full-index-v1-e7699c38391f1315",
+                "section": "Results ::: Comparison with other models",
+                "quote": "The first test (Table TABREF15) was performed considering all the analogies present, and therefore evaluating as an error any analogy that was not executable",
+                "source_start": 176,
+                "source_end": 333
+              }
+            ],
+            "source_status": "verified",
+            "semantic_status": "pending"
+          }
+        ],
+        "pending_inferences": [],
+        "unresolved_questions": []
+      },
+      "actual_prior_user_history": [
+        {
+          "turn_id": "full-v1-dev-batch-2/B/full-v1-d-dialogue03-t1",
+          "user_text": "In the paper \"An Analysis of Word2Vec for the Italian Language\" (2001.09332), Are the word embeddings tested on a NLP task? Answer briefly in English."
+        }
+      ],
+      "prior_turn_sha256": "e5bff4c41df8ffa41b2c66c3db9204f46f77834303526c5fa1c92a26e58df0a4"
+    }
+  ]
+}

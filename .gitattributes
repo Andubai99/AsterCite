@@ -1,0 +1,9 @@
+* text=auto eol=lf
+data/**/manifests/* -text
+reproduce/**/*.json -text
+reproduce/**/*.jsonl -text
+reproduce/manifest.json -text
+reproduce/registry.json -text
+demo/dialogue.json -text
+tests/evaluation/fixtures/*.json -text
+docs/evidence/*.json -text

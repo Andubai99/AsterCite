@@ -1,0 +1,408 @@
+{
+  "C": {
+    "raw_model_labels": {
+      "n": 100,
+      "correct": 94,
+      "missing": 3,
+      "coverage": 0.97,
+      "accuracy_all": 0.94,
+      "accuracy_with_prediction": 0.9690721649484536,
+      "macro_f1": 0.9364967208104463,
+      "classes": [
+        {
+          "label": "single_paper_qa",
+          "support": 40,
+          "correct": 40,
+          "predicted": 41,
+          "precision": 0.975609756097561,
+          "recall": 1.0,
+          "f1": 0.9876543209876543
+        },
+        {
+          "label": "comparison",
+          "support": 20,
+          "correct": 17,
+          "predicted": 17,
+          "precision": 1.0,
+          "recall": 0.85,
+          "f1": 0.918918918918919
+        },
+        {
+          "label": "paper_discovery",
+          "support": 20,
+          "correct": 20,
+          "predicted": 22,
+          "precision": 0.9090909090909091,
+          "recall": 1.0,
+          "f1": 0.9523809523809523
+        },
+        {
+          "label": "scoped_summary",
+          "support": 10,
+          "correct": 7,
+          "predicted": 7,
+          "precision": 1.0,
+          "recall": 0.7,
+          "f1": 0.8235294117647058
+        },
+        {
+          "label": "session_control",
+          "support": 10,
+          "correct": 10,
+          "predicted": 10,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      ],
+      "confusion": {
+        "single_paper_qa": {
+          "single_paper_qa": 40,
+          "comparison": 0,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 0,
+          "missing": 0
+        },
+        "comparison": {
+          "single_paper_qa": 0,
+          "comparison": 17,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 0,
+          "missing": 3
+        },
+        "paper_discovery": {
+          "single_paper_qa": 0,
+          "comparison": 0,
+          "paper_discovery": 20,
+          "scoped_summary": 0,
+          "session_control": 0,
+          "missing": 0
+        },
+        "scoped_summary": {
+          "single_paper_qa": 1,
+          "comparison": 0,
+          "paper_discovery": 2,
+          "scoped_summary": 7,
+          "session_control": 0,
+          "missing": 0
+        },
+        "session_control": {
+          "single_paper_qa": 0,
+          "comparison": 0,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 10,
+          "missing": 0
+        }
+      }
+    },
+    "host_accepted_labels": {
+      "n": 100,
+      "correct": 57,
+      "missing": 42,
+      "coverage": 0.58,
+      "accuracy_all": 0.57,
+      "accuracy_with_prediction": 0.9827586206896551,
+      "macro_f1": 0.5763781606918862,
+      "classes": [
+        {
+          "label": "single_paper_qa",
+          "support": 40,
+          "correct": 40,
+          "predicted": 41,
+          "precision": 0.975609756097561,
+          "recall": 1.0,
+          "f1": 0.9876543209876543
+        },
+        {
+          "label": "comparison",
+          "support": 20,
+          "correct": 2,
+          "predicted": 2,
+          "precision": 1.0,
+          "recall": 0.1,
+          "f1": 0.18181818181818182
+        },
+        {
+          "label": "paper_discovery",
+          "support": 20,
+          "correct": 0,
+          "predicted": 0,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "scoped_summary",
+          "support": 10,
+          "correct": 7,
+          "predicted": 7,
+          "precision": 1.0,
+          "recall": 0.7,
+          "f1": 0.8235294117647058
+        },
+        {
+          "label": "session_control",
+          "support": 10,
+          "correct": 8,
+          "predicted": 8,
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.8888888888888888
+        }
+      ],
+      "confusion": {
+        "single_paper_qa": {
+          "single_paper_qa": 40,
+          "comparison": 0,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 0,
+          "missing": 0
+        },
+        "comparison": {
+          "single_paper_qa": 0,
+          "comparison": 2,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 0,
+          "missing": 18
+        },
+        "paper_discovery": {
+          "single_paper_qa": 0,
+          "comparison": 0,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 0,
+          "missing": 20
+        },
+        "scoped_summary": {
+          "single_paper_qa": 1,
+          "comparison": 0,
+          "paper_discovery": 0,
+          "scoped_summary": 7,
+          "session_control": 0,
+          "missing": 2
+        },
+        "session_control": {
+          "single_paper_qa": 0,
+          "comparison": 0,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 8,
+          "missing": 2
+        }
+      }
+    },
+    "preparation_status": {
+      "completed": 58,
+      "skipped": 3,
+      "fallback": 39
+    }
+  },
+  "C-no-reflect": {
+    "raw_model_labels": {
+      "n": 100,
+      "correct": 93,
+      "missing": 2,
+      "coverage": 0.98,
+      "accuracy_all": 0.93,
+      "accuracy_with_prediction": 0.9489795918367347,
+      "macro_f1": 0.9201937771257411,
+      "classes": [
+        {
+          "label": "single_paper_qa",
+          "support": 40,
+          "correct": 39,
+          "predicted": 42,
+          "precision": 0.9285714285714286,
+          "recall": 0.975,
+          "f1": 0.9512195121951219
+        },
+        {
+          "label": "comparison",
+          "support": 20,
+          "correct": 18,
+          "predicted": 18,
+          "precision": 1.0,
+          "recall": 0.9,
+          "f1": 0.9473684210526315
+        },
+        {
+          "label": "paper_discovery",
+          "support": 20,
+          "correct": 20,
+          "predicted": 22,
+          "precision": 0.9090909090909091,
+          "recall": 1.0,
+          "f1": 0.9523809523809523
+        },
+        {
+          "label": "scoped_summary",
+          "support": 10,
+          "correct": 6,
+          "predicted": 6,
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.75
+        },
+        {
+          "label": "session_control",
+          "support": 10,
+          "correct": 10,
+          "predicted": 10,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      ],
+      "confusion": {
+        "single_paper_qa": {
+          "single_paper_qa": 39,
+          "comparison": 0,
+          "paper_discovery": 1,
+          "scoped_summary": 0,
+          "session_control": 0,
+          "missing": 0
+        },
+        "comparison": {
+          "single_paper_qa": 0,
+          "comparison": 18,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 0,
+          "missing": 2
+        },
+        "paper_discovery": {
+          "single_paper_qa": 0,
+          "comparison": 0,
+          "paper_discovery": 20,
+          "scoped_summary": 0,
+          "session_control": 0,
+          "missing": 0
+        },
+        "scoped_summary": {
+          "single_paper_qa": 3,
+          "comparison": 0,
+          "paper_discovery": 1,
+          "scoped_summary": 6,
+          "session_control": 0,
+          "missing": 0
+        },
+        "session_control": {
+          "single_paper_qa": 0,
+          "comparison": 0,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 10,
+          "missing": 0
+        }
+      }
+    },
+    "host_accepted_labels": {
+      "n": 100,
+      "correct": 53,
+      "missing": 44,
+      "coverage": 0.56,
+      "accuracy_all": 0.53,
+      "accuracy_with_prediction": 0.9464285714285714,
+      "macro_f1": 0.5239974038395846,
+      "classes": [
+        {
+          "label": "single_paper_qa",
+          "support": 40,
+          "correct": 39,
+          "predicted": 42,
+          "precision": 0.9285714285714286,
+          "recall": 0.975,
+          "f1": 0.9512195121951219
+        },
+        {
+          "label": "comparison",
+          "support": 20,
+          "correct": 1,
+          "predicted": 1,
+          "precision": 1.0,
+          "recall": 0.05,
+          "f1": 0.09523809523809523
+        },
+        {
+          "label": "paper_discovery",
+          "support": 20,
+          "correct": 0,
+          "predicted": 0,
+          "precision": 0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        {
+          "label": "scoped_summary",
+          "support": 10,
+          "correct": 6,
+          "predicted": 6,
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.75
+        },
+        {
+          "label": "session_control",
+          "support": 10,
+          "correct": 7,
+          "predicted": 7,
+          "precision": 1.0,
+          "recall": 0.7,
+          "f1": 0.8235294117647058
+        }
+      ],
+      "confusion": {
+        "single_paper_qa": {
+          "single_paper_qa": 39,
+          "comparison": 0,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 0,
+          "missing": 1
+        },
+        "comparison": {
+          "single_paper_qa": 0,
+          "comparison": 1,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 0,
+          "missing": 19
+        },
+        "paper_discovery": {
+          "single_paper_qa": 0,
+          "comparison": 0,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 0,
+          "missing": 20
+        },
+        "scoped_summary": {
+          "single_paper_qa": 3,
+          "comparison": 0,
+          "paper_discovery": 0,
+          "scoped_summary": 6,
+          "session_control": 0,
+          "missing": 1
+        },
+        "session_control": {
+          "single_paper_qa": 0,
+          "comparison": 0,
+          "paper_discovery": 0,
+          "scoped_summary": 0,
+          "session_control": 7,
+          "missing": 3
+        }
+      }
+    },
+    "preparation_status": {
+      "completed": 56,
+      "fallback": 42,
+      "skipped": 2
+    }
+  }
+}

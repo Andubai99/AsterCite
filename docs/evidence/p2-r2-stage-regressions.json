@@ -1,0 +1,429 @@
+{
+  "format_version": 1,
+  "source_batch_id": "p2-dev-35756d59a9c15f0e-98336037f59e",
+  "source_ledger_sha256": "00ddc5d864b291c92691f2c4273f83aa980b760260abfa5e8271f93744efebf4",
+  "runtime_freeze_sha256": "35756d59a9c15f0ed7df3e013064ee9764ac43d46a81d9415ae107df98080c05",
+  "source_commit": "e8a7a988c18918027d89b3029981114225dbde0b",
+  "executed_snapshot_verification": {
+    "checked_files": 51,
+    "mismatches": [],
+    "timing": "after batch, before any offline prompt repair"
+  },
+  "cause": "insufficient Check omitted evidence_ids; s01 also emitted support_spans=null. Generic Invalid R2 need fields correction did not identify the missing field. No IDs or claims will be silently filled.",
+  "cases": [
+    {
+      "case_id": "dev-s01",
+      "profile": "B",
+      "failure_code": "CHECK_ERROR",
+      "final_answer": "",
+      "stages": [
+        {
+          "stage": "question_frame",
+          "status": "completed",
+          "value": {
+            "frame_id": "p2-dev-35756d59a9c15f0e-98336037f59e:2:dev-s01/question_frame",
+            "question_text": "In the paper \"DpgMedia2019: A Dutch News Dataset for Partisanship Detection\" (1908.02322), What limitations are mentioned?",
+            "candidate_papers": [
+              "1908.02322"
+            ],
+            "ordered_targets": [
+              "1908.02322"
+            ],
+            "information_needs": [
+              {
+                "need_id": "n1",
+                "text": "Find the limitations mentioned in paper 1908.02322"
+              }
+            ],
+            "queries": [
+              {
+                "query": "DpgMedia2019 Dutch News Dataset Partisanship Detection limitations",
+                "paper_ids": [
+                  "1908.02322"
+                ]
+              }
+            ],
+            "ambiguity": null,
+            "user_constraints": [
+              "Only paper 1908.02322 is in scope"
+            ]
+          },
+          "request_id": "1b76bf65-0266-431b-9f9d-eacc4a232ebe",
+          "frame_id": "p2-dev-35756d59a9c15f0e-98336037f59e:2:dev-s01/question_frame",
+          "response_text": "{\"question_text\":\"In the paper \\\"DpgMedia2019: A Dutch News Dataset for Partisanship Detection\\\" (1908.02322), What limitations are mentioned?\",\"candidate_papers\":[\"1908.02322\"],\"ordered_targets\":[\"1908.02322\"],\"information_needs\":[\"Find the limitations mentioned in paper 1908.02322\"],\"queries\":[{\"query\":\"DpgMedia2019 Dutch News Dataset Partisanship Detection limitations\",\"paper_ids\":[\"1908.02322\"]}],\"ambiguity\":null,\"user_constraints\":[\"Only paper 1908.02322 is in scope\"]}",
+          "response_truncated": false,
+          "normalizer": "bare_json"
+        },
+        {
+          "stage": "evidence_check",
+          "status": "schema_error",
+          "error": "Invalid R2 need fields",
+          "request_id": "99d45ec2-d232-491d-8886-949ca593e537",
+          "frame_id": "p2-dev-35756d59a9c15f0e-98336037f59e:2:dev-s01/question_frame",
+          "response_text": "{\"checks\":[{\"need_id\":\"n1\",\"status\":\"insufficient\",\"basis\":null,\"finding\":null,\"gap\":\"The provided excerpts do not contain a limitations discussion (e.g., a Limitations section or enumerated weaknesses of the dataset/approach), so the paper's mentioned limitations cannot be identified from these chunks.\",\"support_spans\":null,\"gap_resolution\":null}],\"next_action\":\"retrieve_more\",\"next_queries\":[{\"query\":\"DpgMedia2019 limitations future work\",\"paper_ids\":[\"1908.02322\"]},{\"query\":\"DpgMedia2019 dataset limitations conclusion\",\"paper_ids\":[\"1908.02322\"]}]}",
+          "response_truncated": false,
+          "normalizer": "bare_json"
+        },
+        {
+          "stage": "evidence_check_format_repair",
+          "status": "schema_error",
+          "error": "Invalid R2 need fields",
+          "request_id": "416108d2-1751-42b2-a9c9-42c92b56b3be",
+          "frame_id": "p2-dev-35756d59a9c15f0e-98336037f59e:2:dev-s01/question_frame",
+          "response_text": "{\"checks\":[{\"need_id\":\"n1\",\"status\":\"insufficient\",\"basis\":null,\"finding\":null,\"gap\":\"None of the supplied excerpts contains an explicit limitations discussion (e.g., a Limitations section, enumerated dataset weaknesses, or conclusion noting shortcomings), so the limitations mentioned in 1908.02322 cannot be identified from the provided evidence.\",\"support_spans\":null,\"gap_resolution\":null}],\"next_action\":\"retrieve_more\",\"next_queries\":[{\"query\":\"DpgMedia2019 limitations future work conclusion\",\"paper_ids\":[\"1908.02322\"]},{\"query\":\"DpgMedia2019 dataset weaknesses drawbacks discussion\",\"paper_ids\":[\"1908.02322\"]}]}",
+          "response_truncated": false,
+          "normalizer": "bare_json"
+        }
+      ],
+      "tool_calls": [
+        {
+          "tool_attempt_id": "ae2bebe8-b381-4b29-b923-09f43e076fbb",
+          "tool_call_id": "host-e976cd85-6868-4ab1-a5a8-12592963705c",
+          "user_turn_id": "p2-dev-35756d59a9c15f0e-98336037f59e:2:dev-s01",
+          "tool_name": "retrieve_chunks",
+          "model_request_id": null,
+          "status": "completed",
+          "paper_ids": [
+            "1908.02322"
+          ],
+          "chunk_ids": [
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1908.02322:s6:p0:c0-515",
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1908.02322:s4:p1:c0-907",
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1908.02322:s7:p1:c0-128",
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1908.02322:s3:p3:c0-603",
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1908.02322:s1:p0:c0-521"
+          ],
+          "backend": "dense",
+          "index_version": "pipaper-p2-index-v1-ee7c8b6ceb5e6212",
+          "visible_chunks": [
+            {
+              "paper_id": "1908.02322",
+              "paragraph_id": "1908.02322:s6:p0",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1908.02322:s6:p0:c0-515",
+              "start": 0,
+              "end": 515,
+              "text_codepoints": 515
+            },
+            {
+              "paper_id": "1908.02322",
+              "paragraph_id": "1908.02322:s4:p1",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1908.02322:s4:p1:c0-907",
+              "start": 0,
+              "end": 907,
+              "text_codepoints": 907
+            },
+            {
+              "paper_id": "1908.02322",
+              "paragraph_id": "1908.02322:s7:p1",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1908.02322:s7:p1:c0-128",
+              "start": 0,
+              "end": 128,
+              "text_codepoints": 128
+            },
+            {
+              "paper_id": "1908.02322",
+              "paragraph_id": "1908.02322:s3:p3",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1908.02322:s3:p3:c0-603",
+              "start": 0,
+              "end": 603,
+              "text_codepoints": 603
+            },
+            {
+              "paper_id": "1908.02322",
+              "paragraph_id": "1908.02322:s1:p0",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1908.02322:s1:p0:c0-521",
+              "start": 0,
+              "end": 521,
+              "text_codepoints": 521
+            }
+          ],
+          "elapsed_ms": 14,
+          "error": null,
+          "execution_source": "host_plan",
+          "plan_request_id": "1b76bf65-0266-431b-9f9d-eacc4a232ebe",
+          "executed": true,
+          "query": "DpgMedia2019 Dutch News Dataset Partisanship Detection limitations",
+          "effective_query": "DpgMedia2019 Dutch News Dataset Partisanship Detection limitations",
+          "query_normalization": "public_metadata_prefix_v1"
+        }
+      ],
+      "human_review_cannot_convert_to_pass": true
+    },
+    {
+      "case_id": "dev-s05",
+      "profile": "B",
+      "failure_code": "CHECK_ERROR",
+      "final_answer": "",
+      "stages": [
+        {
+          "stage": "question_frame",
+          "status": "completed",
+          "value": {
+            "frame_id": "p2-dev-35756d59a9c15f0e-98336037f59e:10:dev-s05/question_frame",
+            "question_text": "In the paper \"Local Contextual Attention with Hierarchical Structure for Dialogue Act Recognition\" (2003.06044), Which natural language(s) are studied?",
+            "candidate_papers": [
+              "2003.06044"
+            ],
+            "ordered_targets": [
+              "2003.06044"
+            ],
+            "information_needs": [
+              {
+                "need_id": "n1",
+                "text": "The natural language(s) studied in the paper 2003.06044"
+              }
+            ],
+            "queries": [
+              {
+                "query": "languages datasets used in Local Contextual Attention Hierarchical Structure Dialogue Act Recognition",
+                "paper_ids": [
+                  "2003.06044"
+                ]
+              }
+            ],
+            "ambiguity": null,
+            "user_constraints": [
+              "language(s) must come from the specified paper 2003.06044"
+            ]
+          },
+          "request_id": "57ba3f00-dee0-480e-a131-2bb238dc393a",
+          "frame_id": "p2-dev-35756d59a9c15f0e-98336037f59e:10:dev-s05/question_frame",
+          "response_text": "{\"question_text\":\"In the paper \\\"Local Contextual Attention with Hierarchical Structure for Dialogue Act Recognition\\\" (2003.06044), Which natural language(s) are studied?\",\"candidate_papers\":[\"2003.06044\"],\"ordered_targets\":[\"2003.06044\"],\"information_needs\":[\"The natural language(s) studied in the paper 2003.06044\"],\"queries\":[{\"query\":\"languages datasets used in Local Contextual Attention Hierarchical Structure Dialogue Act Recognition\",\"paper_ids\":[\"2003.06044\"]}],\"ambiguity\":null,\"user_constraints\":[\"language(s) must come from the specified paper 2003.06044\"]}",
+          "response_truncated": false,
+          "normalizer": "bare_json"
+        },
+        {
+          "stage": "evidence_check",
+          "status": "schema_error",
+          "error": "Invalid R2 need fields",
+          "request_id": "7aee16bd-7123-4408-b68a-2027ec762786",
+          "frame_id": "p2-dev-35756d59a9c15f0e-98336037f59e:10:dev-s05/question_frame",
+          "response_text": "{\"checks\":[{\"need_id\":\"n1\",\"status\":\"insufficient\",\"basis\":null,\"finding\":null,\"gap\":\"The excerpts mention the Switchboard dataset but never explicitly state which natural language(s) the paper studies; no source text names a language.\",\"support_spans\":[],\"gap_resolution\":null}],\"next_action\":\"retrieve_more\",\"next_queries\":[{\"query\":\"natural language English Chinese studied in Local Contextual Attention Dialogue Act Recognition paper\",\"paper_ids\":[\"2003.06044\"]},{\"query\":\"datasets used experiments Switchboard MRDA language of dialogues\",\"paper_ids\":[\"2003.06044\"]}]}",
+          "response_truncated": false,
+          "normalizer": "bare_json"
+        },
+        {
+          "stage": "evidence_check_format_repair",
+          "status": "schema_error",
+          "error": "Invalid R2 need fields",
+          "request_id": "92e9166e-d056-44e9-9cb2-8b7f3caeca22",
+          "frame_id": "p2-dev-35756d59a9c15f0e-98336037f59e:10:dev-s05/question_frame",
+          "response_text": "{\"checks\":[{\"need_id\":\"n1\",\"status\":\"insufficient\",\"basis\":null,\"finding\":null,\"gap\":\"The excerpts mention the Switchboard dataset and example utterances but never explicitly name which natural language(s) are studied; no excerpt identifies a language.\",\"support_spans\":[],\"gap_resolution\":null}],\"next_action\":\"retrieve_more\",\"next_queries\":[{\"query\":\"experiments datasets Switchboard MRDA natural language English of dialogues\",\"paper_ids\":[\"2003.06044\"]},{\"query\":\"corpus language used for dialogue act recognition experiments\",\"paper_ids\":[\"2003.06044\"]}]}",
+          "response_truncated": false,
+          "normalizer": "bare_json"
+        }
+      ],
+      "tool_calls": [
+        {
+          "tool_attempt_id": "1d63b4d9-8e12-4a99-aa94-ab248944560c",
+          "tool_call_id": "host-573a403c-7578-401d-8b0a-0a22045fc5ec",
+          "user_turn_id": "p2-dev-35756d59a9c15f0e-98336037f59e:10:dev-s05",
+          "tool_name": "retrieve_chunks",
+          "model_request_id": null,
+          "status": "completed",
+          "paper_ids": [
+            "2003.06044"
+          ],
+          "chunk_ids": [
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:2003.06044:s11:p0:c0-817",
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:2003.06044:s11:p1:c0-494",
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:2003.06044:s0:p0:c0-1401",
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:2003.06044:s0:p2:c0-940",
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:2003.06044:s0:p4:c0-205"
+          ],
+          "backend": "dense",
+          "index_version": "pipaper-p2-index-v1-ee7c8b6ceb5e6212",
+          "visible_chunks": [
+            {
+              "paper_id": "2003.06044",
+              "paragraph_id": "2003.06044:s11:p0",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:2003.06044:s11:p0:c0-817",
+              "start": 0,
+              "end": 817,
+              "text_codepoints": 817
+            },
+            {
+              "paper_id": "2003.06044",
+              "paragraph_id": "2003.06044:s11:p1",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:2003.06044:s11:p1:c0-494",
+              "start": 0,
+              "end": 494,
+              "text_codepoints": 494
+            },
+            {
+              "paper_id": "2003.06044",
+              "paragraph_id": "2003.06044:s0:p0",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:2003.06044:s0:p0:c0-1401",
+              "start": 0,
+              "end": 1401,
+              "text_codepoints": 1401
+            },
+            {
+              "paper_id": "2003.06044",
+              "paragraph_id": "2003.06044:s0:p2",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:2003.06044:s0:p2:c0-940",
+              "start": 0,
+              "end": 940,
+              "text_codepoints": 940
+            },
+            {
+              "paper_id": "2003.06044",
+              "paragraph_id": "2003.06044:s0:p4",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:2003.06044:s0:p4:c0-205",
+              "start": 0,
+              "end": 205,
+              "text_codepoints": 205
+            }
+          ],
+          "elapsed_ms": 14,
+          "error": null,
+          "execution_source": "host_plan",
+          "plan_request_id": "57ba3f00-dee0-480e-a131-2bb238dc393a",
+          "executed": true,
+          "query": "languages datasets used in Local Contextual Attention Hierarchical Structure Dialogue Act Recognition",
+          "effective_query": "languages datasets used in Local Contextual Attention Hierarchical Structure Dialogue Act Recognition",
+          "query_normalization": "public_metadata_prefix_v1"
+        }
+      ],
+      "human_review_cannot_convert_to_pass": true
+    },
+    {
+      "case_id": "dev-s06",
+      "profile": "B",
+      "failure_code": "CHECK_ERROR",
+      "final_answer": "",
+      "stages": [
+        {
+          "stage": "question_frame",
+          "status": "completed",
+          "value": {
+            "frame_id": "p2-dev-35756d59a9c15f0e-98336037f59e:11:dev-s06/question_frame",
+            "question_text": "In the paper \"Facilitating on-line opinion dynamics by mining expressions of causation. The case of climate change debates on The Guardian\" (1912.01252), How is the quality of the discussion evaluated?",
+            "candidate_papers": [
+              "1912.01252"
+            ],
+            "ordered_targets": [
+              "1912.01252"
+            ],
+            "information_needs": [
+              {
+                "need_id": "n1",
+                "text": "How the quality of the discussion is evaluated in the paper"
+              }
+            ],
+            "queries": [
+              {
+                "query": "quality of discussion evaluation climate change debates The Guardian",
+                "paper_ids": [
+                  "1912.01252"
+                ]
+              }
+            ],
+            "ambiguity": null,
+            "user_constraints": [
+              "question refers specifically to paper 1912.01252"
+            ]
+          },
+          "request_id": "fb61ba85-ab20-4965-87fd-c8e6ca49b1bf",
+          "frame_id": "p2-dev-35756d59a9c15f0e-98336037f59e:11:dev-s06/question_frame",
+          "response_text": "{\"question_text\":\"In the paper \\\"Facilitating on-line opinion dynamics by mining expressions of causation. The case of climate change debates on The Guardian\\\" (1912.01252), How is the quality of the discussion evaluated?\",\"candidate_papers\":[\"1912.01252\"],\"ordered_targets\":[\"1912.01252\"],\"information_needs\":[\"How the quality of the discussion is evaluated in the paper\"],\"queries\":[{\"query\":\"quality of discussion evaluation climate change debates The Guardian\",\"paper_ids\":[\"1912.01252\"]}],\"ambiguity\":null,\"user_constraints\":[\"question refers specifically to paper 1912.01252\"]}",
+          "response_truncated": false,
+          "normalizer": "bare_json"
+        },
+        {
+          "stage": "evidence_check",
+          "status": "schema_error",
+          "error": "Invalid R2 need fields",
+          "request_id": "05e880ec-d6d2-4127-87f9-25f69c97fe7e",
+          "frame_id": "p2-dev-35756d59a9c15f0e-98336037f59e:11:dev-s06/question_frame",
+          "response_text": "{\"checks\":[{\"need_id\":\"n1\",\"status\":\"insufficient\",\"basis\":null,\"finding\":null,\"gap\":\"The provided excerpts describe the corpus, objective, and opinion landscape visualizations, but none address how the quality of the discussion is evaluated. No evaluation methodology for discussion quality is present in the source excerpts.\",\"support_spans\":[],\"gap_resolution\":null}],\"next_action\":\"retrieve_more\",\"next_queries\":[{\"query\":\"quality of discussion evaluation comments metric\",\"paper_ids\":[\"1912.01252\"]},{\"query\":\"assessment evaluation discussion quality observatory\",\"paper_ids\":[\"1912.01252\"]}]}",
+          "response_truncated": false,
+          "normalizer": "bare_json"
+        },
+        {
+          "stage": "evidence_check_format_repair",
+          "status": "schema_error",
+          "error": "Invalid R2 need fields",
+          "request_id": "a45e49df-5b45-4879-96ce-14fa56fa6900",
+          "frame_id": "p2-dev-35756d59a9c15f0e-98336037f59e:11:dev-s06/question_frame",
+          "response_text": "{\"checks\":[{\"need_id\":\"n1\",\"status\":\"insufficient\",\"basis\":null,\"finding\":null,\"gap\":\"None of the provided excerpts from 1912.01252 describe any methodology, criteria, or metrics for evaluating the quality of the discussion; they only cover the corpus, objective, and opinion-landscape visualizations.\",\"support_spans\":[],\"gap_resolution\":null}],\"next_action\":\"retrieve_more\",\"next_queries\":[{\"query\":\"quality of the discussion evaluation comments metric\",\"paper_ids\":[\"1912.01252\"]},{\"query\":\"assessment criteria discussion quality observatory\",\"paper_ids\":[\"1912.01252\"]}]}",
+          "response_truncated": false,
+          "normalizer": "bare_json"
+        }
+      ],
+      "tool_calls": [
+        {
+          "tool_attempt_id": "8d821a11-7c3e-4ceb-8807-4eef2fbf8e43",
+          "tool_call_id": "host-b5d989d5-81e7-4929-9998-a001493be00e",
+          "user_turn_id": "p2-dev-35756d59a9c15f0e-98336037f59e:11:dev-s06",
+          "tool_name": "retrieve_chunks",
+          "model_request_id": null,
+          "status": "completed",
+          "paper_ids": [
+            "1912.01252"
+          ],
+          "chunk_ids": [
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1912.01252:s2:p0:c0-856",
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1912.01252:s10:p1:c0-889",
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1912.01252:s13:p0:c0-662",
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1912.01252:s1:p0:c0-771",
+            "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1912.01252:s2:p3:c0-382"
+          ],
+          "backend": "dense",
+          "index_version": "pipaper-p2-index-v1-ee7c8b6ceb5e6212",
+          "visible_chunks": [
+            {
+              "paper_id": "1912.01252",
+              "paragraph_id": "1912.01252:s2:p0",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1912.01252:s2:p0:c0-856",
+              "start": 0,
+              "end": 856,
+              "text_codepoints": 856
+            },
+            {
+              "paper_id": "1912.01252",
+              "paragraph_id": "1912.01252:s10:p1",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1912.01252:s10:p1:c0-889",
+              "start": 0,
+              "end": 889,
+              "text_codepoints": 889
+            },
+            {
+              "paper_id": "1912.01252",
+              "paragraph_id": "1912.01252:s13:p0",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1912.01252:s13:p0:c0-662",
+              "start": 0,
+              "end": 662,
+              "text_codepoints": 662
+            },
+            {
+              "paper_id": "1912.01252",
+              "paragraph_id": "1912.01252:s1:p0",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1912.01252:s1:p0:c0-771",
+              "start": 0,
+              "end": 771,
+              "text_codepoints": 771
+            },
+            {
+              "paper_id": "1912.01252",
+              "paragraph_id": "1912.01252:s2:p3",
+              "chunk_id": "pipaper-p2-index-v1-ee7c8b6ceb5e6212:1912.01252:s2:p3:c0-382",
+              "start": 0,
+              "end": 382,
+              "text_codepoints": 382
+            }
+          ],
+          "elapsed_ms": 13,
+          "error": null,
+          "execution_source": "host_plan",
+          "plan_request_id": "fb61ba85-ab20-4965-87fd-c8e6ca49b1bf",
+          "executed": true,
+          "query": "quality of discussion evaluation climate change debates The Guardian",
+          "effective_query": "quality of discussion evaluation climate change debates The Guardian",
+          "query_normalization": "public_metadata_prefix_v1"
+        }
+      ],
+      "human_review_cannot_convert_to_pass": true
+    }
+  ]
+}
