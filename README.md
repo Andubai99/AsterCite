@@ -17,7 +17,7 @@ npm run test:reproduce
 
 demo 回放一组保存的真实四轮对话，显示原回答、来源段落；不会调用模型。reproduce 从逐题 top5、Gold 跨度、保存的答案及显式语义判定重新计分，输出 .local/reproduction/results.md 和 results.json。完整表见 [实验结果](docs/results.md)，分母与来源见 [复现说明](reproduce/README.md)。
 
-| 检索配置 / 同一原47题 | Span Recall@5 |
+| 检索配置 | Span Recall@5 |
 |---|---:|
 | Dense | 54.08% |
 | Dense + BM25 + RRF | 68.58% |
@@ -36,21 +36,13 @@ python scripts/download_models.py
 .venv\Scripts\python.exe -m retriever.p2 build --full --corpus-dir data/full-v1/corpus --models-dir .cache/models --artifacts-dir artifacts/full-v1 --device cuda
 ```
 
-下载只由上述命令明确触发：固定 QASPER v0.3 原始档和两份固定 revision 的检索权重（权重文件约4.6 GB）。原始下载、权重、依赖及索引不上传到 Git。恢复过程核对原始 SHA-256；worker 请求本身不上网下载。
-
-构建命令输出索引目录。历史 CUDA 索引为 pipaper-full-index-v1-e7699c38391f1315。先核对目录及 manifest，再填写使用者配置。索引配方见 [环境说明](docs/environment.md)。
-
-CPU 可用同一命令改为 --device cpu，配置也改为 cpu，并使用实际输出的新目录；CPU 索引身份与 CUDA 不同，不能声称复刻历史77.73%。Linux完整检索环境尚未验收，当前 uv.lock 明确限定 Windows；零密钥演示与离线复核不依赖 Torch。
-
 ## 配置自己的生成模型
 
 ```powershell
 Copy-Item configs/model.example.json configs/model.local.json
 ```
 
-编辑 model.local.json，填写自己的 base_url、model_id、容量、推理开关及服务兼容参数。模板的地址和模型名留空，无法直接发起请求。服务需支持 OpenAI Chat Completions、SSE 与工具调用；跨厂商的真实服务接入未逐家验收。
-
-通过终端环境变量设置 **PIPAPER_API_KEY**。可用交互输入避免把密钥写入命令历史：
+编辑 model.local.json，填写自己的 base_url、model_id、容量、推理开关及服务兼容参数。通过终端环境变量设置 **PIPAPER_API_KEY**：
 
 ```powershell
 $credential = Get-Credential -UserName api -Message "密码栏输入你的模型 API key"
@@ -58,10 +50,6 @@ $env:PIPAPER_API_KEY = $credential.GetNetworkCredential().Password
 npm run doctor
 npm run paper -- --session research-demo
 ```
-
-CLI 不自动读取 .env，不加载个人 Pi 配置。model.local.json、.local/ 会话及凭据均忽略跟踪；仓库没有共享 key。使用完可执行 Remove-Item Env:PIPAPER_API_KEY 清除当前终端变量。费用和账户余额由你选择的服务决定，本项目不填充费用为0。
-
-非推理模型使用 reasoning=false / thinking_level=off。推理模型须显式声明 supportsReasoningEffort=true，再按服务支持设置 low 等级；阶段辅助请求与最终生成采用同一等级。供应商的兼容选项说明见 [配置指南](docs/configuration.md)。
 
 ## 使用 CLI
 
@@ -85,8 +73,6 @@ CLI 不自动读取 .env，不加载个人 Pi 配置。model.local.json、.local
 npm run paper -- --session research-demo --ask "沿用上次论文范围，补充证据来源。"
 ```
 
-默认会话最多20轮、每轮最多12次模型请求尝试、2次 search 与4次 retrieve。失败、格式修正和原生压缩都计数；失败轮不退款，无自动重试。/compact 登记下一轮内的手动原生压缩，退出后仍保留该登记。配置或源码/索引变更会拒绝恢复旧绑定的快照，应新建会话。
-
 ## 结构与能力
 
 ```mermaid
@@ -101,8 +87,6 @@ flowchart LR
   Guard --> Trace[Turn / Stage Trace]
   Generate --> Trace
 ```
-
-检索保留论文、章节、段落及 Unicode 原文跨度；回答只可引用当前实际可见的 chunk。引用存在性/范围/原文精确性由宿主校验，语义支持由独立评测判定。记忆保留用户约束的来源和最新纠正，不把模型判断自动标成已确认事实。
 
 | 目录 | 内容 |
 |---|---|
